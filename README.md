@@ -12,11 +12,12 @@ miyazaki-webgis/
 ├── package.json                # 建置與資料擷取指令
 ├── data/
 │   ├── osrm_routes.json        # OSRM 實際道路路網軌跡（2,158 節點・總長 686 km）
-│   └── yt_videos_clean.json    # 405 部實測宮崎旅遊 YouTube 影片資料集
+│   ├── yt_videos_clean.json    # 實測宮崎旅遊・購物・伴手禮 YouTube 影片資料集（每日增量更新）
+│   └── web_guides.json         # 宮崎旅遊・購物商圈・必買伴手禮網頁攻略情報（每日增量更新）
 └── scripts/
     ├── build_webgis.js         # 讀取 data/ 並建置 index.html
     ├── fetch_osrm_routes.js    # 向 OSRM 重新抓取 4 日實際道路軌跡
-    └── fetch_yt.js             # 向 YouTube 擷取宮崎旅遊影片資料
+    └── fetch_yt.js             # 增量擷取並自動去重分類宮崎 YouTube 影片資料
 ```
 
 ## 快速使用

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "wg-01",
+    "title": "みやざき観光ナビ（宮崎縣官方觀光指南 ＆ 縣民推薦伴手禮排行）",
+    "category": "souvenir",
+    "region": "全宮崎縣",
+    "summary": "宮崎縣觀光協會官方網站，收錄全縣五大區景點、季節花訊，以及在地縣民票選的必買伴手禮排行（起司饅頭、炭火地雞、芒果甜點、牛蒡脆片ゴボチ、日向夏點心）。",
+    "highlights": "縣民票選伴手禮 TOP5｜全縣景點與最新祭典活動",
+    "source": "宮崎縣觀光協會（公式）",
+    "url": "https://www.kanko-miyazaki.jp/",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "wg-02",
+    "title": "みやざき物産館 KONNE（全縣特產伴手禮一站式公式館）",
+    "category": "souvenir",
+    "region": "宮崎市",
+    "summary": "宮崎縣政府旁最大官方物產館，一次匯集全縣各市町村超過千款特產、起司饅頭名店比較、本格芋燒酎、戶村燒肉醬、平兵衛酢與傳統工藝品。",
+    "highlights": "縣內最齊全伴手禮｜免奔波一次買齊全縣名產",
+    "source": "宮崎縣物產貿易振興中心",
+    "url": "https://www.m-tokusan.or.jp/",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "wg-03",
+    "title": "AMU PLAZA 宮崎（JR 宮崎站直結・海館／山館／Himuka 市場）",
+    "category": "shopping",
+    "region": "宮崎市",
+    "summary": "JR 宮崎站旁最現代化核心商圈：海館進駐 MUJI 無印良品、HANDS 生活雜貨與 6 樓交通神社展望台；山館有在地精品超市 MATSUNO；站內 Himuka Kirameki 市場直結美食與伴手禮。",
+    "highlights": "MUJI・HANDS・在地超市｜出站即逛最方便",
+    "source": "AMU PLAZA 宮崎（公式）",
+    "url": "https://www.amu-miyazaki.com/",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "wg-04",
+    "title": "AEON MALL 宮崎（全縣最大免稅購物中心 ＆ AEON STYLE 超市）",
+    "category": "shopping",
+    "region": "宮崎市",
+    "summary": "宮崎規模最大的室內一站式商場，集合服飾、藥妝、雜貨與 AEON STYLE 大型生鮮零食超市，設外國旅客退稅櫃台與寬敞免費停車場，返國前最後一天掃貨首選。",
+    "highlights": "免稅退稅櫃台｜免費大型停車場｜藥妝零食一站購足",
+    "source": "AEON MALL 宮崎（公式）",
+    "url": "https://miyazaki.aeonmall.com/",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "wg-05",
+    "title": "宮崎九重葛機場（KMI 登機前伴手禮補貨 ＆ 機場限定美食）",
+    "category": "souvenir",
+    "region": "宮崎市",
+    "summary": "機場 2 樓商場匯聚「日向屋」「ANA FESTA」「宮崎銘品藏」，登機前仍可一次補齊菓子の日高起司饅頭、日向夏費南雪、Maximum 萬用香料粉、戶村燒肉醬與霧島燒酎。",
+    "highlights": "起司饅頭・Maximum 香料・日向夏甜點最後補貨站",
+    "source": "宮崎機場（公式）",
+    "url": "https://www.miyazaki-airport.co.jp/",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "wg-06",
+    "title": "高千穗町觀光協會（峽谷划船線上預約・夜神樂・高千穗栗茶土產）",
+    "category": "travel",
+    "region": "高千穗町",
+    "summary": "高千穗峽手搖船即時水況與提前預約入口、高千穗神社夜神樂時刻表，以及當地必買的高千穗釜炒茶、栗子蒙布朗甜點與神樂面具工藝資訊。",
+    "highlights": "峽谷划船預約與水況公告｜高千穗釜炒茶與栗子土產",
+    "source": "高千穗町觀光協會（公式）",
+    "url": "https://takachiho-kanko.info/",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "wg-07",
+    "title": "日南市觀光協會（飫肥城下町邊走邊吃手形・日南海岸・飫肥天）",
+    "category": "food",
+    "region": "日南市",
+    "summary": "詳細整理九州小京都「飫肥城下町」邊走邊吃兌換券（あゆみちゃんマップ）、元祖飫肥天（魚漿豆腐甜天婦羅）、厚燒玉子與日南海岸絕景拍照點。",
+    "highlights": "飫肥城下町吃喝地圖｜元祖飫肥天・日南特色燒酎",
+    "source": "日南市觀光協會（公式）",
+    "url": "https://www.kankou-nichinan.jp/",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "wg-08",
+    "title": "青島神社官方參拜指南（產靈紙縒・貝殼繪馬・青島外郎餅）",
+    "category": "travel",
+    "region": "宮崎市・青島",
+    "summary": "提供青島神社參拜禮儀、結緣「產靈紙縒」、人氣波浪御朱印帳與鬼之洗衣板潮汐景觀，參道必買無添加手作傳統點心「青島ういろう（青島外郎餅）」。",
+    "highlights": "限定波浪御朱印與貝殼繪馬｜參道手作青島外郎餅",
+    "source": "青島神社（公式）",
+    "url": "https://aoshima-jinja.jp/",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "wg-09",
+    "title": "鵜戶神宮官方參拜與交通停車指南（運玉投擲・兔子土鈴開運小物）",
+    "category": "travel",
+    "region": "日南市",
+    "summary": "海崖洞窟本殿參拜時間、投擲幸運「運玉」規則、限定開運「兔子土鈴」授與品介紹，並明確標示自駕前往海濱觀光停車場之路線提醒。",
+    "highlights": "海濱觀光免費停車動線｜限定兔子土鈴與運玉祈福",
+    "source": "鵜戶神宮（公式）",
+    "url": "https://www.udojingu.or.jp/",
+    "addedDate": "2026-11-21"
+  },
+  {
+    "id": "wg-10",
+    "title": "宮崎必買經典伴手禮與返台行李託運攻略（橘通・車站・機場對照）",
+    "category": "souvenir",
+    "region": "全宮崎縣",
+    "summary": "綜合橘通商圈（山形屋、MEGA 唐吉訶德）、AMU PLAZA 與機場攻略，整理必買清單位列：起司饅頭、青島煎餅、日向夏果醬與沙拉醬、Maximum 香料、戶村燒肉醬與霧島燒酎。",
+    "highlights": "橘通唐吉訶德＋山形屋攻略｜液體醬料與燒酎託運重點",
+    "source": "宮崎旅遊購物綜合情報",
+    "url": "https://www.kanko-miyazaki.jp/feature/miyazaki_omiyage",
+    "addedDate": "2026-11-21"
+  }
+]

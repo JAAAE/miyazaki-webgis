@@ -14,11 +14,13 @@
       "宮崎 美食",
       "宮崎 自駕",
       "宮崎 旅行 3泊4日",
-      "宮崎縣 環島 全區 自駕"
+      "宮崎縣 環島 全區 自駕",
+      "宮崎 購物 逛街"
     ],
     "tags": [
       "karamen",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -59,11 +61,13 @@
       "宮崎 自駕",
       "宮崎 旅行 vlog",
       "宮崎 旅行 3泊4日",
-      "宮崎縣 環島 全區 自駕"
+      "宮崎縣 環島 全區 自駕",
+      "宮崎 購物 逛街"
     ],
     "tags": [
       "karamen",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -82,7 +86,8 @@
     ],
     "tags": [
       "karamen",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -98,14 +103,16 @@
       "宮崎 4天3夜",
       "宮崎 景點",
       "宮崎 自駕",
-      "宮崎縣 環島 全區 自駕"
+      "宮崎縣 環島 全區 自駕",
+      "宮崎 購物 逛街"
     ],
     "tags": [
       "aoshima",
       "udo",
       "west_kirishima",
       "beef",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -251,11 +258,13 @@
       "宮崎 自由行",
       "宮崎 景點",
       "宮崎 美食",
-      "宮崎 自駕"
+      "宮崎 自駕",
+      "宮崎 購物 逛街"
     ],
     "tags": [
       "karamen",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -319,7 +328,10 @@
       "宮崎 美食",
       "宮崎 自駕",
       "宮崎 住宿 飯店",
-      "飫肥城下町 宮崎"
+      "飫肥城下町 宮崎",
+      "宮崎 購物 逛街",
+      "宮崎 AEON MALL 購物",
+      "宮崎車站 AMU PLAZA 逛街"
     ],
     "tags": [
       "nichinan",
@@ -328,7 +340,8 @@
       "beef",
       "karamen",
       "hotel",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -357,10 +370,13 @@
     "length": "21:31",
     "published": "5 個月前",
     "queries": [
-      "宮崎 自由行"
+      "宮崎 自由行",
+      "宮崎 購物 逛街",
+      "宮崎車站 AMU PLAZA 逛街"
     ],
     "tags": [
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -594,14 +610,18 @@
     "length": "31:59",
     "published": "2 年前",
     "queries": [
-      "宮崎 美食"
+      "宮崎 美食",
+      "宮崎 購物 逛街",
+      "宮崎 機場 伴手禮",
+      "宮崎 起司饅頭 甜點 伴手禮"
     ],
     "tags": [
       "hyuga",
       "beef",
       "jidori",
       "karamen",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -678,7 +698,8 @@
       "宮崎 美食"
     ],
     "tags": [
-      "karamen"
+      "karamen",
+      "drive"
     ]
   },
   {
@@ -730,7 +751,8 @@
       "宮崎 美食"
     ],
     "tags": [
-      "karamen"
+      "karamen",
+      "drive"
     ]
   },
   {
@@ -1109,7 +1131,8 @@
       "青島神社 鬼之洗衣板"
     ],
     "tags": [
-      "aoshima"
+      "aoshima",
+      "drive"
     ]
   },
   {
@@ -1285,7 +1308,8 @@
     "tags": [
       "aoshima",
       "nichinan",
-      "drive"
+      "drive",
+      "saito_aya"
     ]
   },
   {
@@ -1345,7 +1369,8 @@
       "aoshima",
       "nichinan",
       "udo",
-      "moai"
+      "moai",
+      "drive"
     ]
   },
   {
@@ -1700,12 +1725,15 @@
     "length": "17:10",
     "published": "10 個月前",
     "queries": [
-      "宮崎牛 南蠻雞 地雞"
+      "宮崎牛 南蠻雞 地雞",
+      "宮崎 購物 逛街",
+      "宮崎車站 AMU PLAZA 逛街"
     ],
     "tags": [
       "beef",
       "nanban",
-      "jidori"
+      "jidori",
+      "shopping"
     ]
   },
   {
@@ -2118,7 +2146,8 @@
     ],
     "tags": [
       "nichinan",
-      "obi"
+      "obi",
+      "karamen"
     ]
   },
   {
@@ -2362,7 +2391,8 @@
     "tags": [
       "takachiho",
       "amanoiwato",
-      "drive"
+      "drive",
+      "saito_aya"
     ]
   },
   {
@@ -2694,7 +2724,8 @@
       "aoshima",
       "nanban",
       "karamen",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -2959,11 +2990,13 @@
     "published": "1 個月前",
     "queries": [
       "宮崎 観光 おすすめ",
-      "宮崎 グルメ ランチ"
+      "宮崎 グルメ ランチ",
+      "宮崎 お土産 ランキング"
     ],
     "tags": [
       "karamen",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -3154,11 +3187,13 @@
     "length": "5:26",
     "published": "1 年前",
     "queries": [
-      "宮崎 グルメ ランチ"
+      "宮崎 グルメ ランチ",
+      "宮崎 お土産 ランキング"
     ],
     "tags": [
       "nanban",
-      "karamen"
+      "karamen",
+      "shopping"
     ]
   },
   {
@@ -5694,7 +5729,8 @@
     ],
     "tags": [
       "west_kirishima",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -6303,6 +6339,931 @@
     ],
     "tags": [
       "drive"
+    ]
+  },
+  {
+    "id": "gZKXZtcMHj0",
+    "title": "【日本 宮崎】宮崎物產館必敗伴手禮「みやざき物産館」食尚玩家",
+    "channel": "食尚玩家",
+    "views": "觀看次數：4,903次",
+    "length": "4:32",
+    "published": "8 年前",
+    "queries": [
+      "宮崎 伴手禮 必買",
+      "宮崎 購物 逛街",
+      "宮崎 紀念品 土產",
+      "宮崎 機場 伴手禮"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "_3WqiiiTMiM",
+    "title": "~跟著Yuling跟團旅行~ 日本九州 AEON宮崎 - VLOG 26 / To create a life ❤️",
+    "channel": "Yu Ling 羽玲",
+    "views": "觀看次數：1,176次",
+    "length": "13:25",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 購物 逛街",
+      "宮崎 AEON MALL 購物",
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "WqnNI4eaU08",
+    "title": "【宮崎空港】宮崎出身者が案内する！グルメ＆スイーツ・見どころ完全保存版♡",
+    "channel": "MINI 大人旅",
+    "views": "觀看次數：6次",
+    "length": "13:04",
+    "published": "1 小時前",
+    "queries": [
+      "宮崎 購物 逛街",
+      "宮崎 機場 伴手禮",
+      "宮崎 AEON MALL 購物"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "P8O1v_BMQ7s",
+    "title": "宮崎旅行で買ってよかった！おすすめおみやげ5選【シーガイア限定あり】",
+    "channel": "トミートラベル【国内おみやげ&ホテル】",
+    "views": "觀看次數：1次",
+    "length": "4:29",
+    "published": "1 小時前",
+    "queries": [
+      "宮崎 購物 逛街",
+      "宮崎 紀念品 土產",
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping",
+      "hotel"
+    ]
+  },
+  {
+    "id": "-39JpuQYG48",
+    "title": "【宮崎のおすすめお土産】 宮崎旅行でぜひ買ってほしい14選！",
+    "channel": "旅行の達人",
+    "views": "觀看次數：28,908次",
+    "length": "10:10",
+    "published": "5 年前",
+    "queries": [
+      "宮崎 紀念品 土產",
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "F0D-5JM897Q",
+    "title": "【宮崎のおすすめお土産】絶対に買って帰るお土産11選！宮崎空港/Miyazaki/Japan",
+    "channel": "MINI 大人旅",
+    "views": "觀看次數：12,067次",
+    "length": "9:11",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 機場 伴手禮",
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "CxV6LmoMxvE",
+    "title": "宮崎空港開箱市區交通攻略，虎航開航解鎖宮崎開啟你的九州新玩法【Airport Unboxing】 Gateway to Southeast Kyushu",
+    "channel": "GO SUGOI",
+    "views": "觀看次數：5,276次",
+    "length": "13:07",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 機場 伴手禮"
+    ],
+    "tags": [
+      "shopping",
+      "drive"
+    ]
+  },
+  {
+    "id": "ATxKDjKUdhs",
+    "title": "宮崎空港開箱市區交通攻略，虎航開航解鎖宮崎開啟你的九州新玩法【Airport Unboxing】 Gateway to Southeast Kyushu",
+    "channel": "GO SUGOI",
+    "views": "觀看次數：1,877次",
+    "length": "13:07",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 機場 伴手禮"
+    ],
+    "tags": [
+      "shopping",
+      "drive"
+    ]
+  },
+  {
+    "id": "H5rR5jEo7nA",
+    "title": "宮崎県イオンモールBlack Friday Shopping in Miyazaki Eon Mall Japan",
+    "channel": "Ayen Iwata",
+    "views": "觀看次數：1,764次",
+    "length": "18:00",
+    "published": "4 年前",
+    "queries": [
+      "宮崎 AEON MALL 購物"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "SjnQpCQhMS8",
+    "title": "宮崎鹿兒島VLOG｜AEON MALL購物、霧島酒造酒香探訪＋麵包超驚豔",
+    "channel": "TORA日常",
+    "views": "觀看次數：1,601次",
+    "length": "14:42",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 AEON MALL 購物"
+    ],
+    "tags": [
+      "shopping",
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "HnOBWoIy13c",
+    "title": "イオンモール宮崎",
+    "channel": "naka2711",
+    "views": "觀看次數：17,773次",
+    "length": "20:28",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 AEON MALL 購物",
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "iQHMUU_aEZ0",
+    "title": "【宮崎】イオンモール宮崎を歩く2024 県内最大の規模を誇る商業施設 AEON MALL MIYAZAKI Walking Tour, Miyazaki, Japan",
+    "channel": "JAPAN Walk Drive Channel",
+    "views": "觀看次數：45,070次",
+    "length": "30:10",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 AEON MALL 購物",
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "x2f41WzAL_o",
+    "title": "【日立】9X エスカレーター　イオンモール宮崎 9X escalator Aeon mall Miyazaki shopping mall Miyazaki Japan",
+    "channel": "乗り好き エスカレーター",
+    "views": "觀看次數：6,424次",
+    "length": "9:44",
+    "published": "9 個月前",
+    "queries": [
+      "宮崎 AEON MALL 購物",
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "ne9AwJ4t_kw",
+    "title": "「ブラックフライデー」スタート　半額商品は去年の約2倍の93品目　イオン宮崎店",
+    "channel": "【公式】宮崎ニュースUMK YouTube",
+    "views": "觀看次數：1,016次",
+    "length": "1:58",
+    "published": "1 天前",
+    "queries": [
+      "宮崎 AEON MALL 購物",
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "OimX4jKZ6pU",
+    "title": "日本親子自由行-宮崎AEON｜熊本市｜佐賀鳥栖Outlet",
+    "channel": "馬克米妮之家有四千金",
+    "views": "觀看次數：745次",
+    "length": "26:33",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 AEON MALL 購物"
+    ],
+    "tags": [
+      "shopping",
+      "drive"
+    ]
+  },
+  {
+    "id": "LMt9VGLQPGY",
+    "title": "宮崎 アミュプラザみやざき うみ館 4F‐5F | AMU PLAZA MIYAZAKI, Escalator Miyazaki Japan",
+    "channel": "いげた - IGETA",
+    "views": "觀看次數：248次",
+    "length": "0:32",
+    "published": "2 年前",
+    "queries": [
+      "宮崎車站 AMU PLAZA 逛街"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "Ech8EfzmocA",
+    "title": "宮崎 アミュプラザみやざき やま館 6F‐5F | AMU PLAZA MIYAZAKI, Escalator Miyazaki Japan",
+    "channel": "いげた - IGETA",
+    "views": "觀看次數：602次",
+    "length": "0:38",
+    "published": "8 個月前",
+    "queries": [
+      "宮崎車站 AMU PLAZA 逛街"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "IuWNf30BRPY",
+    "title": "WHAT IS INSIDE THE AMU PLAZA MALL ? HOME OF #sega  #sankakuchayatoyokichiudon #miyazaki  #japan",
+    "channel": "DeClaire Kuze",
+    "views": "觀看次數：688次",
+    "length": "14:57",
+    "published": "4 年前",
+    "queries": [
+      "宮崎車站 AMU PLAZA 逛街"
+    ],
+    "tags": [
+      "shopping",
+      "saito_aya",
+      "karamen"
+    ]
+  },
+  {
+    "id": "0HKfMgfw0Qs",
+    "title": "【アミュプラザ宮崎クリスマスマーケットvlog🎄*.∗̥】#クリスマスマーケット",
+    "channel": "まいぺーすちゃんねる🐚🫧No.23",
+    "views": "觀看次數：21次",
+    "length": "5:34",
+    "published": "7 小時前",
+    "queries": [
+      "宮崎車站 AMU PLAZA 逛街"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "sX3AQKMo7JQ",
+    "title": "【宮崎観光】九州の南国駅『JR宮崎駅駅』構内散策👢[Miyazaki Tourism] Stroll around Nangoku Station \"JR Miyazaki Station\"",
+    "channel": "Pastel Japanvlog",
+    "views": "觀看次數：5,187次",
+    "length": "9:20",
+    "published": "1 年前",
+    "queries": [
+      "宮崎車站 AMU PLAZA 逛街"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "v9rEyA1KqY4",
+    "title": "日本宮崎自由行Day1！Miyazaki City Tour: 護國神社與超好逛宮崎車站 ⛩️🚉 #Miyazaki #宮崎 #日本旅遊",
+    "channel": "小龍姊姊 LStory Travel",
+    "views": "觀看次數：484次",
+    "length": "7:43",
+    "published": "6 個月前",
+    "queries": [
+      "宮崎車站 AMU PLAZA 逛街"
+    ],
+    "tags": [
+      "shopping",
+      "drive"
+    ]
+  },
+  {
+    "id": "txXvXBPBL6Y",
+    "title": "アミュプラザ宮崎 海館へ行ってみた！",
+    "channel": "日高一美 /Kazumi Hidaka",
+    "views": "觀看次數：1,357次",
+    "length": "7:56",
+    "published": "5 年前",
+    "queries": [
+      "宮崎車站 AMU PLAZA 逛街"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "RWjwfK2gtog",
+    "title": "【宮崎】宮崎チーズ饅頭　おすすめ３選〜お菓子屋さんのチーズ饅頭、パン屋さんのチーズ饅頭、和菓子屋さんのチーズ饅頭〜",
+    "channel": "BIKITAROn",
+    "views": "觀看次數：3,296次",
+    "length": "3:56",
+    "published": "4 年前",
+    "queries": [
+      "宮崎 起司饅頭 甜點 伴手禮"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "ObIFjKmQbyc",
+    "title": "宮崎の意外な逸品？！「チーズ饅頭」 前回はノーゴー、今回は驚きの美味しさ！",
+    "channel": "ピーチフラワー",
+    "views": "觀看次數：5,701次",
+    "length": "4:18",
+    "published": "3 年前",
+    "queries": [
+      "宮崎 起司饅頭 甜點 伴手禮"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "DMY8m3CHX4U",
+    "title": "宮崎行ったらどのチーズ饅頭買えばいい？【蛙亭イワクラ】",
+    "channel": "宮崎よかとこチャンネル 【蛙亭 イワクラ Official】",
+    "views": "觀看次數：48,052次",
+    "length": "16:19",
+    "published": "3 年前",
+    "queries": [
+      "宮崎 起司饅頭 甜點 伴手禮"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "i_SqKY5DX9k",
+    "title": "日本宮崎在地美食有哪些好吃？炭火烤地雞 日向夏水果 起司饅頭 南國布丁草莓 彈珠汽水 宮崎縣產草莓 發現無敵好吃草莓栗子起司大福",
+    "channel": "懂吃搭吃 foodyAmigo-美食 旅遊 伴手禮開箱",
+    "views": "觀看次數：840次",
+    "length": "53:11",
+    "published": "直播時間：2 年前",
+    "queries": [
+      "宮崎 起司饅頭 甜點 伴手禮"
+    ],
+    "tags": [
+      "shopping",
+      "hyuga",
+      "jidori",
+      "karamen"
+    ]
+  },
+  {
+    "id": "KuRCEHyQ-h4",
+    "title": "【菓子作りで障害者支援】手包みにこだわりのチーズまんじゅう　“働ける場所を”･･･きっかけは40代で聴覚失った父　宮崎・高千穂町【わが街ええもん物語】",
+    "channel": "ABCテレビニュース",
+    "views": "觀看次數：5,523次",
+    "length": "7:33",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 起司饅頭 甜點 伴手禮"
+    ],
+    "tags": [
+      "shopping",
+      "takachiho",
+      "karamen"
+    ]
+  },
+  {
+    "id": "kiQdGgwMJzg",
+    "title": "【宮崎県】南国屋今門の元祖チーズ饅頭食べてみた！【ご当地おみやげ】",
+    "channel": "就労継続支援B型事業所BRIDGE",
+    "views": "觀看次數：185次",
+    "length": "6:38",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 起司饅頭 甜點 伴手禮"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "wC59g4doVL8",
+    "title": "宮崎おすすめ土産【後編】",
+    "channel": "ワイルドガールのあがりくるやろ?",
+    "views": "觀看次數：753次",
+    "length": "10:57",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "9Kc6TstKjeE",
+    "title": "Ｔｒｅｎｄ＃Ｌｉｎｋ 宮崎県民も食べたい お盆だよ！人気の宮崎土産＆グルメ",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：3,168次",
+    "length": "3:33",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "FA7CDdD7hYQ",
+    "title": "宮崎のお土産といえばコレ！！！定番＆意外な名品を紹介💡",
+    "channel": "みやざきひなたch(みやひなch)",
+    "views": "觀看次數：21,939次",
+    "length": "10:53",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "zdq-fIElZVg",
+    "title": "【宮崎県購入品】森三中が宮崎県のお土産厳選４品紹介！【イッテＱ女芸人一芸合宿ウラ話も！】",
+    "channel": "森三中ube",
+    "views": "觀看次數：142,232次",
+    "length": "11:23",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "dtfKXSromtY",
+    "title": "Ｔｒｅｎｄ＃Ｌｉｎｋ 年末年始におすすめ 宮崎空港お土産特集",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：1,561次",
+    "length": "3:41",
+    "published": "11 個月前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "Lq3CcEdNcME",
+    "title": "地元宮崎のおすすめ土産【前半】",
+    "channel": "ワイルドガールのあがりくるやろ?",
+    "views": "觀看次數：1,948次",
+    "length": "18:20",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "q1u8-H-l6Nk",
+    "title": "【機長がオススメする宮崎空港みやげ‼️】九州のグルメの宝庫！南国のリゾート宮崎空港で買うべきお土産はこれだ!!いつかの旅の参考に(^^)【空ぶらグルメ】",
+    "channel": "空ぶらちゃんねる",
+    "views": "觀看次數：38,152次",
+    "length": "10:04",
+    "published": "4 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "iNTENn_Vc7Y",
+    "title": "【爆買い】宮崎で買ったオススメのお土産をご紹介します！！旅行中の様子も大公開！",
+    "channel": "細木かおりチャンネル",
+    "views": "觀看次數：26,054次",
+    "length": "15:04",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "_cZV_On5SH4",
+    "title": "定番のものから新商品も　イマドキ宮崎土産を紹介【トレリン】",
+    "channel": "【公式】宮崎ニュースUMK YouTube",
+    "views": "觀看次數：1,073次",
+    "length": "3:27",
+    "published": "3 個月前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "71Vos2sk4_E",
+    "title": "【宮崎観光/おすすめお土産ベスト3】",
+    "channel": "MakonaoTv",
+    "views": "觀看次數：3,191次",
+    "length": "1:20",
+    "published": "3 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "Beks_wttkIM",
+    "title": "【保存版】宮崎県の道の駅ランキングTOP10｜チキン南蛮＆マンゴーなど絶品グルメ満載！",
+    "channel": "拝啓、道の駅から/だんぺいとスーザン",
+    "views": "觀看次數：30,211次",
+    "length": "14:37",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "IhCnAHXepoA",
+    "title": "Ｔｒｅｎｄ＃Ｌｉｎｋ もうすぐ夏休み！宮崎空港のお土産特集",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：4,380次",
+    "length": "4:22",
+    "published": "3 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "yLigBmV6538",
+    "title": "【寄り道】宮崎のスーパーでお土産といえば！",
+    "channel": "塩乃華織 公式チャンネル",
+    "views": "觀看次數：4,182次",
+    "length": "5:52",
+    "published": "3 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "HyimA2M_5Tw",
+    "title": "【お菓子】南国育ちのウマいやつ！ 宮崎みやげ食べ比べ！【お土産】",
+    "channel": "マフィア梶田と中村悠一の「わしゃがなTV」",
+    "views": "觀看次數：696,800次",
+    "length": "27:20",
+    "published": "9 個月前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "Q3QILZOOd_Q",
+    "title": "【宮崎空港】知らないと買えない！地元民ガチ推しお土産＆グルメ",
+    "channel": "ERI's Travelog - 空と旅の記録",
+    "views": "觀看次數：4,537次",
+    "length": "12:01",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "H88TO8jG5sI",
+    "title": "Ｔｒｅｎｄ＃Ｌｉｎｋ もらってうれしい！空港で見つけたイマドキ宮崎土産",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：1,132次",
+    "length": "3:27",
+    "published": "3 個月前",
+    "queries": [
+      "宮崎 お土産 おすすめ",
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "6hNpFCG3y3o",
+    "title": "お取り寄せ可◎宮崎土産にオススメのお菓子屋さん 橘通周辺【お菓子の日高】JR宮崎駅内にも店舗あるよ！",
+    "channel": "日向夏チャンネル-Hyuuga Natsu-",
+    "views": "觀看次數：885次",
+    "length": "4:50",
+    "published": "4 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "fJOdo9I6-54",
+    "title": "夜ご飯食べたあとなのにホテルでおやつが止まらない旅行の夜【鹿児島•熊本•宮崎お土産】",
+    "channel": "うさもぐるめ",
+    "views": "觀看次數：68,812次",
+    "length": "20:07",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "K2jbO4NAkWQ",
+    "title": "【キュウが食べ比べ】アンテナショップで買った、宮崎名物チーズ饅頭5種類を食べ比べ ！#ご当地グルメ食べ比べスト",
+    "channel": "コロカル colocal",
+    "views": "觀看次數：11,094次",
+    "length": "20:03",
+    "published": "2 個月前",
+    "queries": [
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "PIgAgc1MZps",
+    "title": "【地上波未公開】さゆりんごと道の駅でお土産探し IN 宮崎・高千穂",
+    "channel": "【公式】ANOTHER SKY | アナザースカイ",
+    "views": "觀看次數：21,023次",
+    "length": "4:31",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping",
+      "takachiho"
+    ]
+  },
+  {
+    "id": "nIVSlf-7v-M",
+    "title": "イオンモール宮崎 リニューアル第2弾！注目のお店は？　2024年4月26日（金）「4時どき！」",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：3,544次",
+    "length": "5:53",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "tTtBmBSYxTI",
+    "title": "宮崎市北部エリアに新たな商業施設　クロスモール花ヶ島オープン",
+    "channel": "【公式】宮崎ニュースUMK YouTube",
+    "views": "觀看次數：11,880次",
+    "length": "3:09",
+    "published": "9 個月前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "WlD5BYFhtPg",
+    "title": "Ｔｒｅｎｄ＃Ｌｉｎｋ イオンモール宮崎 リニューアル おすすめグルメ特集！",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：2,283次",
+    "length": "4:23",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "lvJ0SjBPjQA",
+    "title": "里帰り中🏠宮崎ｲｵﾝﾓｰﾙで甥っ子と買い物&購入品紹介👶🏻赤ちゃん服も一気買い🍼vlog&haul",
+    "channel": "YURINO mood",
+    "views": "觀看次數：27,365次",
+    "length": "15:33",
+    "published": "10 個月前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "dDfst1bUmDo",
+    "title": "【九州トップクラス】“イオンモール宮崎”から生中継（2024年4月26日放送）",
+    "channel": "かごnew",
+    "views": "觀看次數：7,915次",
+    "length": "11:04",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "iZYDow_xb4Q",
+    "title": "対象ショップ過去最大規模！？イオンモール宮崎のサマーセール　2025年6月17日（火）「4時どき！」",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：822次",
+    "length": "6:25",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "jQ0m9INi9z0",
+    "title": "宮崎市北部エリアの買い物環境に変化　クロスモール花ヶ島が全面開業　無印良品オープン",
+    "channel": "【公式】宮崎ニュースUMK YouTube",
+    "views": "觀看次數：4,963次",
+    "length": "2:52",
+    "published": "8 個月前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "OlIexgvxgig",
+    "title": "Ｔｒｅｎｄ＃Ｌｉｎｋ イオンモール宮崎 リニューアル 宮崎初出店のセレクトショップ",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：1,385次",
+    "length": "5:02",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "w1TfQxCjoKQ",
+    "title": "Ｔｒｅｎｄ＃Ｌｉｎｋ イオンモール宮崎 リニューアル 宮崎初出店！フライングタイガー",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：1,458次",
+    "length": "4:01",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "67cycyEg3JI",
+    "title": "間もなく見納め・戦後闇市の光景・宮崎市内一等地廃墟「青空ショッピングセンター」",
+    "channel": "ニッポン街歩き紀行・Walking around the streets of Japan",
+    "views": "觀看次數：3,899次",
+    "length": "9:37",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "ctjVwqdMKio",
+    "title": "【宮崎市】駅前や山形屋周辺の繁華街が発展しており南宮崎駅前の宮交シティや夜のニシタチも必見！その他イオンモールなど3極化する宮崎市内をご覧ください",
+    "channel": "あいぼん ",
+    "views": "觀看次數：107,531次",
+    "length": "30:11",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "5RCtKmO9gdk",
+    "title": "Ｔｒｅｎｄ＃Ｌｉｎｋ イオンモール宮崎 リニューアル 初出店 メンズファッション",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：928次",
+    "length": "4:31",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "17FlOpG6DLE",
+    "title": "【宮崎県日南市・油津】人口4.5万人の街に百貨店!? 再生が進む商店街と歴史ある港町を歩く",
+    "channel": "お散歩ひまちゃん",
+    "views": "觀看次數：37,341次",
+    "length": "22:46",
+    "published": "1 個月前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping",
+      "nichinan"
+    ]
+  },
+  {
+    "id": "01wdHAbm9KQ",
+    "title": "イオンモール宮崎でリニューアルオープンの内覧会",
+    "channel": "朝日新聞",
+    "views": "觀看次數：7,410次",
+    "length": "0:50",
+    "published": "8 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
     ]
   }
 ]

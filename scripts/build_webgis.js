@@ -5,16 +5,23 @@ const rootDir = path.resolve(__dirname, '..');
 const dataDir = path.join(rootDir, 'data');
 const outHtmlPath = path.join(rootDir, 'index.html');
 
-// Load verified full-prefecture YouTube corpus (405 real Miyazaki videos)
+// Load verified full-prefecture YouTube corpus
 const videos = JSON.parse(fs.readFileSync(path.join(dataDir, 'yt_videos_clean.json'), 'utf8'));
 // Load REAL road-network routes fetched from OSRM (2,158 road-hugging vertices)
 const osrmRoutes = JSON.parse(fs.readFileSync(path.join(dataDir, 'osrm_routes.json'), 'utf8'));
+// Load curated Miyazaki web guides (travel, shopping, souvenirs, food)
+const webGuidesPath = path.join(dataDir, 'web_guides.json');
+const webGuides = fs.existsSync(webGuidesPath)
+  ? JSON.parse(fs.readFileSync(webGuidesPath, 'utf8'))
+  : [];
+const lastUpdated = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Taipei' }).format(new Date());
 
 const compactVideos = videos.map(v => ({
   id: v.id, t: v.title, c: v.channel, v: v.views, l: v.length, p: v.published, g: v.tags || []
 }));
 
 const topicDefs = [
+  { key: 'shopping', label: '宮崎購物｜伴手禮・商場・機場・土產採買', color: '#9C7A3C' },
   { key: 'hyuga', label: '縣北沿海｜日向市（馬背・祈願之海・大御神社・美美津）', color: '#3B6E8C' },
   { key: 'karamen', label: '宮崎餐桌｜辛麵・烏龍麵・芒果甜點', color: '#A65D57' },
   { key: 'takachiho', label: '縣北山區｜高千穗峽・真名井瀑布', color: '#4A7C59' },
@@ -1018,7 +1025,7 @@ const html = `<!DOCTYPE html>
         <button class="print-mini-btn" id="btnPrint" title="列印 / 匯出無印風旅途手冊 PDF">列印旅途手冊</button>
       </div>
       <div class="sb-title">全宮崎縣 四天三夜旅圖</div>
-      <div class="sb-sub">OSRM 實際公路路網（${totalRoadKm} km・${totalRoadPts} 節點）× 9 款專業底圖 × ${PARKING_SPOTS.length} 處停車規劃 × ${compactVideos.length} 部實測 YT。</div>
+      <div class="sb-sub">OSRM 實際公路路網（${totalRoadKm} km）× 9 款底圖 × ${PARKING_SPOTS.length} 處停車 × ${compactVideos.length} 部 YT × ${webGuides.length} 篇網頁攻略（更新 ${lastUpdated}）。</div>
 
       <div class="omni-wrap">
         <input type="text" class="omni-input" id="omniInput" placeholder="全域搜尋：景點、停車場、餐廳、商場、市町或 Mapcode..." autocomplete="off" />
@@ -1029,7 +1036,7 @@ const html = `<!DOCTYPE html>
       <div class="kpi-strip">
         <div class="kpi-box"><div class="kpi-val">${totalRoadKm} km</div><div class="kpi-lbl">實際路網總長</div></div>
         <div class="kpi-box"><div class="kpi-val">${PARKING_SPOTS.length} 處</div><div class="kpi-lbl">實測停車場</div></div>
-        <div class="kpi-box"><div class="kpi-val">9 款</div><div class="kpi-lbl">專業底圖</div></div>
+        <div class="kpi-box"><div class="kpi-val">${webGuides.length} 篇</div><div class="kpi-lbl">網頁攻略情報</div></div>
         <div class="kpi-box"><div class="kpi-val">${compactVideos.length}</div><div class="kpi-lbl">實測 YT 影片</div></div>
       </div>
 
@@ -1043,7 +1050,7 @@ const html = `<!DOCTYPE html>
       <button class="sb-tab active" data-tab="itinerary">環縣行程</button>
       <button class="sb-tab" data-tab="gourmet">美食停車</button>
       <button class="sb-tab" data-tab="gis">底圖分析</button>
-      <button class="sb-tab" data-tab="videos">影片目錄</button>
+      <button class="sb-tab" data-tab="videos">影音情報</button>
     </div>
 
     <div class="sb-body">
@@ -1149,24 +1156,48 @@ const html = `<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- TAB 4: YOUTUBE VIDEO CORPUS -->
+      <!-- TAB 4: YOUTUBE VIDEO CORPUS & WEB GUIDES -->
       <div class="tab-pane" id="tab-videos">
-        <div class="yt-search-wrap">
-          <input type="text" class="yt-input" id="ytSearch" placeholder="搜尋標題或頻道（例：日向、高千穗、停車場、南蠻雞）" />
-          <select class="yt-select" id="ytTagFilter">
-            <option value="all">全部全縣主題（共 ${compactVideos.length} 部實測 YouTube 影片）</option>
-          </select>
+        <div class="sub-pills" id="intelPills" style="margin-bottom:8px">
+          <button class="sub-pill active" data-intel="yt">YouTube 影片 (${compactVideos.length})</button>
+          <button class="sub-pill" data-intel="web">網頁攻略＆伴手禮 (${webGuides.length})</button>
         </div>
-        <div class="yt-count-bar">
-          <span id="ytCountText">顯示 ${compactVideos.length} 部影片</span>
-          <span>點擊開啟 YouTube</span>
+        <div id="intelYtPane">
+          <div class="yt-search-wrap">
+            <input type="text" class="yt-input" id="ytSearch" placeholder="搜尋標題或頻道（例：伴手禮、購物、日向、高千穗）" />
+            <select class="yt-select" id="ytTagFilter">
+              <option value="all">全部全縣主題（共 ${compactVideos.length} 部實測 YouTube 影片）</option>
+            </select>
+          </div>
+          <div class="yt-count-bar">
+            <span id="ytCountText">顯示 ${compactVideos.length} 部影片</span>
+            <span>點擊開啟 YouTube</span>
+          </div>
+          <div id="ytList"></div>
         </div>
-        <div id="ytList"></div>
+        <div id="intelWebPane" style="display:none">
+          <div class="yt-search-wrap">
+            <input type="text" class="yt-input" id="webSearch" placeholder="搜尋網頁攻略（例：伴手禮、AEON、起司饅頭、高千穗）" />
+            <select class="yt-select" id="webCatFilter">
+              <option value="all">全部情報類別（共 ${webGuides.length} 篇）</option>
+              <option value="souvenir">伴手禮・土產必買</option>
+              <option value="shopping">購物商圈・商場免稅</option>
+              <option value="travel">旅遊景點・官方指南</option>
+              <option value="food">在地美食・邊走邊吃</option>
+            </select>
+          </div>
+          <div class="yt-count-bar">
+            <span id="webCountText">顯示 ${webGuides.length} 篇情報</span>
+            <span>更新：${lastUpdated}</span>
+          </div>
+          <div id="webList"></div>
+        </div>
       </div>
     </div>
   </aside>
 
   <div class="status-bar">
+    <span>更新 <strong>${lastUpdated}</strong></span>
     <span>路網 <strong>OSRM 實際道路</strong></span>
     <span>座標 <strong id="coordReadout">32.0500°N, 131.3200°E</strong></span>
     <span>Zoom <strong id="zoomReadout">9</strong></span>
@@ -1189,6 +1220,7 @@ const html = `<!DOCTYPE html>
     const REGIONS = ${JSON.stringify(REGIONS)};
     const TOPIC_STATS = ${JSON.stringify(topicStats)};
     const YT_VIDEOS = ${JSON.stringify(compactVideos)};
+    const WEB_GUIDES = ${JSON.stringify(webGuides)};
 
     const DAY_COLORS = { 1: '#3B6E8C', 2: '#4A7C59', 3: '#C66B3D', 4: '#7B6D8D' };
     const CAT_LABELS = { spot: '景點', food: '餐桌', stay: '宿泊', transport: '交通' };
@@ -1936,6 +1968,7 @@ const html = `<!DOCTYPE html>
 
     window.openVideoTabWithTag = function(tag) {
       switchTab('videos');
+      switchIntelSub('yt');
       const sel = document.getElementById('ytTagFilter');
       sel.value = [...sel.options].some(o => o.value === tag) ? tag : 'all';
       document.getElementById('ytSearch').value = '';
@@ -1943,6 +1976,42 @@ const html = `<!DOCTYPE html>
     };
     document.getElementById('ytSearch').addEventListener('input', renderVideoList);
     document.getElementById('ytTagFilter').addEventListener('change', renderVideoList);
+
+    const WEB_CAT_LABELS = { souvenir: '伴手禮・土產', shopping: '購物商圈', travel: '旅遊景點', food: '在地美食' };
+    function switchIntelSub(mode) {
+      document.querySelectorAll('#intelPills .sub-pill').forEach(b => b.classList.toggle('active', b.dataset.intel === mode));
+      document.getElementById('intelYtPane').style.display = mode === 'yt' ? 'block' : 'none';
+      document.getElementById('intelWebPane').style.display = mode === 'web' ? 'block' : 'none';
+    }
+    document.getElementById('intelPills').addEventListener('click', e => {
+      const btn = e.target.closest('.sub-pill');
+      if (btn) switchIntelSub(btn.dataset.intel);
+    });
+    function renderWebGuides() {
+      const q = (document.getElementById('webSearch').value || '').trim().toLowerCase();
+      const cat = document.getElementById('webCatFilter').value;
+      const filtered = WEB_GUIDES.filter(g => (cat === 'all' || g.category === cat) && (!q || (g.title + ' ' + g.summary + ' ' + g.highlights + ' ' + g.region + ' ' + g.source).toLowerCase().includes(q)));
+      document.getElementById('webCountText').textContent = \`顯示 \${filtered.length} / \${WEB_GUIDES.length} 篇網頁攻略情報\`;
+      document.getElementById('webList').innerHTML = filtered.map((g, idx) => \`
+        <a class="poi-card" href="\${esc(g.url)}" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit">
+          <div class="poi-top">
+            <div class="poi-num sq" style="background:var(--muji-red)">\${String(idx + 1).padStart(2, '0')}</div>
+            <div style="flex:1;min-width:0">
+              <div class="poi-name">\${esc(g.title)}</div>
+              <div class="poi-meta">
+                <span class="area-chip">\${esc(g.region)}</span>
+                <span class="tag-chip">\${esc(WEB_CAT_LABELS[g.category] || g.category)}</span>
+                <span class="tag-chip">\${esc(g.addedDate || '')}</span>
+              </div>
+            </div>
+          </div>
+          <div class="poi-desc">\${esc(g.summary)}</div>
+          <div class="spec-footer"><span>\${esc(g.highlights || g.source)}</span><span class="spec-go">前往網頁 →</span></div>
+        </a>
+      \`).join('');
+    }
+    document.getElementById('webSearch').addEventListener('input', renderWebGuides);
+    document.getElementById('webCatFilter').addEventListener('change', renderWebGuides);
 
     window.switchTab = function(tabName) {
       document.querySelectorAll('.sb-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
@@ -2139,6 +2208,7 @@ const html = `<!DOCTYPE html>
     renderGourmet('parking');
     renderStatsBars();
     renderVideoList();
+    renderWebGuides();
     renderElevationProfile();
     updateProgress();
     fitAllBounds();
@@ -2150,4 +2220,4 @@ const html = `<!DOCTYPE html>
 fs.writeFileSync(outHtmlPath, html, 'utf8');
 const sizeKB = (fs.statSync(outHtmlPath).size / 1024).toFixed(1);
 console.log(`SUCCESS! Generated Real-Road + 9-Basemap + Parking MUJI WebGIS HTML: ${outHtmlPath}`);
-console.log(`Size: ${sizeKB} KB | Road Vertices: ${totalRoadPts} (${totalRoadKm} km) | Parking: ${PARKING_SPOTS.length} | YT: ${compactVideos.length}`);
+console.log(`Size: ${sizeKB} KB | Road Vertices: ${totalRoadPts} (${totalRoadKm} km) | Parking: ${PARKING_SPOTS.length} | YT: ${compactVideos.length} | WebGuides: ${webGuides.length} | Updated: ${lastUpdated}`);
