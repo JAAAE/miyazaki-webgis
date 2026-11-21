@@ -2,7 +2,7 @@
 
 🌐 **線上瀏覽（GitHub Pages）**：[https://jaaae.github.io/miyazaki-webgis/](https://jaaae.github.io/miyazaki-webgis/)
 
-單一 HTML 互動式旅遊 WebGIS 專案，整合全宮崎縣五大分區 4 天 3 夜環縣自駕行程、OSRM 實際公路路網、9 款專業底圖、18 處實測停車場攻略，並透過 **GitHub Actions 雲端排程**每日自動抓取最新宮崎旅遊、購物、伴手禮與美食 YouTube 影片與網頁情報（關機也會持續自動更新）。
+單HTML 互動式旅遊 WebGIS 專案，整合全宮崎縣五大分區 4 天 3 夜環縣自駕行程、OSRM 實際公路路網、9 個底圖、18 處實測停車場攻略，並透過 **GitHub Actions 雲端排程**每日自動抓取最新宮崎旅遊、購物、伴手禮與美食 YouTube 影片與網頁。
 
 ## 雲端每日自動迭代（GitHub Actions）
 
