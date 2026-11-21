@@ -1,0 +1,53 @@
+name: Daily Miyazaki WebGIS Auto-Iteration
+
+on:
+  schedule:
+    # 每天台灣時間早上 09:00（UTC 01:00）自動在 GitHub 雲端執行，免開電腦
+    - cron: '0 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: miyazaki-daily-update
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Fetch new Miyazaki YouTube videos (travel, shopping, souvenirs, food)
+        run: node scripts/fetch_yt.js
+
+      - name: Fetch new Miyazaki web guides & souvenir/shopping articles
+        run: node scripts/fetch_web_guides.js
+
+      - name: Rebuild single-file WebGIS (index.html)
+        run: node scripts/build_webgis.js
+
+      - name: Validate generated WebGIS HTML
+        run: node scripts/validate_webgis.js
+
+      - name: Commit and push updates to GitHub Pages (main)
+        run: |
+          if git diff --quiet && [ -z "$(git status --porcelain)" ]; then
+            echo "No new changes today."
+            exit 0
+          fi
+          TODAY=$(TZ=Asia/Taipei date +%Y-%m-%d)
+          YT_COUNT=$(node -e "console.log(require('./data/yt_videos_clean.json').length)")
+          WEB_COUNT=$(node -e "console.log(require('./data/web_guides.json').length)")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/yt_videos_clean.json data/web_guides.json index.html
+          git commit -m "chore(daily): ${TODAY} cloud update (YT ${YT_COUNT}, Web ${WEB_COUNT})"
+          git push origin main

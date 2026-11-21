@@ -1199,7 +1199,7 @@ const html = `<!DOCTYPE html>
   <div class="status-bar">
     <span>更新 <strong>${lastUpdated}</strong></span>
     <span>路網 <strong>OSRM 實際道路</strong></span>
-    <span>座標 <strong id="coordReadout">32.0500°N, 131.3200°E</strong></span>
+    <span>坐標 <strong id="coordReadout">32.0500°N, 131.3200°E</strong></span>
     <span>Zoom <strong id="zoomReadout">9</strong></span>
     <span style="color:#9E9589">鍵盤 <strong>1-4 · E · M · P</strong></span>
   </div>
@@ -1438,7 +1438,7 @@ const html = `<!DOCTYPE html>
             <div><span>建議時段</span><strong>\${esc(p.time)}</strong></div>
             <div><span>停留時間</span><strong>\${esc(p.stay)}</strong></div>
             <div><span>自駕 Mapcode（點擊複製）</span><strong class="copyable" onclick="copyText('\${esc(p.mapcode)}','Mapcode')">\${esc(p.mapcode)}</strong></div>
-            <div><span>WGS84（點擊複製）</span><strong class="copyable" onclick="copyText('\${p.lat.toFixed(4)},\${p.lng.toFixed(4)}','座標')">\${p.lat.toFixed(4)}, \${p.lng.toFixed(4)}</strong></div>
+            <div><span>WGS84（點擊複製）</span><strong class="copyable" onclick="copyText('\${p.lat.toFixed(4)},\${p.lng.toFixed(4)}','坐標')">\${p.lat.toFixed(4)}, \${p.lng.toFixed(4)}</strong></div>
           </div>
           <div class="pop-park"><strong>🅿 停車規劃：</strong>\${esc(p.parkDetail)}</div>
           <div class="pop-desc">\${esc(p.summary)}</div>
@@ -1473,7 +1473,7 @@ const html = `<!DOCTYPE html>
             <div><span>停車容量</span><strong>\${esc(pk.cap)}</strong></div>
             <div><span>步行距離</span><strong>\${esc(pk.walk)}</strong></div>
             <div><span>收費標準</span><strong>\${esc(pk.fee)}</strong></div>
-            <div><span>WGS84（點擊複製）</span><strong class="copyable" onclick="copyText('\${pk.lat.toFixed(4)},\${pk.lng.toFixed(4)}','停車場座標')">\${pk.lat.toFixed(4)}, \${pk.lng.toFixed(4)}</strong></div>
+            <div><span>WGS84（點擊複製）</span><strong class="copyable" onclick="copyText('\${pk.lat.toFixed(4)},\${pk.lng.toFixed(4)}','停車場坐標')">\${pk.lat.toFixed(4)}, \${pk.lng.toFixed(4)}</strong></div>
           </div>
           <div class="pop-park">\${esc(pk.note)}</div>
           <div class="pop-actions">
@@ -1509,7 +1509,7 @@ const html = `<!DOCTYPE html>
           <div class="pop-park"><strong>🅿 停車提示：</strong>\${esc(f.park)}</div>
           <div class="pop-grid">
             <div><span>Mapcode（點擊複製）</span><strong class="copyable" onclick="copyText('\${esc(f.mapcode)}','Mapcode')">\${esc(f.mapcode)}</strong></div>
-            <div><span>WGS84（點擊複製）</span><strong class="copyable" onclick="copyText('\${f.lat.toFixed(4)},\${f.lng.toFixed(4)}','座標')">\${f.lat.toFixed(4)}, \${f.lng.toFixed(4)}</strong></div>
+            <div><span>WGS84（點擊複製）</span><strong class="copyable" onclick="copyText('\${f.lat.toFixed(4)},\${f.lng.toFixed(4)}','坐標')">\${f.lat.toFixed(4)}, \${f.lng.toFixed(4)}</strong></div>
           </div>
           <div class="pop-desc">\${esc(f.desc)}</div>
           \${vb.html}
