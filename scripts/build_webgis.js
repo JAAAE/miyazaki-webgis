@@ -385,7 +385,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>全宮崎縣 4天3夜實際路網 WebGIS｜無印風 × 9款底圖 × 停車攻略 × ${compactVideos.length}部 YT</title>
+  <title>宮崎縣 4 天 3 夜旅遊 WebGIS｜無印風 × 9款底圖 × 停車攻略 × ${compactVideos.length}部 YT</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <style>
     :root {

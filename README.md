@@ -1,4 +1,4 @@
-# 宮崎縣 4 天 3 夜實際路網 WebGIS
+# 宮崎縣 4 天 3 夜旅遊 WebGIS
 
 🌐 **線上瀏覽（GitHub Pages）**：[https://jaaae.github.io/miyazaki-webgis/](https://jaaae.github.io/miyazaki-webgis/)
 
