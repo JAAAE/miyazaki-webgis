@@ -1,0 +1,11 @@
+{
+  "name": "miyazaki-webgis",
+  "version": "1.0.0",
+  "private": true,
+  "description": "全宮崎縣 4天3夜實際路網 WebGIS（無印風 × 9款底圖 × 18處停車攻略 × 405部 YouTube 實測資料）",
+  "scripts": {
+    "build": "node scripts/build_webgis.js",
+    "fetch:routes": "node scripts/fetch_osrm_routes.js",
+    "fetch:yt": "node scripts/fetch_yt.js"
+  }
+}
