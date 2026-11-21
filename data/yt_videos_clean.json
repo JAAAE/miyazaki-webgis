@@ -409,12 +409,14 @@
       "宮崎 自由行",
       "宮崎 4天3夜",
       "宮崎 景點",
-      "宮崎 旅行 3泊4日"
+      "宮崎 旅行 3泊4日",
+      "宮崎 購物 逛街"
     ],
     "tags": [
       "aoshima",
       "udo",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -713,7 +715,8 @@
     "published": "4 年前",
     "queries": [
       "宮崎 美食",
-      "宮崎牛 南蠻雞 地雞"
+      "宮崎牛 南蠻雞 地雞",
+      "宮崎 購物 逛街"
     ],
     "tags": [
       "aoshima",
@@ -721,7 +724,8 @@
       "nanban",
       "jidori",
       "karamen",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -1560,7 +1564,8 @@
     "published": "1 年前",
     "queries": [
       "日南海岸 鵜戶神宮 摩艾",
-      "宮崎 旅行 3泊4日"
+      "宮崎 旅行 3泊4日",
+      "宮崎 購物 逛街"
     ],
     "tags": [
       "aoshima",
@@ -1568,7 +1573,8 @@
       "udo",
       "moai",
       "jidori",
-      "drive"
+      "drive",
+      "shopping"
     ]
   },
   {
@@ -6390,7 +6396,8 @@
     "queries": [
       "宮崎 購物 逛街",
       "宮崎 機場 伴手禮",
-      "宮崎 AEON MALL 購物"
+      "宮崎 AEON MALL 購物",
+      "宮崎 紀念品 土產"
     ],
     "tags": [
       "shopping",
@@ -6636,7 +6643,8 @@
     "published": "7 小時前",
     "queries": [
       "宮崎車站 AMU PLAZA 逛街",
-      "宮崎 AEON MALL 購物"
+      "宮崎 AEON MALL 購物",
+      "宮崎 購物 逛街"
     ],
     "tags": [
       "shopping"
@@ -7428,7 +7436,8 @@
     "published": "1 年前",
     "queries": [
       "宮崎 お土産 おすすめ",
-      "宮崎 お土産 ランキング"
+      "宮崎 お土産 ランキング",
+      "宮崎 紀念品 土產"
     ],
     "tags": [
       "shopping"
@@ -7695,6 +7704,177 @@
     "published": "2 週前",
     "queries": [
       "宮崎車站 AMU PLAZA 逛街"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "oFEvCfL5Bpo",
+    "title": "🏝️🍣🛒【南九州旅行 EP07｜宮崎市區六景點一日遊！青島免費停車＋壽司郎800吃到飽】",
+    "channel": "耗子的生活記事",
+    "views": "觀看次數：637次",
+    "length": "30:31",
+    "published": "8 個月前",
+    "queries": [
+      "宮崎 購物 逛街"
+    ],
+    "tags": [
+      "shopping",
+      "aoshima"
+    ]
+  },
+  {
+    "id": "CCG1RqjxU1g",
+    "title": "宮崎鹿兒島VLOG｜DAY7 租單車漫遊宮崎市區｜好吃麵包、超讚居酒屋、逛唐吉訶德",
+    "channel": "TORA日常",
+    "views": "觀看次數：1,806次",
+    "length": "22:01",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 購物 逛街"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "3vx5eydE5v0",
+    "title": "【宮崎お土産】職場や友達に配れる宮崎旅行の和菓子お土産3選【best recommended souvenirs】there are remarkable souvenirs in Miyazaki",
+    "channel": "サウナ・大浴場付きホテル紹介チャンネル",
+    "views": "觀看次數：1,062次",
+    "length": "6:13",
+    "published": "6 年前",
+    "queries": [
+      "宮崎 紀念品 土產"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "x7tpCcJMntI",
+    "title": "番路鄉農會柿果子脆片 進軍日本宮崎機場【最新快訊】",
+    "channel": "台視新聞 TTV NEWS",
+    "views": "觀看次數：2,668次",
+    "length": "1:06",
+    "published": "2 個月前",
+    "queries": [
+      "宮崎 機場 伴手禮"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "Iw8Z1jYoyHs",
+    "title": "宮崎市中央通～イオンモール宮崎",
+    "channel": "yosino2914",
+    "views": "觀看次數：3,029次",
+    "length": "15:40",
+    "published": "8 年前",
+    "queries": [
+      "宮崎 AEON MALL 購物"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "P-1UHEyPdGE",
+    "title": "500萬日圓買下日本車站前店面！開箱宮崎黃金街區，台幣百萬打造海外穩定現金流【日本法拍屋實戰】",
+    "channel": "甫哥日屋吉",
+    "views": "觀看次數：427次",
+    "length": "7:27",
+    "published": "2 個月前",
+    "queries": [
+      "宮崎車站 AMU PLAZA 逛街"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "Kxj4Z_6vLU4",
+    "title": "宮崎空港で人気のお土産大調査！ UMKママテレ 2024年12月7日放送 前半",
+    "channel": "【公式】UMKテレビ宮崎",
+    "views": "觀看次數：3,037次",
+    "length": "10:42",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "BJ9_qR4GPvI",
+    "title": "【オススメ宮崎みやげ】もらって嬉しい！宮崎県人気お土産銘菓８選【観光旅行】 Souvenirs from Miyazaki  #shorts #宮崎県",
+    "channel": "フクロウの旅案内 - 観光地情報とみんなの声",
+    "views": "觀看次數：20,542次",
+    "length": "1:00",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "lJ20I-bAIas",
+    "title": "ご当地グルメ探し！宮崎で人気のお土産はこれだ！【宮崎サーフィン移住】Day46/50",
+    "channel": "Aloha Hiroki Nagasawa",
+    "views": "觀看次數：6,326次",
+    "length": "1:00",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "oaHaHZYQHHw",
+    "title": "宮崎県　定番お土産5選",
+    "channel": "都道府県ちゃんねる",
+    "views": "觀看次數：1,028次",
+    "length": "0:19",
+    "published": "1 個月前",
+    "queries": [
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "4BwRM3-g5ks",
+    "title": "【宮崎駅】お土産に迷ったらコレ！おすすめ5選🎁  #お土産 #ご当地グルメ",
+    "channel": "旅するおみやげ図鑑",
+    "views": "觀看次數：672次",
+    "length": "0:46",
+    "published": "1 個月前",
+    "queries": [
+      "宮崎 お土産 ランキング"
+    ],
+    "tags": [
+      "shopping",
+      "karamen"
+    ]
+  },
+  {
+    "id": "tPTgEs-yx9M",
+    "title": "おいしい宮崎おみやげ￼【宮崎空港】",
+    "channel": "気ままに女子ひとり旅⌘animalちゃんねる",
+    "views": "觀看次數：5,233次",
+    "length": "0:13",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 お土産 ランキング"
     ],
     "tags": [
       "shopping"
