@@ -617,7 +617,9 @@
       "宮崎 美食",
       "宮崎 購物 逛街",
       "宮崎 機場 伴手禮",
-      "宮崎 起司饅頭 甜點 伴手禮"
+      "宮崎 起司饅頭 甜點 伴手禮",
+      "宮崎 伴手禮 必買",
+      "宮崎 AEON MALL 購物"
     ],
     "tags": [
       "hyuga",
@@ -6397,7 +6399,9 @@
       "宮崎 購物 逛街",
       "宮崎 機場 伴手禮",
       "宮崎 AEON MALL 購物",
-      "宮崎 紀念品 土產"
+      "宮崎 紀念品 土產",
+      "宮崎 伴手禮 必買",
+      "宮崎 ショッピング モール"
     ],
     "tags": [
       "shopping",
@@ -6416,7 +6420,8 @@
       "宮崎 紀念品 土產",
       "宮崎 お土産 おすすめ",
       "宮崎 お土産 ランキング",
-      "宮崎 AEON MALL 購物"
+      "宮崎 AEON MALL 購物",
+      "宮崎 伴手禮 必買"
     ],
     "tags": [
       "shopping",
@@ -6747,7 +6752,8 @@
     "published": "直播時間：2 年前",
     "queries": [
       "宮崎 起司饅頭 甜點 伴手禮",
-      "宮崎 紀念品 土產"
+      "宮崎 紀念品 土產",
+      "宮崎 伴手禮 必買"
     ],
     "tags": [
       "shopping",
@@ -7269,7 +7275,8 @@
     "length": "22:46",
     "published": "1 個月前",
     "queries": [
-      "宮崎 ショッピング モール"
+      "宮崎 ショッピング モール",
+      "宮崎 購物 逛街"
     ],
     "tags": [
       "shopping",
@@ -7878,6 +7885,94 @@
     ],
     "tags": [
       "shopping"
+    ]
+  },
+  {
+    "id": "g6sAP9iFJf0",
+    "title": "【宮崎旅行・土産】絶対アレがおすすめ！",
+    "channel": "下町のワイン番長!!! / ソムリエ!!!福士",
+    "views": "觀看次數：2,070次",
+    "length": "17:03",
+    "published": "3 年前",
+    "queries": [
+      "宮崎 お土産 おすすめ"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "UnVI7ei7cSE",
+    "title": "宮崎に新店舗『まるでテーマパーク！水槽のあるスターバックスコーヒー』『宮崎に新ショッピングモール』オープン㊗️",
+    "channel": "早川伸吾の 一番乗りちゃんねる",
+    "views": "觀看次數：8,304次",
+    "length": "7:22",
+    "published": "9 個月前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "BosMoiKpKRo",
+    "title": "【宮崎】宮崎空港を歩く2024 空の玄関口でショップも充実! Miyazaki Airport Walking Tour, Miyazaki, Japan",
+    "channel": "JAPAN Walk Drive Channel",
+    "views": "觀看次數：10,946次",
+    "length": "14:37",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "wk_0NH1uF9k",
+    "title": "まるでアトラクション？宮崎のスローモビリティー「ぐるっぴー」で まちなか巡り",
+    "channel": "ちゃんチャンネル",
+    "views": "觀看次數：42次",
+    "length": "4:21",
+    "published": "10 天前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping"
+    ]
+  },
+  {
+    "id": "NCDEXnunjU8",
+    "title": "1回目 感動‼️2回目も感動‼️やっぱりこのお店のチキン南蛮は別格です‼️",
+    "channel": "OmitsuTravelおみつトラベル",
+    "views": "觀看次數：6,058次",
+    "length": "8:02",
+    "published": "7 小時前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping",
+      "nanban"
+    ]
+  },
+  {
+    "id": "1v-5LrVGbdU",
+    "title": "チキン南蛮！地鶏刺し・焼き！宮崎グルメ満喫フェリーの旅",
+    "channel": "ぼん旅",
+    "views": "觀看次數：50,545次",
+    "length": "38:17",
+    "published": "1 天前",
+    "queries": [
+      "宮崎 ショッピング モール"
+    ],
+    "tags": [
+      "shopping",
+      "nanban",
+      "jidori",
+      "karamen"
     ]
   }
 ]
