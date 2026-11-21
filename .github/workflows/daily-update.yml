@@ -60,12 +60,12 @@ jobs:
       - name: Sync GitHub Repository About (Description & Homepage)
         if: steps.commit_step.outputs.changed == 'true' || github.event_name == 'workflow_dispatch'
         env:
-          GH_TOKEN: ${{ secrets.REPO_META_TOKEN }}
+          GH_TOKEN: ${{ secrets.REPO_META_TOKEN || secrets.A }}
           YT_COUNT: ${{ steps.commit_step.outputs.yt_count }}
           WEB_COUNT: ${{ steps.commit_step.outputs.web_count }}
         run: |
           if [ -z "$GH_TOKEN" ]; then
-            echo "Notice: REPO_META_TOKEN secret is not set; skipping automatic About update (default GITHUB_TOKEN lacks administration:write)."
+            echo "Notice: REPO_META_TOKEN (or A) secret is not set; skipping automatic About update."
             exit 0
           fi
           DESC="Miyazaki 4D3N Real-Road WebGIS (9 Basemaps, 18 Parking Lots, ${YT_COUNT} YouTube Videos, ${WEB_COUNT} Web Guides)"
