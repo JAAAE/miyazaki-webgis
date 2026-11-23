@@ -6,7 +6,7 @@
 
 ## 雲端每日自動迭代（GitHub Actions）
 
-- **排程設定**：`.github/workflows/daily-update.yml`（每天台灣時間早上 **09:00** 自動於 GitHub 雲端執行，不需開啟本機電腦）。
+- **排程設定**：`.github/workflows/daily-update.yml`（每天台灣時間早上 **08:17** 自動於 GitHub 雲端執行，非整點避開尖峰塞車，不需開啟本機電腦）。
 - **自動流程**：
   1. `scripts/fetch_yt.js` — 每日輪播抓取宮崎旅遊、購物、伴手禮、美食 YouTube 新影片並自動去重分類。
   2. `scripts/fetch_web_guides.js` — 每日自動彙整宮崎最新旅遊、購物與伴手禮網頁情報。
