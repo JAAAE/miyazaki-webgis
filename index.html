@@ -8,7 +8,7 @@
   <style>
     :root {
       --paper: #F7F5F0;
-      --paper-glass: rgba(247, 245, 240, 0.95);
+      --paper-glass: rgba(247, 245, 240, 0.96);
       --linen: #EFECE6;
       --kraft: #E6E0D6;
       --hairline: #D8D1C5;
@@ -41,7 +41,10 @@
       overscroll-behavior: none;
     }
 
-    #map { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; background: #2C3338; }
+    #map { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; background: #2C3338; contain: strict; }
+    .leaflet-map-pane { will-change: transform; }
+    body.map-dragging .leaflet-marker-pane,
+    body.map-dragging .leaflet-overlay-pane { pointer-events: none !important; }
 
     /* ---- TOP TOOLBAR ---- */
     .top-bar {
@@ -53,7 +56,7 @@
 
     .gis-toolbar {
       display: flex; flex-wrap: wrap; align-items: center; gap: 2px;
-      background: var(--paper-glass); backdrop-filter: blur(10px);
+      background: var(--paper-glass); contain: layout style;
       border: 1px solid var(--hairline); border-radius: var(--radius);
       padding: 4px; box-shadow: var(--shadow-sm); pointer-events: auto;
     }
@@ -83,7 +86,7 @@
     .north-arrow {
       position: absolute; top: 94px; right: 16px; z-index: 900;
       width: 34px; height: 38px; border-radius: var(--radius);
-      background: var(--paper-glass); backdrop-filter: blur(10px);
+      background: var(--paper-glass); contain: layout style;
       border: 1px solid var(--hairline); box-shadow: var(--shadow-sm);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       pointer-events: none; user-select: none;
@@ -94,7 +97,7 @@
     .sidebar {
       position: absolute; top: 16px; left: 16px; bottom: 16px; width: var(--sb-w);
       z-index: 1000; display: flex; flex-direction: column;
-      background: var(--paper-glass); backdrop-filter: blur(14px);
+      background: var(--paper-glass); contain: layout style;
       border: 1px solid var(--hairline); border-radius: var(--radius);
       box-shadow: var(--shadow); overflow: hidden;
       transition: transform 0.28s cubic-bezier(.4,0,.2,1);
@@ -104,7 +107,7 @@
     .sidebar-toggle {
       position: absolute; top: 16px; left: 430px; z-index: 1001;
       width: 36px; height: 36px; border-radius: var(--radius);
-      background: var(--paper-glass); backdrop-filter: blur(10px);
+      background: var(--paper-glass); contain: layout style;
       border: 1px solid var(--hairline); color: var(--ink);
       cursor: pointer; display: flex; align-items: center; justify-content: center;
       font-size: 15px; box-shadow: var(--shadow-sm); transition: left 0.28s ease, background 0.16s;
@@ -391,7 +394,7 @@
     /* Legend */
     .map-legend {
       position: absolute; bottom: 52px; left: 430px; z-index: 890;
-      background: var(--paper-glass); backdrop-filter: blur(10px);
+      background: var(--paper-glass); contain: layout style;
       border: 1px solid var(--hairline); border-radius: var(--radius);
       padding: 8px 11px; font-size: 10.2px; color: var(--ink-soft);
       box-shadow: var(--shadow-sm); transition: left 0.28s ease, bottom 0.2s ease; max-width: 265px;
@@ -406,7 +409,7 @@
     .status-bar {
       position: absolute; bottom: 16px; right: 16px; z-index: 900;
       display: flex; align-items: center; gap: 11px;
-      background: var(--paper-glass); backdrop-filter: blur(10px);
+      background: var(--paper-glass); contain: layout style;
       border: 1px solid var(--hairline); border-radius: var(--radius);
       padding: 6px 12px; font-size: 10.6px; color: var(--ink-muted);
       box-shadow: var(--shadow-sm); font-variant-numeric: tabular-nums;
@@ -526,7 +529,7 @@
     }
     .map-fab {
       width: 34px; height: 34px; border-radius: var(--radius);
-      background: var(--paper-glass); backdrop-filter: blur(10px);
+      background: var(--paper-glass); contain: layout style;
       border: 1px solid var(--hairline); color: var(--ink);
       cursor: pointer; display: flex; align-items: center; justify-content: center;
       font-size: 13.5px; font-weight: 700; box-shadow: var(--shadow-sm);
@@ -551,7 +554,7 @@
     }
     .swipe-banner {
       position: absolute; top: 64px; left: 50%; transform: translateX(-50%);
-      z-index: 940; background: var(--paper-glass); backdrop-filter: blur(10px);
+      z-index: 940; background: var(--paper-glass); contain: layout style;
       border: 1px solid var(--muji-red-border); border-radius: var(--radius);
       padding: 6px 12px; display: none; align-items: center; gap: 8px;
       font-size: 11px; color: var(--ink); box-shadow: var(--shadow);
@@ -613,8 +616,8 @@
 
     /* Shortcut Help Modal */
     .help-backdrop {
-      position: fixed; inset: 0; z-index: 2100; background: rgba(46, 43, 39, 0.42);
-      backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; padding: 16px;
+      position: fixed; inset: 0; z-index: 2100; background: rgba(46, 43, 39, 0.48);
+      display: none; align-items: center; justify-content: center; padding: 16px;
     }
     .help-backdrop.show { display: flex; }
     .help-card {
@@ -1155,12 +1158,16 @@
     };
 
     // =========================================================================
-    // INITIALIZE MAP WITH 9 PROFESSIONAL BASEMAPS (Canvas-Accelerated Vectors)
+    // INITIALIZE MAP WITH 9 PROFESSIONAL BASEMAPS (60fps GPU-Composited Pan)
     // =========================================================================
-    const map = L.map('map', { center: [32.05, 131.30], zoom: 9, zoomControl: false, maxZoom: 18, preferCanvas: true });
+    const map = L.map('map', {
+      center: [32.05, 131.30], zoom: 9, zoomControl: false, maxZoom: 18,
+      preferCanvas: false, inertiaDeceleration: 2800, wheelDebounceTime: 40
+    });
     L.control.zoom({ position: 'topright' }).addTo(map);
     L.control.scale({ position: 'bottomleft', imperial: false, metric: true }).addTo(map);
 
+    const TILE_PERF_OPTS = { updateWhenIdle: true, updateWhenZooming: false, keepBuffer: 2 };
     const BASEMAP_META = {
       esri_sat: { name: 'Esri 高解析衛星', isSat: true, url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri &mdash; Esri, Maxar, Earthstar Geographics, IGN', maxZoom: 18 } },
       esri_clarity: { name: 'Esri Clarity 衛星', isSat: true, url: 'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri Imagery Clarity', maxZoom: 18 } },
@@ -1174,7 +1181,7 @@
     };
     const basemaps = {};
     Object.keys(BASEMAP_META).forEach(k => {
-      basemaps[k] = { isSat: BASEMAP_META[k].isSat, name: BASEMAP_META[k].name, layer: L.tileLayer(BASEMAP_META[k].url, BASEMAP_META[k].opts) };
+      basemaps[k] = { isSat: BASEMAP_META[k].isSat, name: BASEMAP_META[k].name, layer: L.tileLayer(BASEMAP_META[k].url, { ...TILE_PERF_OPTS, ...BASEMAP_META[k].opts }) };
     });
     let activeBasemap = 'esri_sat';
     basemaps.esri_sat.layer.addTo(map);
@@ -1184,8 +1191,8 @@
     map.getPane('swipePane').style.zIndex = 240;
     map.getPane('swipePane').style.pointerEvents = 'none';
 
-    const esriLabels = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18, opacity: 0.9 });
-    const esriRoads = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18, opacity: 0.5 });
+    const esriLabels = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { ...TILE_PERF_OPTS, maxZoom: 18, opacity: 0.9 });
+    const esriRoads = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}', { ...TILE_PERF_OPTS, maxZoom: 18, opacity: 0.5 });
     const hybridGroup = L.layerGroup([esriRoads, esriLabels]).addTo(map);
 
     const regionGroup = L.layerGroup().addTo(map);
@@ -1241,17 +1248,17 @@
       }).addTo(regionGroup);
     });
 
-    // Draw REAL OSRM Road-Network Polylines (with hover telemetry highlight)
+    // Draw REAL OSRM Road-Network Polylines (smoothFactor simplified for 60fps pan)
     Object.keys(DAY_ROUTES).forEach(d => {
       const r = DAY_ROUTES[d];
       const dayPois = POIS.filter(p => p.day === Number(d));
       const minE = Math.min(...dayPois.map(p => p.elev)), maxE = Math.max(...dayPois.map(p => p.elev));
-      L.polyline(r.coords, { color: '#F7F5F0', weight: 6, opacity: 0.85, lineJoin: 'round', interactive: false }).addTo(dayRouteGroups[d]);
+      L.polyline(r.coords, { color: '#F7F5F0', weight: 6, opacity: 0.85, lineJoin: 'round', smoothFactor: 2.5, interactive: false }).addTo(dayRouteGroups[d]);
       const line = L.polyline(r.coords, {
-        color: r.color, weight: 3.6, opacity: 0.96, lineJoin: 'round',
+        color: r.color, weight: 3.6, opacity: 0.96, lineJoin: 'round', smoothFactor: 2.5,
         dashArray: d === '4' ? '7, 6' : null
-      }).bindTooltip(`<strong>${r.name}</strong><br>OSRM 實際路網：${r.distKm} km（約 ${Math.floor(r.driveMin/60)}h ${r.driveMin%60}m）<br>海拔範圍：${minE} m ～ ${maxE} m（點擊縮放至本日）`, { sticky: true });
-      line.on('mouseover', () => line.setStyle({ weight: 5.5, opacity: 1 }));
+      }).bindTooltip(`<strong>${r.name}</strong><br>OSRM 實際路網：${r.distKm} km（約 ${Math.floor(r.driveMin/60)}h ${r.driveMin%60}m）<br>海拔範圍：${minE} m ～ ${maxE} m（點擊縮放至本日）`);
+      line.on('mouseover', () => { if (!isMapDragging) line.setStyle({ weight: 5.5, opacity: 1 }); });
       line.on('mouseout', () => line.setStyle({ weight: 3.6, opacity: 0.96 }));
       line.on('click', () => { if (!measuring) fitDay(Number(d)); });
       line.addTo(dayRouteGroups[d]);
@@ -2119,18 +2126,18 @@
       if (!swipeActive || !swipeRightLayer) return;
       const container = swipeRightLayer.getContainer();
       if (!container) return;
-      const rect = map.getContainer().getBoundingClientRect();
-      const splitX = Math.round(rect.width * swipeRatio);
+      const sz = map.getSize();
+      const splitX = Math.round(sz.x * swipeRatio);
       swipeDivider.style.left = splitX + 'px';
       const nw = map.containerPointToLayerPoint([splitX, 0]);
-      const se = map.containerPointToLayerPoint([rect.width, rect.height]);
+      const se = map.containerPointToLayerPoint([sz.x, sz.y]);
       container.style.clip = `rect(${nw.y}px, ${se.x}px, ${se.y}px, ${nw.x}px)`;
     }
 
     function mountSwipeLayer(key) {
       if (swipeRightLayer) { map.removeLayer(swipeRightLayer); swipeRightLayer = null; }
       const meta = BASEMAP_META[key] || BASEMAP_META.gsi_pale;
-      swipeRightLayer = L.tileLayer(meta.url, { ...meta.opts, pane: 'swipePane' }).addTo(map);
+      swipeRightLayer = L.tileLayer(meta.url, { ...TILE_PERF_OPTS, ...meta.opts, pane: 'swipePane' }).addTo(map);
       updateSwipeClip();
     }
 
@@ -2379,8 +2386,22 @@
       }
     });
 
-    map.on('mousemove', e => { document.getElementById('coordReadout').textContent = `${e.latlng.lat.toFixed(4)}°N, ${e.latlng.lng.toFixed(4)}°E`; });
-    map.on('zoomend', () => { document.getElementById('zoomReadout').textContent = map.getZoom(); });
+    // 60fps Drag Fast-Path & rAF-Throttled Coordinate Readout
+    let isMapDragging = false, coordRaf = 0, lastLatLng = null;
+    const coordEl = document.getElementById('coordReadout');
+    const zoomEl = document.getElementById('zoomReadout');
+    map.on('dragstart', () => { isMapDragging = true; document.body.classList.add('map-dragging'); });
+    map.on('dragend', () => { isMapDragging = false; document.body.classList.remove('map-dragging'); });
+    map.on('mousemove', e => {
+      if (isMapDragging) return;
+      lastLatLng = e.latlng;
+      if (coordRaf) return;
+      coordRaf = requestAnimationFrame(() => {
+        coordRaf = 0;
+        if (lastLatLng) coordEl.textContent = `${lastLatLng.lat.toFixed(4)}°N, ${lastLatLng.lng.toFixed(4)}°E`;
+      });
+    });
+    map.on('zoomend', () => { zoomEl.textContent = map.getZoom(); });
 
     renderItinerary('all');
     renderGourmet('parking');
