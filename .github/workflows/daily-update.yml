@@ -37,6 +37,12 @@ jobs:
       - name: Validate generated WebGIS HTML
         run: node scripts/validate_webgis.js
 
+      - name: Install CJK fonts for PDF export
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk
+
+      - name: Regenerate YouTube & Web Blog PDF guide
+        run: node scripts/export_pdf.js
+
       - name: Commit and push updates to GitHub Pages (main)
         id: commit_step
         run: |
@@ -52,8 +58,8 @@ jobs:
           TODAY=$(TZ=Asia/Taipei date +%Y-%m-%d)
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/yt_videos_clean.json data/web_guides.json index.html
-          git commit -m "chore(daily): ${TODAY} cloud update (YT ${YT_COUNT}, Web ${WEB_COUNT})"
+          git add data/yt_videos_clean.json data/web_guides.json index.html miyazaki_youtube_blog_guide.pdf
+          git commit -m "chore(daily): ${TODAY} cloud update (YT ${YT_COUNT}, Web ${WEB_COUNT}, PDF)"
           git pull --rebase origin main
           git push origin main
           echo "changed=true" >> "$GITHUB_OUTPUT"

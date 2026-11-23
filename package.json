@@ -9,6 +9,7 @@
     "fetch:routes": "node scripts/fetch_osrm_routes.js",
     "fetch:yt": "node scripts/fetch_yt.js",
     "fetch:web": "node scripts/fetch_web_guides.js",
+    "export:pdf": "node scripts/export_pdf.js",
     "daily": "node scripts/fetch_yt.js && node scripts/fetch_web_guides.js && node scripts/build_webgis.js && node scripts/validate_webgis.js"
   }
 }

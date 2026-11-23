@@ -1413,8 +1413,9 @@ const html = `<!DOCTYPE html>
           <div class="export-grid">
             <button class="export-btn" id="btnExportGeoJSON">下載 GeoJSON</button>
             <button class="export-btn" id="btnExportGPX">下載 GPX 路網</button>
-            <button class="export-btn" id="btnPrint2">列印 PDF 手冊</button>
-            <button class="export-btn" id="btnResetChecks">重設勾選清單</button>
+            <button class="export-btn" id="btnPrint2">列印行程手冊</button>
+            <a class="export-btn" href="miyazaki_youtube_blog_guide.pdf" target="_blank" rel="noopener" style="text-align:center;text-decoration:none">下載影音攻略 PDF</a>
+            <button class="export-btn" id="btnResetChecks" style="grid-column:1 / -1">重設勾選清單</button>
           </div>
         </div>
       </div>
@@ -1425,6 +1426,7 @@ const html = `<!DOCTYPE html>
           <button class="sub-pill active" data-intel="yt">YouTube 影片 (${compactVideos.length})</button>
           <button class="sub-pill" data-intel="web">網頁攻略＆伴手禮 (${webGuides.length})</button>
         </div>
+        <a class="load-more-btn" href="miyazaki_youtube_blog_guide.pdf" target="_blank" rel="noopener" style="display:block;text-align:center;text-decoration:none;margin:0 0 9px;background:var(--muji-red-soft);border-color:var(--muji-red-border);color:var(--muji-red)">📄 開啟 / 下載完整 YouTube ＆ 網頁攻略 PDF 手冊</a>
         <div id="intelYtPane">
           <div class="yt-search-wrap">
             <input type="text" class="yt-input" id="ytSearch" placeholder="搜尋標題或頻道（例：伴手禮、購物、日向、高千穗）" />
