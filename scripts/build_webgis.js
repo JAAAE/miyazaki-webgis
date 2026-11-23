@@ -384,7 +384,7 @@ const html = `<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>宮崎縣 4 天 3 夜旅遊 WebGIS｜無印風 × 9款底圖 × 停車攻略 × ${compactVideos.length}部 YT</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <style>
@@ -416,10 +416,11 @@ const html = `<!DOCTYPE html>
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      height: 100%; width: 100%; overflow: hidden;
+      height: 100%; height: 100dvh; width: 100%; overflow: hidden;
       font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans TC", "Microsoft JhengHei", -apple-system, sans-serif;
       background: #E6E0D6; color: var(--ink);
       -webkit-font-smoothing: antialiased; letter-spacing: 0.02em;
+      overscroll-behavior: none;
     }
 
     #map { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; background: #2C3338; }
@@ -859,7 +860,7 @@ const html = `<!DOCTYPE html>
     .leaflet-popup-tip { background: var(--paper) !important; }
     .leaflet-popup-close-button { color: var(--ink-muted) !important; padding: 8px 8px 0 0 !important; }
     .leaflet-popup-close-button:hover { color: var(--muji-red) !important; }
-    .leaflet-popup-content { margin: 14px 16px !important; width: 334px !important; font-family: inherit; }
+    .leaflet-popup-content { margin: 13px 14px !important; width: min(334px, calc(100vw - 56px)) !important; max-height: 62dvh; overflow-y: auto; font-family: inherit; }
 
     .pop-head { display: flex; justify-content: space-between; align-items: center; gap: 6px; margin-bottom: 7px; }
     .pop-day { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 2px; color: #FFFFFF; }
@@ -1030,11 +1031,30 @@ const html = `<!DOCTYPE html>
     }
     .sb-head-actions { display: flex; align-items: center; gap: 5px; }
 
+    /* Mobile Sheet Handle & Floating Expand Pill (hidden on desktop) */
+    .sheet-handle {
+      display: none; align-items: center; justify-content: center; gap: 8px;
+      padding: 8px 12px 6px; background: var(--paper); cursor: grab;
+      touch-action: none; user-select: none; border-bottom: 1px solid rgba(216,209,197,0.45);
+    }
+    .sheet-pill-bar { width: 38px; height: 4px; border-radius: 99px; background: #BDB4A6; }
+    .sheet-handle-hint { font-size: 9.8px; color: var(--ink-muted); font-weight: 600; }
+
+    .mobile-sheet-fab {
+      display: none; position: fixed; left: 50%; transform: translateX(-50%);
+      bottom: calc(46px + env(safe-area-inset-bottom, 0px)); z-index: 980;
+      background: var(--ink); color: var(--paper); border: 1px solid rgba(247,245,240,0.22);
+      border-radius: 99px; padding: 9px 18px; font-size: 12px; font-weight: 700;
+      box-shadow: var(--shadow); cursor: pointer; font-family: inherit; white-space: nowrap;
+      align-items: center; gap: 7px;
+    }
+    .mobile-sheet-fab:active { transform: translateX(-50%) scale(0.97); }
+
     /* Print Handbook */
     #printSheet { display: none; }
     @media print {
       html, body { overflow: visible !important; height: auto !important; background: #fff !important; }
-      #map, .sidebar, .sidebar-toggle, .top-bar, .north-arrow, .right-ctrl-stack, .swipe-divider, .swipe-banner, .ctx-menu, .help-backdrop, .map-legend, .elev-dock, .status-bar, .measure-banner, .toast { display: none !important; }
+      #map, .sidebar, .sidebar-toggle, .mobile-sheet-fab, .top-bar, .north-arrow, .right-ctrl-stack, .swipe-divider, .swipe-banner, .ctx-menu, .help-backdrop, .map-legend, .elev-dock, .status-bar, .measure-banner, .toast { display: none !important; }
       #printSheet { display: block !important; padding: 20px; color: #2E2B27; font-size: 11px; line-height: 1.5; }
       .pr-header { border-bottom: 2px solid #7F0019; padding-bottom: 10px; margin-bottom: 14px; }
       .pr-title { font-size: 19px; font-weight: 700; }
@@ -1047,23 +1067,106 @@ const html = `<!DOCTYPE html>
       .pr-card { border: 1px solid #D8D1C5; padding: 6px 8px; break-inside: avoid; }
     }
 
-    @media (max-width: 820px) {
-      .sidebar {
-        top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; max-width: none; height: 58vh;
-        border-radius: 10px 10px 4px 4px;
-        transition: transform 0.28s cubic-bezier(.4,0,.2,1);
-      }
-      body.sidebar-collapsed .sidebar { transform: translateY(calc(100% + 16px)); }
-      .sidebar-toggle { top: 12px; left: 12px !important; }
-      .top-bar { left: 56px !important; top: 12px; right: 58px; bottom: auto; justify-content: flex-start; }
-      .gis-toolbar { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+    /* ---- RWD BREAKPOINT 1: LAPTOP (<= 1366px) ---- */
+    @media (max-width: 1366px) {
+      .gis-toolbar { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
       .gis-toolbar::-webkit-scrollbar { display: none; }
+    }
+
+    /* ---- RWD BREAKPOINT 2: TABLET (821px - 1080px) ---- */
+    @media (min-width: 821px) and (max-width: 1080px) {
+      :root { --sb-w: 342px; }
+      .sidebar-toggle { left: 366px; }
+      .top-bar { left: 410px; }
+      .elev-dock, .map-legend { left: 366px; }
+      .leaflet-control-scale { margin-left: 366px !important; }
+      body.sidebar-collapsed .sidebar { transform: translateX(-368px); }
+    }
+
+    /* ---- RWD BREAKPOINT 3: MOBILE SMARTPHONE (<= 820px) ---- */
+    @media (max-width: 820px) {
+      .sheet-handle { display: flex; }
+      .sidebar {
+        top: auto; left: 0; right: 0; bottom: 0; width: 100%; max-width: none;
+        height: 52dvh; border-radius: 14px 14px 0 0; border-left: none; border-right: none; border-bottom: none;
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+        transition: height 0.26s cubic-bezier(.4,0,.2,1), transform 0.28s cubic-bezier(.4,0,.2,1);
+      }
+      body.sheet-full .sidebar { height: 86dvh; }
+      body.sidebar-collapsed .sidebar { transform: translateY(105%); }
+      body.sidebar-collapsed .mobile-sheet-fab { display: inline-flex; }
+      body.elev-open .mobile-sheet-fab { bottom: calc(194px + env(safe-area-inset-bottom, 0px)); }
+
+      .sb-header { padding: 8px 14px 8px; }
+      .sb-kicker, .sb-sub { display: none; }
+      .sb-title { font-size: 15.5px; margin-top: 0; }
+      .kpi-strip { margin-top: 6px; }
+      .kpi-box { padding: 4px 2px; }
+      .kpi-val { font-size: 11.4px; }
+      .kpi-lbl { font-size: 8.6px; }
+      .omni-wrap { margin-top: 6px; }
+      .omni-input { padding: 8px 28px 8px 10px; font-size: 13px; }
+      .progress-row { margin-top: 6px; font-size: 9.8px; }
+      .sb-tab { padding: 10px 4px; font-size: 11.8px; }
+      .sb-body { padding: 10px 12px 24px; -webkit-overflow-scrolling: touch; }
+
+      .sidebar-toggle {
+        top: calc(10px + env(safe-area-inset-top, 0px)); left: 10px !important;
+        width: 38px; height: 38px; font-size: 16px;
+      }
+      .top-bar {
+        left: 54px !important; top: calc(10px + env(safe-area-inset-top, 0px));
+        right: 10px; bottom: auto; justify-content: flex-start;
+      }
+      .gis-toolbar { padding: 3px; gap: 3px; }
+      .tool-btn { padding: 6px 9px; font-size: 11.4px; min-height: 30px; }
+      .basemap-quick { padding: 5px 7px; font-size: 11.2px; max-width: 145px; }
+
       .map-legend, .north-arrow { display: none; }
-      .right-ctrl-stack { top: 96px; right: 12px; }
-      .leaflet-control-zoom { margin-top: 12px !important; margin-right: 12px !important; }
-      .leaflet-control-scale { margin-left: 12px !important; margin-bottom: 42px !important; }
-      .elev-dock { left: 8px; right: 8px; bottom: 44px; height: 142px; }
-      .status-bar { left: 8px; right: 8px; bottom: 8px; font-size: 9.8px; gap: 7px; justify-content: space-between; }
+      .leaflet-control-zoom { margin-top: calc(56px + env(safe-area-inset-top, 0px)) !important; margin-right: 10px !important; }
+      .leaflet-control-zoom a { width: 36px !important; height: 36px !important; line-height: 36px !important; }
+      .right-ctrl-stack { top: calc(138px + env(safe-area-inset-top, 0px)); right: 10px; gap: 7px; }
+      .map-fab { width: 36px; height: 36px; font-size: 15px; }
+
+      .swipe-banner, .measure-banner {
+        top: calc(56px + env(safe-area-inset-top, 0px));
+        left: 10px; right: 56px; transform: none;
+        flex-wrap: wrap; gap: 6px; padding: 7px 10px; font-size: 10.6px;
+      }
+      .swipe-select { max-width: 145px; font-size: 10.6px; }
+
+      .leaflet-control-scale { margin-left: 10px !important; margin-bottom: calc(44px + env(safe-area-inset-bottom, 0px)) !important; }
+      .elev-dock {
+        left: 8px; right: 8px; bottom: calc(42px + env(safe-area-inset-bottom, 0px));
+        height: 144px; padding: 8px 10px 6px;
+      }
+      .elev-head { font-size: 10.4px; flex-wrap: wrap; gap: 4px; }
+      .status-bar {
+        left: 8px; right: 8px; bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+        font-size: 9.8px; gap: 6px; padding: 5px 10px; justify-content: space-between;
+      }
+      .status-bar > span:nth-child(2),
+      .status-bar > span:last-child { display: none; }
+
+      .ctx-item { padding: 10px 14px; font-size: 12.6px; }
+      .help-grid { grid-template-columns: 1fr; }
+      .pop-actions { grid-template-columns: 1fr 1fr; }
+      .pop-actions > :first-child { grid-column: 1 / -1; }
+      .toast { bottom: calc(96px + env(safe-area-inset-bottom, 0px)); max-width: calc(100vw - 32px); text-align: center; }
+    }
+
+    /* ---- RWD BREAKPOINT 4: COMPACT PHONES (<= 400px) & LANDSCAPE ---- */
+    @media (max-width: 400px) {
+      .sb-title { font-size: 14.5px; }
+      .day-pills { gap: 3px; }
+      .day-pill { font-size: 10.2px; padding: 6px 2px; }
+      .pop-grid { grid-template-columns: 1fr; gap: 5px; }
+      .bm-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 820px) and (max-height: 500px) {
+      .sidebar { height: 74dvh; }
+      body.sheet-full .sidebar { height: 92dvh; }
+      .kpi-strip { display: none; }
     }
   </style>
 </head>
@@ -1204,8 +1307,12 @@ const html = `<!DOCTYPE html>
     <button class="measure-clear" id="btnMeasureClear">清除重測</button>
   </div>
 
-  <!-- Left MUJI Sidebar -->
-  <aside class="sidebar">
+  <!-- Left MUJI Sidebar / Mobile Bottom Sheet -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sheet-handle" id="sheetHandle" title="上下拖曳或點擊切換面板高度">
+      <span class="sheet-pill-bar"></span>
+      <span class="sheet-handle-hint" id="sheetHandleHint">點擊全展開 · 下滑收合</span>
+    </div>
     <div class="sb-header">
       <div class="sb-top-row">
         <div class="sb-kicker">ALL-MIYAZAKI REAL-ROAD WEBGIS</div>
@@ -1390,6 +1497,8 @@ const html = `<!DOCTYPE html>
       </div>
     </div>
   </aside>
+
+  <button class="mobile-sheet-fab" id="mobileSheetFab">▲ 行程・停車・美食・影音</button>
 
   <div class="status-bar">
     <span>更新 <strong>${lastUpdated}</strong></span>
@@ -1743,6 +1852,7 @@ const html = `<!DOCTYPE html>
     window.runBufferAnalysis = function(lat, lng, title) {
       currentBufferCenter = { lat, lng, title };
       switchTab('gis');
+      if (isMobileViewport()) setMobileSheetState('half');
       drawBuffer();
     };
 
@@ -1887,6 +1997,7 @@ const html = `<!DOCTYPE html>
     function toggleElevDock(force) {
       const dock = document.getElementById('elevDock');
       const show = typeof force === 'boolean' ? force : !dock.classList.contains('show');
+      if (show && isMobileViewport()) setMobileSheetState('collapsed');
       dock.classList.toggle('show', show);
       document.body.classList.toggle('elev-open', show);
       document.getElementById('btnElev').classList.toggle('active', show);
@@ -2088,15 +2199,44 @@ const html = `<!DOCTYPE html>
       if (el) { el.classList.add('selected'); el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
     }
 
-    function getMapPadding() {
-      const collapsed = document.body.classList.contains('sidebar-collapsed') || window.innerWidth <= 820;
-      const elevOpen = document.body.classList.contains('elev-open');
-      return { paddingTopLeft: [collapsed ? 50 : 448, 72], paddingBottomRight: [55, elevOpen ? 225 : 65] };
+    function isMobileViewport() { return window.innerWidth <= 820; }
+
+    function setMobileSheetState(state) {
+      const hint = document.getElementById('sheetHandleHint');
+      if (state === 'collapsed') {
+        document.body.classList.add('sidebar-collapsed');
+        document.body.classList.remove('sheet-full');
+      } else if (state === 'full') {
+        document.body.classList.remove('sidebar-collapsed');
+        document.body.classList.add('sheet-full');
+        if (hint) hint.textContent = '點擊半開 · 下滑收合地圖';
+      } else {
+        document.body.classList.remove('sidebar-collapsed', 'sheet-full');
+        if (hint) hint.textContent = '點擊全展開 · 下滑收合';
+      }
+      setTimeout(() => map.invalidateSize(), 280);
     }
 
-    window.zoomRegion = function(regionId) { const r = REGIONS.find(x => x.id === regionId); if (r) map.fitBounds(L.latLngBounds(r.poly), getMapPadding()); };
+    function getMapPadding() {
+      const w = window.innerWidth;
+      const collapsed = document.body.classList.contains('sidebar-collapsed');
+      const elevOpen = document.body.classList.contains('elev-open');
+      if (w <= 820) {
+        const bottomPad = collapsed ? (elevOpen ? 195 : 70) : Math.round(window.innerHeight * 0.54);
+        return { paddingTopLeft: [16, 66], paddingBottomRight: [50, bottomPad] };
+      }
+      const sbOffset = w <= 1080 ? 378 : 448;
+      return { paddingTopLeft: [collapsed ? 50 : sbOffset, 72], paddingBottomRight: [55, elevOpen ? 225 : 65] };
+    }
+
+    window.zoomRegion = function(regionId) {
+      if (isMobileViewport()) setMobileSheetState('collapsed');
+      const r = REGIONS.find(x => x.id === regionId);
+      if (r) map.fitBounds(L.latLngBounds(r.poly), getMapPadding());
+    };
     window.focusAny = function(id, lat, lng, zoom) {
       highlightCard(id);
+      if (isMobileViewport()) setMobileSheetState('collapsed');
       map.flyTo([lat, lng], zoom || 15, { duration: 0.95 });
       setTimeout(() => { if (markersById[id]) markersById[id].openPopup(); }, 580);
     };
@@ -2179,6 +2319,7 @@ const html = `<!DOCTYPE html>
     window.openVideoTabWithTag = function(tag) {
       switchTab('videos');
       switchIntelSub('yt');
+      if (isMobileViewport()) setMobileSheetState('half');
       const sel = document.getElementById('ytTagFilter');
       sel.value = [...sel.options].some(o => o.value === tag) ? tag : 'all';
       document.getElementById('ytSearch').value = '';
@@ -2241,9 +2382,54 @@ const html = `<!DOCTYPE html>
     };
     document.querySelectorAll('.sb-tab').forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
     document.getElementById('sidebarToggle').addEventListener('click', () => {
-      document.body.classList.toggle('sidebar-collapsed');
-      setTimeout(() => map.invalidateSize(), 300);
+      if (isMobileViewport()) {
+        const isCollapsed = document.body.classList.contains('sidebar-collapsed');
+        setMobileSheetState(isCollapsed ? 'half' : 'collapsed');
+      } else {
+        document.body.classList.toggle('sidebar-collapsed');
+        setTimeout(() => map.invalidateSize(), 300);
+      }
     });
+    document.getElementById('mobileSheetFab').addEventListener('click', () => setMobileSheetState('half'));
+
+    // Touch drag-to-resize & tap-to-cycle on Mobile Bottom Sheet handle
+    (function initMobileSheetGestures() {
+      const handle = document.getElementById('sheetHandle');
+      if (!handle) return;
+      let startY = null, moved = false;
+      handle.addEventListener('touchstart', e => {
+        if (!e.touches.length) return;
+        startY = e.touches[0].clientY;
+        moved = false;
+      }, { passive: true });
+      handle.addEventListener('touchmove', e => {
+        if (startY === null || !e.touches.length) return;
+        if (Math.abs(e.touches[0].clientY - startY) > 16) moved = true;
+      }, { passive: true });
+      handle.addEventListener('touchend', e => {
+        if (startY === null) return;
+        const endY = e.changedTouches && e.changedTouches.length ? e.changedTouches[0].clientY : startY;
+        const dy = endY - startY;
+        startY = null;
+        if (!moved) {
+          const isFull = document.body.classList.contains('sheet-full');
+          setMobileSheetState(isFull ? 'half' : 'full');
+          return;
+        }
+        const isFull = document.body.classList.contains('sheet-full');
+        if (dy < -36) setMobileSheetState('full');
+        else if (dy > 42) setMobileSheetState(isFull ? 'half' : 'collapsed');
+      });
+      handle.addEventListener('click', () => {
+        if (moved) return;
+        const isFull = document.body.classList.contains('sheet-full');
+        setMobileSheetState(isFull ? 'half' : 'full');
+      });
+      window.addEventListener('resize', debounce(() => {
+        if (!isMobileViewport()) document.body.classList.remove('sheet-full');
+        map.invalidateSize();
+      }, 180));
+    })();
 
     document.getElementById('overlayOpacity').addEventListener('input', e => {
       const pct = Number(e.target.value);
@@ -2303,6 +2489,7 @@ const html = `<!DOCTYPE html>
     }
     function setMeasureActive(on) {
       measuring = on;
+      if (measuring && isMobileViewport()) setMobileSheetState('collapsed');
       document.getElementById('btnMeasure').classList.toggle('active', measuring);
       document.getElementById('measureBanner').classList.toggle('show', measuring);
       map.getContainer().style.cursor = measuring ? 'crosshair' : '';
@@ -2448,6 +2635,7 @@ const html = `<!DOCTYPE html>
       document.getElementById('swipeLeftLabel').textContent = basemaps[activeBasemap].name;
       if (on) {
         if (measuring) setMeasureActive(false);
+        if (isMobileViewport()) setMobileSheetState('collapsed');
         mountSwipeLayer(swipeRightSelect.value);
         showToast('已開啟捲簾對比：左右拖曳紅白把手比較雙底圖');
       } else if (swipeRightLayer) {
@@ -2566,8 +2754,8 @@ const html = `<!DOCTYPE html>
     map.on('contextmenu', e => {
       ctxLatLng = e.latlng;
       document.getElementById('ctxCoordText').textContent = \`\${e.latlng.lat.toFixed(5)}, \${e.latlng.lng.toFixed(5)}\`;
-      const x = Math.min(e.originalEvent.clientX, window.innerWidth - 225);
-      const y = Math.min(e.originalEvent.clientY, window.innerHeight - 210);
+      const x = Math.max(10, Math.min(e.originalEvent.clientX, window.innerWidth - 225));
+      const y = Math.max(10, Math.min(e.originalEvent.clientY, window.innerHeight - 230));
       ctxMenu.style.left = x + 'px';
       ctxMenu.style.top = y + 'px';
       ctxMenu.classList.add('show');
