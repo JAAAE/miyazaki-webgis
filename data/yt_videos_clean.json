@@ -99,7 +99,8 @@
       "宮崎 美食",
       "宮崎 旅遊 2025",
       "宮崎 旅遊 2026",
-      "宮崎 自由行 攻略"
+      "宮崎 自由行 攻略",
+      "宮崎 自駕 旅遊"
     ],
     "tags": [
       "karamen",
@@ -302,7 +303,8 @@
       "宮崎 購物 逛街",
       "宮崎 機場 伴手禮",
       "宮崎 自由行 攻略",
-      "宮崎 美食 推薦"
+      "宮崎 美食 推薦",
+      "宮崎 自駕 旅遊"
     ],
     "tags": [
       "karamen",
@@ -489,7 +491,8 @@
       "宮崎 旅遊 2025",
       "宮崎 旅遊 2026",
       "宮崎 4天3夜 行程",
-      "宮崎 自由行 攻略"
+      "宮崎 自由行 攻略",
+      "宮崎 自駕 旅遊"
     ],
     "tags": [
       "takachiho",
@@ -559,7 +562,8 @@
     "published": "2 年前",
     "queries": [
       "宮崎 4天3夜",
-      "宮崎 自由行 攻略"
+      "宮崎 自由行 攻略",
+      "宮崎 美食 推薦"
     ],
     "tags": [
       "aoshima",
@@ -971,7 +975,8 @@
       "宮崎 自駕",
       "宮崎 旅遊 2026",
       "宮崎 自由行 攻略",
-      "宮崎 4天3夜 行程"
+      "宮崎 4天3夜 行程",
+      "宮崎 自駕 旅遊"
     ],
     "tags": [
       "takachiho",
@@ -1327,10 +1332,12 @@
     "length": "0:15",
     "published": "7 年前",
     "queries": [
-      "青島神社 鬼之洗衣板"
+      "青島神社 鬼之洗衣板",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
-      "aoshima"
+      "aoshima",
+      "nichinan"
     ]
   },
   {
@@ -3139,7 +3146,8 @@
     "length": "22:47",
     "published": "2 年前",
     "queries": [
-      "宮崎 観光 おすすめ"
+      "宮崎 観光 おすすめ",
+      "宮崎 観光 2025 おすすめ"
     ],
     "tags": [
       "drive"
@@ -3246,7 +3254,8 @@
     "length": "34:46",
     "published": "6 個月前",
     "queries": [
-      "宮崎 旅行 3泊4日"
+      "宮崎 旅行 3泊4日",
+      "宮崎 旅行 3泊4日 vlog"
     ],
     "tags": [
       "drive"
@@ -6024,7 +6033,8 @@
     "length": "53:18",
     "published": "5 か月前",
     "queries": [
-      "えびの高原 霧島 宮崎"
+      "えびの高原 霧島 宮崎",
+      "都城 蝦野高原 霧島 宮崎"
     ],
     "tags": [
       "west_kirishima"
@@ -6185,7 +6195,8 @@
     "length": "20:34",
     "published": "3 年前",
     "queries": [
-      "えびの高原 霧島 宮崎"
+      "えびの高原 霧島 宮崎",
+      "都城 蝦野高原 霧島 宮崎"
     ],
     "tags": [
       "west_kirishima"
@@ -9349,7 +9360,8 @@
     "length": "6:07",
     "published": "8 年前",
     "queries": [
-      "宮崎 自駕 旅遊"
+      "宮崎 自駕 旅遊",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
       "aoshima",
@@ -10355,5 +10367,454 @@
       "udo",
       "drive"
     ]
+  },
+  {
+    "id": "btY9nnPzO0o",
+    "title": "Vlog #3 日本九州自駕遊：宮崎平民溫泉酒店和海鮮餐 | 為什麼找的所有景點餐廳沒有開？",
+    "channel": "龔柯允Karen Kong",
+    "views": "觀看次數：5,682次",
+    "length": "9:56",
+    "published": "7 年前",
+    "queries": [
+      "宮崎 自駕 旅遊"
+    ],
+    "tags": [
+      "hotel",
+      "drive"
+    ]
+  },
+  {
+    "id": "Ob7yB3ftIzM",
+    "title": "2026九州自駕旅行Vol.3宮崎～大分篇、2026年九州ロードトリップ Vol.3 宮崎〜大分、2026 Kyushu Road Trip Vol.3 Miyazaki ~ Oita",
+    "channel": "陳小穎",
+    "views": "觀看次數：68次",
+    "length": "18:00",
+    "published": "3 個月前",
+    "queries": [
+      "宮崎 自駕 旅遊"
+    ],
+    "tags": [
+      "drive"
+    ]
+  },
+  {
+    "id": "qzkf0zKJo6Q",
+    "title": "Takachiho Gorge |高千穗峽體驗划船｜Bg travel maker",
+    "channel": "BG Travel Maker",
+    "views": "觀看次數：566次",
+    "length": "6:03",
+    "published": "3 年前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "drive"
+    ]
+  },
+  {
+    "id": "DeZYMcaQNKw",
+    "title": "九州｜高千穗一日遊：高千穗峽和高千穗神社",
+    "channel": "BOOKLOG",
+    "views": "觀看次數：17,055次",
+    "length": "1:31",
+    "published": "4 年前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "drive"
+    ]
+  },
+  {
+    "id": "2QcUigb-U1M",
+    "title": "2023南九州（宮崎、青島神社）Ｖｌｏｇ #日本 #南九州 #宮崎 #青島神社  #2023 #旅遊 #九州#自助",
+    "channel": "_ LIN",
+    "views": "觀看次數：138次",
+    "length": "3:15",
+    "published": "3 年前",
+    "queries": [
+      "青島神社 日南海岸 旅遊"
+    ],
+    "tags": [
+      "aoshima",
+      "nichinan"
+    ]
+  },
+  {
+    "id": "YuNU3gFIwVg",
+    "title": "『「日向岬『クルスの海』～ 願いが叶うという十字型の海岸 ～」（宮崎県日向市日向岬日向灘海上上空から 2026/10）ドローン空撮2026〔そらぴくと〕』",
+    "channel": "そらぴくと",
+    "views": "觀看次數：126次",
+    "length": "2:21",
+    "published": "2 週前",
+    "queries": [
+      "日向市 馬背 祈願之海 旅遊"
+    ],
+    "tags": [
+      "hyuga"
+    ]
+  },
+  {
+    "id": "w2MC9KGtyVU",
+    "title": "宮崎グルメ483  延岡市　元祖チキン南蛮　直ちゃん　チキン南蛮定食　1200円🥰",
+    "channel": "高木公徳　宮崎グルメ🍜神社⛩    ",
+    "views": "觀看次數：486次",
+    "length": "2:08",
+    "published": "9 個月前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "svIpzYffaoU",
+    "title": "【宮崎Vlog】日帰りグルメ旅と一時帰国中のお友達に会ってきた😆💖💝✨本場のチキン南蛮は一味違う😏🍴｜桝元本店｜チキン南蛮直ちゃん",
+    "channel": "Mana meee",
+    "views": "觀看次數：201次",
+    "length": "11:37",
+    "published": "2 週前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "CakMikfKbFE",
+    "title": "【宮崎・ニシタチ】黒い＆赤いチキン南蛮!? ニシタチで見つけた衝撃の進化系ソウルフードを徹底調査！【 #日向海フェニカ 】",
+    "channel": "ＭＲＴ宮崎放送",
+    "views": "觀看次數：1,269次",
+    "length": "7:29",
+    "published": "3 週前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "wB4SA5jSi1A",
+    "title": "ドライブ｜癒し音楽｜宮崎県｜都城～えびの高原編③｜高原町｜小林市｜ピアノ曲｜",
+    "channel": "蔵之介どんが行く",
+    "views": "觀看次數：1,560次",
+    "length": "17:37",
+    "published": "3 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima",
+      "drive"
+    ]
+  },
+  {
+    "id": "ElRwpuEYj8U",
+    "title": "えびの高原（宮崎県）Ebino Highlandsー虾野高原ー새우 고원ーCao nguyên EbinoーHauts plateaux d'Ebino  #travel #highland #jp",
+    "channel": "Mika",
+    "views": "觀看次數：16次",
+    "length": "0:22",
+    "published": "2 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "AGJsY3LBZbc",
+    "title": "【夏だ！えびのだ！霧島だ！】隠れた名所を一挙紹介！野生のハーレーダビッドソンにも遭遇！",
+    "channel": "そのまんま宮崎",
+    "views": "觀看次數：34,537次",
+    "length": "17:50",
+    "published": "2 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "CL0yr4Lxa30",
+    "title": "【宮崎旅行】日南観光モデルコース！鵜戸神宮とサンメッセ日南を満喫！",
+    "channel": "週末トラベラーズ",
+    "views": "觀看次數：21,982次",
+    "length": "11:48",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 観光 2025 おすすめ"
+    ],
+    "tags": [
+      "nichinan",
+      "udo",
+      "moai"
+    ]
+  },
+  {
+    "id": "c7SK2mB7bTE",
+    "title": "宮崎旅行　3泊4日",
+    "channel": "ポントロ　pontoro  ",
+    "views": "觀看次數：67次",
+    "length": "20:33",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 旅行 3泊4日 vlog"
+    ],
+    "tags": [
+      "drive"
+    ]
+  },
+  {
+    "id": "jksPkVGIUK4",
+    "title": "【VLOG】宮崎出張 〜3泊4日の旅〜",
+    "channel": "Hikari",
+    "views": "觀看次數：4,178次",
+    "length": "6:31",
+    "published": "3 年前",
+    "queries": [
+      "宮崎 旅行 3泊4日 vlog"
+    ],
+    "tags": [
+      "drive"
+    ]
+  },
+  {
+    "id": "0s53dYbTxW4",
+    "title": "【Unolog】3泊4日の宮崎🌴Vlog風",
+    "channel": "ZANNENチャンネル",
+    "views": "觀看次數：72次",
+    "length": "9:58",
+    "published": "4 年前",
+    "queries": [
+      "宮崎 旅行 3泊4日 vlog"
+    ],
+    "tags": [
+      "drive"
+    ]
+  },
+  {
+    "id": "qZg2vCa2Rsg",
+    "title": "宮崎県Vlog｜交際8年目 東京在住カップルが癒しを求めて九州へ旅行に",
+    "channel": "れんよこカップル",
+    "views": "觀看次數：25,547次",
+    "length": "19:00",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 旅行 3泊4日 vlog"
+    ],
+    "tags": [
+      "drive"
+    ]
+  },
+  {
+    "id": "_5Qbo8jY0uc",
+    "title": "Japan's Underrated Nature Escape | Exploring Miyazaki & Takachiho Gorge",
+    "channel": "Sol Life",
+    "views": "觀看次數：361,624次",
+    "length": "32:23",
+    "published": "1 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": [
+      "takachiho"
+    ]
+  },
+  {
+    "id": "V5ZJOMIT7UI",
+    "title": "a peaceful summer escape in japan seaside town | miyazaki & aoshima island",
+    "channel": "Cindy and Dion",
+    "views": "觀看次數：30,605次",
+    "length": "24:25",
+    "published": "5 個月前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": [
+      "aoshima"
+    ]
+  },
+  {
+    "id": "BwYM3-R2PgM",
+    "title": "FUKUOKA, JAPAN VLOG 🇯🇵 | Best Local Food, Cafes & a Day Trip to Miyazaki",
+    "channel": "Karyl ",
+    "views": "觀看次數：377次",
+    "length": "40:15",
+    "published": "1 天前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": [
+      "karamen"
+    ]
+  },
+  {
+    "id": "EEcqBPIaKOM",
+    "title": "Best Things to do in Japan’s Secret Prefecture! Miyazaki Travel Guide",
+    "channel": "Ghib Ojisan",
+    "views": "觀看次數：249,296次",
+    "length": "28:19",
+    "published": "3 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "OAMK5kym1Vw",
+    "title": "Miyazaki | Japan's natural paradise",
+    "channel": "Rachel and Jun",
+    "views": "觀看次數：2,875,905次",
+    "length": "6:38",
+    "published": "10 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "wP5-mfe4wUc",
+    "title": "Fun and Surprising Miyazaki Beach Town Visit | Japan Kyushu Travel Vlog",
+    "channel": "Laurens & Laura",
+    "views": "觀看次數：7,297次",
+    "length": "8:18",
+    "published": "2 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "zo7zzxxxotI",
+    "title": "Miyazaki - 1 Day Itinerary (Aoshima, Udo-jingu Shrine, Obi) | Japan Itinerary suggestion",
+    "channel": "Planetyze - Japan Best Spots Travel Guide",
+    "views": "觀看次數：1,962次",
+    "length": "2:06",
+    "published": "6 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": [
+      "aoshima",
+      "obi",
+      "drive"
+    ]
+  },
+  {
+    "id": "8Bbu9wCFA-M",
+    "title": "2 Days in Miyazaki — Japan’s Perfect Off the Beaten Path Escape",
+    "channel": "Waddle Wanders",
+    "views": "觀看次數：2,946次",
+    "length": "6:45",
+    "published": "10 個月前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "PAAOc4DkWnE",
+    "title": "A Day in Miyazaki | Exploring Aoshima & Miyazaki Jingu | Japan Travel Vlog",
+    "channel": "Jin and Aeri",
+    "views": "觀看次數：9,379次",
+    "length": "22:39",
+    "published": "1 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": [
+      "aoshima"
+    ]
+  },
+  {
+    "id": "9YMlaD2wcD8",
+    "title": "Discovering Miyazaki, Japan: Ocean Shrines, Hot Springs & a Hidden Old Town",
+    "channel": "Rolling Acorn Japan",
+    "views": "觀看次數：798次",
+    "length": "23:30",
+    "published": "8 個月前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "uWZFBil2s3o",
+    "title": "2 days in Miyazaki Japan Solo Vlog - Takachiho Gorge, Cape Hyuga, Udo Shrine, Aoshima Island",
+    "channel": "mthtravel",
+    "views": "觀看次數：5,976次",
+    "length": "13:04",
+    "published": "1 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": [
+      "takachiho",
+      "aoshima",
+      "hyuga"
+    ]
+  },
+  {
+    "id": "w2tqk-TFHjw",
+    "title": "Welcome to Miyazaki City!",
+    "channel": "BenFrostProductions",
+    "views": "觀看次數：1,478次",
+    "length": "6:10",
+    "published": "5 個月前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "_Z8MSydoF5c",
+    "title": "MIYAZAKI, KYUSHU🇯🇵 Takachiho Gorge and Trolley on a Bridge 344f high✨ Japan Travel Vlog",
+    "channel": "MIKI from Japan",
+    "views": "觀看次數：27,536次",
+    "length": "12:25",
+    "published": "3 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": [
+      "takachiho"
+    ]
+  },
+  {
+    "id": "qji56k2qZSo",
+    "title": "Miyazaki TRAVEL Vlog | Powerful Dances and Waterfalls | A Mythical Place in Japan | @_autumnmatic",
+    "channel": "AutumnMatic",
+    "views": "觀看次數：197次",
+    "length": "18:24",
+    "published": "3 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "MFvir1ieZ3c",
+    "title": "Van Life in Miyazaki - Exploring the coast of Kyushu | Japan Travel",
+    "channel": "Little Wanderer",
+    "views": "觀看次數：905次",
+    "length": "20:31",
+    "published": "1 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
   }
 ]
