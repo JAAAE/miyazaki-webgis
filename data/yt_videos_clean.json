@@ -518,7 +518,8 @@
       "宮崎 旅遊 2026",
       "宮崎 4天3夜 行程",
       "宮崎 自由行 攻略",
-      "延岡 辛麵 南蠻雞 旅遊"
+      "延岡 辛麵 南蠻雞 旅遊",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
       "takachiho",
@@ -976,13 +977,16 @@
       "宮崎 旅遊 2026",
       "宮崎 自由行 攻略",
       "宮崎 4天3夜 行程",
-      "宮崎 自駕 旅遊"
+      "宮崎 自駕 旅遊",
+      "高千穗峽 划船 攻略",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
       "takachiho",
       "aoshima",
       "amanoiwato",
-      "drive"
+      "drive",
+      "nichinan"
     ]
   },
   {
@@ -1138,7 +1142,8 @@
     "length": "15:20",
     "published": "7 個月前",
     "queries": [
-      "高千穗峽 旅遊"
+      "高千穗峽 旅遊",
+      "高千穗峽 划船 攻略"
     ],
     "tags": [
       "takachiho",
@@ -1348,12 +1353,14 @@
     "length": "5:37",
     "published": "10 個月前",
     "queries": [
-      "青島神社 鬼之洗衣板"
+      "青島神社 鬼之洗衣板",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
       "aoshima",
       "karamen",
-      "drive"
+      "drive",
+      "nichinan"
     ]
   },
   {
@@ -1408,10 +1415,12 @@
     "length": "2:06",
     "published": "8 個月前",
     "queries": [
-      "青島神社 鬼之洗衣板"
+      "青島神社 鬼之洗衣板",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
-      "aoshima"
+      "aoshima",
+      "nichinan"
     ]
   },
   {
@@ -1570,7 +1579,8 @@
     "length": "18:48",
     "published": "6 個月前",
     "queries": [
-      "日南海岸 鵜戶神宮 摩艾"
+      "日南海岸 鵜戶神宮 摩艾",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
       "aoshima",
@@ -6122,7 +6132,8 @@
     "length": "10:36",
     "published": "11 か月前",
     "queries": [
-      "えびの高原 霧島 宮崎"
+      "えびの高原 霧島 宮崎",
+      "都城 蝦野高原 霧島 宮崎"
     ],
     "tags": [
       "west_kirishima",
@@ -9216,12 +9227,14 @@
     "length": "15:00",
     "published": "1 年前",
     "queries": [
-      "宮崎 4天3夜 行程"
+      "宮崎 4天3夜 行程",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
       "aoshima",
       "udo",
-      "drive"
+      "drive",
+      "nichinan"
     ]
   },
   {
@@ -10816,5 +10829,291 @@
       "Miyazaki Japan travel vlog"
     ],
     "tags": []
+  },
+  {
+    "id": "iYtymNG11Kk",
+    "title": "九州宮崎景點美食推薦～（宮崎 上）",
+    "channel": "魔王的碗公",
+    "views": "觀看次數：4,588次",
+    "length": "16:28",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 美食 推薦"
+    ],
+    "tags": [
+      "karamen"
+    ]
+  },
+  {
+    "id": "qvii48V6-s0",
+    "title": "27日九州自駕遊 DAY 7高千穗峽一天遊 隧道之駅 高千穂駅 空中小火車 高千穗峽划船攻略 絕美仙境 熊本人氣居酒屋 資料請看資訊欄",
+    "channel": "UGoIGo當龜遇上雞",
+    "views": "觀看次數：6,565次",
+    "length": "16:48",
+    "published": "3 年前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "drive"
+    ]
+  },
+  {
+    "id": "6whb3Nih_50",
+    "title": "九州熊本自由行EP2｜自駕5天 高千穗必去峽谷划船！異世界神社！ Fantasy Secret Land Attractions Canyon Boating No Reservation?",
+    "channel": "跟著我們一起Chill with us",
+    "views": "觀看次數：64,524次",
+    "length": "33:07",
+    "published": "2 年前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "drive"
+    ]
+  },
+  {
+    "id": "MvDkp_Q0t20",
+    "title": "福岡熊本宮崎高千穗✨鬼滅之刃聖地&航海王銅像巡禮 高千穗峽划船｜JR 九州鐵路周遊券三天兩夜鐵道 + 自駕遊｜日本九州 4K VLOG",
+    "channel": "瓶顆旅居日本中",
+    "views": "觀看次數：54,582次",
+    "length": "17:39",
+    "published": "1 年前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "drive"
+    ]
+  },
+  {
+    "id": "GVYVAm_EoAs",
+    "title": "日本高千穗峽手划船體驗，悠閒浪漫的悠遊在峽谷瀑布間",
+    "channel": "Niuvlog帶你看濃縮版旅遊頻道",
+    "views": "觀看次數：134次",
+    "length": "3:35",
+    "published": "6 年前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "drive"
+    ]
+  },
+  {
+    "id": "RSiuH5Cf0Qg",
+    "title": "4K 日南海岸 宮崎県 Coastline Miyazaki Kyushu JAPAN",
+    "channel": "SHISO PRODUCTIONS.",
+    "views": "觀看次數：34,526次",
+    "length": "9:08",
+    "published": "9 年前",
+    "queries": [
+      "青島神社 日南海岸 旅遊"
+    ],
+    "tags": [
+      "aoshima",
+      "nichinan"
+    ]
+  },
+  {
+    "id": "UIAJyZxpAkg",
+    "title": "《九州之旅》宮崎一日遊 日南海岸 青島鬼之洗衫板@BillyLauGuide",
+    "channel": "劉彼利Billy Walker",
+    "views": "觀看次數：325次",
+    "length": "18:07",
+    "published": "1 年前",
+    "queries": [
+      "青島神社 日南海岸 旅遊"
+    ],
+    "tags": [
+      "aoshima",
+      "nichinan"
+    ]
+  },
+  {
+    "id": "ufw85BVsdKs",
+    "title": "宮崎旅行🌴日南市観光　鵜戸神宮　青島神社⛩️パワースポットめぐり旅",
+    "channel": "ゆかりごはん🍙",
+    "views": "觀看次數：263次",
+    "length": "17:26",
+    "published": "3 個月前",
+    "queries": [
+      "青島神社 日南海岸 旅遊"
+    ],
+    "tags": [
+      "aoshima",
+      "nichinan",
+      "udo"
+    ]
+  },
+  {
+    "id": "HZndmyv3jkE",
+    "title": "辣和拉麵“ Masumoto”是延岡的必吃美食！",
+    "channel": "エヌツアCh. 多言語での発信方法を解説",
+    "views": "觀看次數：225次",
+    "length": "2:46",
+    "published": "6 年前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "VawfnO9puZU",
+    "title": "【宮崎旅行2024】vol.2 大雨の青島を観光し、絶品チキン南蛮と焼鳥を食べて辛麺で締める。グリル爛漫、鳥雅、桝元 / Miyazaki trip, Aoshima",
+    "channel": "nori matti",
+    "views": "觀看次數：2,280次",
+    "length": "18:45",
+    "published": "1 年前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "aoshima",
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "l4LBcDZQYQ0",
+    "title": "【宮崎グルメ】チキン南蛮発祥の地　宮崎県延岡市の有名店　食レポ　宮崎の風景　散歩　旅行",
+    "channel": "南国みやざきTV",
+    "views": "觀看次數：471次",
+    "length": "4:02",
+    "published": "2 年前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "YFmUrVXwQrg",
+    "title": "蝦野高原 不動池, 六觀音御池, 白紫池...火山口湖 空撮 UHD",
+    "channel": "UncleEight08",
+    "views": "觀看次數：526次",
+    "length": "1:40",
+    "published": "9 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "uCwYKpnsYxs",
+    "title": "ドローン空撮　えびの高原　不動池　硫黄山　　宮崎県",
+    "channel": "Skyward Aerials | 癒やしのドローン空撮",
+    "views": "觀看次數：482次",
+    "length": "3:43",
+    "published": "7 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "EApWi3STZCw",
+    "title": "宮崎県 霧島連山、えびの高原〜韓国岳～新燃岳～高千穂峰〜夷守岳(2024.11.05)",
+    "channel": "tensuke1000",
+    "views": "觀看次數：251次",
+    "length": "4:09",
+    "published": "2 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "takachiho",
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "xiE4iYH4JUw",
+    "title": "Miyazaki in 48 Hours: Japan Travel Guide for Couple Travelers",
+    "channel": "Japan Vlog | Hellen & Yohei",
+    "views": "觀看次數：5,673次",
+    "length": "8:14",
+    "published": "3 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "BqR3KE5nNFU",
+    "title": "99% of Japan Tourists Never Visit Miyazaki (They’re Missing Out)",
+    "channel": "Happy Gaijin和Ninja Monkey Japan",
+    "views": "觀看次數：4,924次",
+    "length": "8:08",
+    "published": "5 個月前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "XWTLbn0OZhM",
+    "title": "Japan Travel Vlog 2022 - Family Trip in Kyushu | Miyazaki | Oita | Moji",
+    "channel": "Azusa | Okawari Recipes ",
+    "views": "觀看次數：617次",
+    "length": "8:24",
+    "published": "4 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "zGAarC15sRE",
+    "title": "I Wasn't Ready For The Beauty of Kyushu...Japan (Miyazaki & Kagoshima)",
+    "channel": "Julimi",
+    "views": "觀看次數：13,126次",
+    "length": "20:33",
+    "published": "1 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "4smh5koOd_0",
+    "title": "Solo Travel in Miyazaki Japan | Kyushu Trip",
+    "channel": "Solo Travel Japan",
+    "views": "觀看次數：197,307次",
+    "length": "16:47",
+    "published": "5 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "fNb1t0hU3ZE",
+    "title": "A Magical Trip to Miyazaki 🇯🇵 | Totoro Bus Stop, Takachiho Gorge & a Stay in an Old Japanese House",
+    "channel": "Goodays in Japan",
+    "views": "觀看次數：209次",
+    "length": "8:56",
+    "published": "3 個月前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": [
+      "takachiho"
+    ]
   }
 ]
