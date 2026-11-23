@@ -958,23 +958,6 @@ const html = `<!DOCTYPE html>
       padding: 3px 6px; font-size: 10.8px; font-family: inherit; color: var(--ink); outline: none;
     }
 
-    /* Overview MiniMap */
-    .minimap-wrap {
-      position: absolute; bottom: 52px; right: 16px; z-index: 895;
-      width: 148px; height: 156px; border-radius: var(--radius);
-      background: var(--paper-glass); border: 1px solid var(--hairline);
-      box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column;
-      transition: bottom 0.2s ease, opacity 0.2s ease;
-    }
-    body.elev-open .minimap-wrap { bottom: 218px; }
-    .minimap-wrap.hidden { display: none; }
-    .minimap-head {
-      padding: 3px 7px; font-size: 9.6px; font-weight: 700; color: var(--ink-soft);
-      background: var(--linen); border-bottom: 1px solid var(--hairline);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    #miniMap { width: 100%; flex: 1; background: #EFECE6; }
-
     /* GIS Right-Click Context Menu */
     .ctx-menu {
       position: fixed; z-index: 1900; min-width: 210px;
@@ -1051,7 +1034,7 @@ const html = `<!DOCTYPE html>
     #printSheet { display: none; }
     @media print {
       html, body { overflow: visible !important; height: auto !important; background: #fff !important; }
-      #map, .sidebar, .sidebar-toggle, .top-bar, .north-arrow, .right-ctrl-stack, .minimap-wrap, .swipe-divider, .swipe-banner, .ctx-menu, .help-backdrop, .map-legend, .elev-dock, .status-bar, .measure-banner, .toast { display: none !important; }
+      #map, .sidebar, .sidebar-toggle, .top-bar, .north-arrow, .right-ctrl-stack, .swipe-divider, .swipe-banner, .ctx-menu, .help-backdrop, .map-legend, .elev-dock, .status-bar, .measure-banner, .toast { display: none !important; }
       #printSheet { display: block !important; padding: 20px; color: #2E2B27; font-size: 11px; line-height: 1.5; }
       .pr-header { border-bottom: 2px solid #7F0019; padding-bottom: 10px; margin-bottom: 14px; }
       .pr-title { font-size: 19px; font-weight: 700; }
@@ -1064,9 +1047,6 @@ const html = `<!DOCTYPE html>
       .pr-card { border: 1px solid #D8D1C5; padding: 6px 8px; break-inside: avoid; }
     }
 
-    @media (max-width: 980px) {
-      .minimap-wrap { display: none !important; }
-    }
     @media (max-width: 820px) {
       .sidebar {
         top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; max-width: none; height: 58vh;
@@ -1152,14 +1132,7 @@ const html = `<!DOCTYPE html>
   </div>
   <div class="right-ctrl-stack">
     <button class="map-fab" id="btnLocate" title="GPS 定位我的位置與最近景點（快捷鍵 L）">◎</button>
-    <button class="map-fab active" id="btnMiniMapToggle" title="顯示 / 隱藏全縣鷹眼縮圖">▣</button>
     <button class="map-fab" id="btnHelp" title="鍵盤快捷鍵與 GIS 操作說明（快捷鍵 ?）">?</button>
-  </div>
-
-  <!-- Overview MiniMap -->
-  <div class="minimap-wrap" id="miniMapWrap">
-    <div class="minimap-head"><span>全縣鷹眼圖</span><span style="color:var(--muji-red)">點擊跳轉</span></div>
-    <div id="miniMap"></div>
   </div>
 
   <!-- GIS Right-Click Context Menu -->
@@ -2542,33 +2515,7 @@ const html = `<!DOCTYPE html>
     document.getElementById('btnLocate').addEventListener('click', locateUser);
 
     // =========================================================================
-    // SENIOR WEBGIS MODULE 3: INTERACTIVE OVERVIEW MINIMAP
-    // =========================================================================
-    let miniMap = null, miniRect = null;
-    function initMiniMap() {
-      if (miniMap) return;
-      miniMap = L.map('miniMap', {
-        center: [32.04, 131.30], zoom: 7, zoomControl: false, attributionControl: false,
-        dragging: false, scrollWheelZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false, tap: false
-      });
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 12 }).addTo(miniMap);
-      Object.keys(DAY_ROUTES).forEach(d => {
-        L.polyline(DAY_ROUTES[d].coords, { color: DAY_ROUTES[d].color, weight: 1.6, opacity: 0.85, interactive: false }).addTo(miniMap);
-      });
-      miniRect = L.rectangle(map.getBounds(), { color: '#7F0019', weight: 1.6, fillColor: '#7F0019', fillOpacity: 0.14, interactive: false }).addTo(miniMap);
-      miniMap.on('click', e => map.panTo(e.latlng));
-      map.on('moveend zoomend', () => { if (miniRect) miniRect.setBounds(map.getBounds()); });
-    }
-    document.getElementById('btnMiniMapToggle').addEventListener('click', () => {
-      const wrap = document.getElementById('miniMapWrap');
-      const hide = !wrap.classList.contains('hidden');
-      wrap.classList.toggle('hidden', hide);
-      document.getElementById('btnMiniMapToggle').classList.toggle('active', !hide);
-      if (!hide && miniMap) setTimeout(() => { miniMap.invalidateSize(); miniRect.setBounds(map.getBounds()); }, 60);
-    });
-
-    // =========================================================================
-    // SENIOR WEBGIS MODULE 4: RIGHT-CLICK CONTEXT MENU & PERSISTENT USER PINS
+    // SENIOR WEBGIS MODULE 3: RIGHT-CLICK CONTEXT MENU & PERSISTENT USER PINS
     // =========================================================================
     const USER_PIN_KEY = 'miyazaki_webgis_userpins_v1';
     let userPins = [];
@@ -2750,7 +2697,6 @@ const html = `<!DOCTYPE html>
     renderUserPins();
     updateProgress();
     if (!applyUrlHashIfPresent()) fitAllBounds();
-    initMiniMap();
   </script>
 </body>
 </html>
