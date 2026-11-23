@@ -914,11 +914,144 @@ const html = `<!DOCTYPE html>
     .leaflet-control-attribution a { color: var(--ink-soft) !important; }
     .leaflet-tooltip { background: var(--paper) !important; color: var(--ink) !important; border: 1px solid var(--hairline) !important; border-radius: 3px !important; box-shadow: var(--shadow-sm) !important; font-size: 11px; padding: 4px 8px; }
 
+    /* ---- SENIOR WEBGIS WIDGETS: SWIPE, GPS, MINIMAP, CONTEXT MENU, MODAL ---- */
+    .right-ctrl-stack {
+      position: absolute; top: 140px; right: 16px; z-index: 900;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .map-fab {
+      width: 34px; height: 34px; border-radius: var(--radius);
+      background: var(--paper-glass); backdrop-filter: blur(10px);
+      border: 1px solid var(--hairline); color: var(--ink);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 13.5px; font-weight: 700; box-shadow: var(--shadow-sm);
+      transition: all 0.16s ease; font-family: inherit;
+    }
+    .map-fab:hover { background: var(--linen); border-color: var(--ink); }
+    .map-fab.active { background: var(--muji-red); color: #F7F5F0; border-color: var(--muji-red); }
+
+    /* Split-Screen Basemap Swipe Compare */
+    .swipe-divider {
+      position: fixed; top: 0; bottom: 0; left: 55%; width: 3px; z-index: 880;
+      background: #F7F5F0; box-shadow: 0 0 12px rgba(0, 0, 0, 0.55);
+      cursor: ew-resize; display: none; touch-action: none;
+    }
+    .swipe-divider.show { display: block; }
+    .swipe-handle {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--paper); border: 2px solid var(--muji-red);
+      color: var(--muji-red); display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; box-shadow: var(--shadow); user-select: none;
+    }
+    .swipe-banner {
+      position: absolute; top: 64px; left: 50%; transform: translateX(-50%);
+      z-index: 940; background: var(--paper-glass); backdrop-filter: blur(10px);
+      border: 1px solid var(--muji-red-border); border-radius: var(--radius);
+      padding: 6px 12px; display: none; align-items: center; gap: 8px;
+      font-size: 11px; color: var(--ink); box-shadow: var(--shadow);
+    }
+    .swipe-banner.show { display: flex; }
+    .swipe-tag { font-weight: 700; color: var(--muji-red); }
+    .swipe-select {
+      background: #fff; border: 1px solid var(--hairline); border-radius: 3px;
+      padding: 3px 6px; font-size: 10.8px; font-family: inherit; color: var(--ink); outline: none;
+    }
+
+    /* Overview MiniMap */
+    .minimap-wrap {
+      position: absolute; bottom: 52px; right: 16px; z-index: 895;
+      width: 148px; height: 156px; border-radius: var(--radius);
+      background: var(--paper-glass); border: 1px solid var(--hairline);
+      box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column;
+      transition: bottom 0.2s ease, opacity 0.2s ease;
+    }
+    body.elev-open .minimap-wrap { bottom: 218px; }
+    .minimap-wrap.hidden { display: none; }
+    .minimap-head {
+      padding: 3px 7px; font-size: 9.6px; font-weight: 700; color: var(--ink-soft);
+      background: var(--linen); border-bottom: 1px solid var(--hairline);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    #miniMap { width: 100%; flex: 1; background: #EFECE6; }
+
+    /* GIS Right-Click Context Menu */
+    .ctx-menu {
+      position: fixed; z-index: 1900; min-width: 210px;
+      background: var(--paper); border: 1px solid var(--hairline);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 5px 0; display: none; font-size: 11.4px;
+    }
+    .ctx-menu.show { display: block; }
+    .ctx-coord {
+      padding: 5px 12px 6px; font-size: 10px; color: var(--ink-muted);
+      border-bottom: 1px solid var(--hairline); font-variant-numeric: tabular-nums;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .ctx-item {
+      width: 100%; text-align: left; background: transparent; border: none;
+      padding: 7px 12px; font-size: 11.3px; color: var(--ink); cursor: pointer;
+      display: flex; align-items: center; gap: 8px; font-family: inherit;
+    }
+    .ctx-item:hover { background: var(--linen); color: var(--muji-red); }
+
+    /* Custom User Pin, GPS Pulse & Elevation Beacon */
+    .user-pin {
+      width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+      background: var(--muji-red); border: 2px solid #F7F5F0;
+      box-shadow: 0 3px 9px rgba(0, 0, 0, 0.45);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .user-pin span { transform: rotate(45deg); color: #fff; font-size: 11px; font-weight: 800; }
+    .gps-dot {
+      width: 14px; height: 14px; border-radius: 50%; background: #2563EB;
+      border: 2.5px solid #FFFFFF; box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.28);
+      animation: gpsPulse 1.8s infinite;
+    }
+    @keyframes gpsPulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.45); }
+      70% { box-shadow: 0 0 0 14px rgba(37, 99, 235, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+    .elev-beacon {
+      width: 16px; height: 16px; border-radius: 50%; background: var(--muji-red);
+      border: 2.5px solid #F7F5F0; box-shadow: 0 0 0 6px rgba(127, 0, 25, 0.28);
+    }
+
+    /* Pagination Load-More Button */
+    .load-more-btn {
+      width: 100%; margin-top: 6px; padding: 8px; border-radius: 3px;
+      background: var(--linen); border: 1px solid var(--hairline);
+      color: var(--ink); font-size: 11.2px; font-weight: 600;
+      cursor: pointer; font-family: inherit; transition: all 0.15s;
+    }
+    .load-more-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+    /* Shortcut Help Modal */
+    .help-backdrop {
+      position: fixed; inset: 0; z-index: 2100; background: rgba(46, 43, 39, 0.42);
+      backdrop-filter: blur(3px); display: none; align-items: center; justify-content: center; padding: 16px;
+    }
+    .help-backdrop.show { display: flex; }
+    .help-card {
+      width: 100%; max-width: 440px; background: var(--paper); border: 1px solid var(--hairline);
+      border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 18px;
+    }
+    .help-head { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--hairline); margin-bottom: 10px; }
+    .help-title { font-size: 14px; font-weight: 700; color: var(--ink); }
+    .help-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 12px; font-size: 11.2px; color: var(--ink-soft); }
+    .kbd {
+      display: inline-block; min-width: 20px; text-align: center; padding: 1px 5px;
+      background: var(--linen); border: 1px solid var(--hairline); border-radius: 2px;
+      font-size: 10px; font-weight: 700; color: var(--ink); margin-right: 5px;
+    }
+    .sb-head-actions { display: flex; align-items: center; gap: 5px; }
+
     /* Print Handbook */
     #printSheet { display: none; }
     @media print {
       html, body { overflow: visible !important; height: auto !important; background: #fff !important; }
-      #map, .sidebar, .sidebar-toggle, .top-bar, .north-arrow, .map-legend, .elev-dock, .status-bar, .measure-banner, .toast { display: none !important; }
+      #map, .sidebar, .sidebar-toggle, .top-bar, .north-arrow, .right-ctrl-stack, .minimap-wrap, .swipe-divider, .swipe-banner, .ctx-menu, .help-backdrop, .map-legend, .elev-dock, .status-bar, .measure-banner, .toast { display: none !important; }
       #printSheet { display: block !important; padding: 20px; color: #2E2B27; font-size: 11px; line-height: 1.5; }
       .pr-header { border-bottom: 2px solid #7F0019; padding-bottom: 10px; margin-bottom: 14px; }
       .pr-title { font-size: 19px; font-weight: 700; }
@@ -931,13 +1064,26 @@ const html = `<!DOCTYPE html>
       .pr-card { border: 1px solid #D8D1C5; padding: 6px 8px; break-inside: avoid; }
     }
 
+    @media (max-width: 980px) {
+      .minimap-wrap { display: none !important; }
+    }
     @media (max-width: 820px) {
-      .sidebar { width: calc(100% - 32px); max-width: 406px; }
-      .top-bar { left: 62px; top: auto; bottom: 54px; right: 16px; justify-content: flex-start; }
+      .sidebar {
+        top: auto; left: 8px; right: 8px; bottom: 8px; width: auto; max-width: none; height: 58vh;
+        border-radius: 10px 10px 4px 4px;
+        transition: transform 0.28s cubic-bezier(.4,0,.2,1);
+      }
+      body.sidebar-collapsed .sidebar { transform: translateY(calc(100% + 16px)); }
+      .sidebar-toggle { top: 12px; left: 12px !important; }
+      .top-bar { left: 56px !important; top: 12px; right: 58px; bottom: auto; justify-content: flex-start; }
+      .gis-toolbar { flex-wrap: nowrap; overflow-x: auto; max-width: 100%; scrollbar-width: none; }
+      .gis-toolbar::-webkit-scrollbar { display: none; }
       .map-legend, .north-arrow { display: none; }
-      .leaflet-control-scale { margin-left: 16px !important; }
-      .elev-dock { left: 16px; }
-      .status-bar { font-size: 10px; gap: 8px; }
+      .right-ctrl-stack { top: 96px; right: 12px; }
+      .leaflet-control-zoom { margin-top: 12px !important; margin-right: 12px !important; }
+      .leaflet-control-scale { margin-left: 12px !important; margin-bottom: 42px !important; }
+      .elev-dock { left: 8px; right: 8px; bottom: 44px; height: 142px; }
+      .status-bar { left: 8px; right: 8px; bottom: 8px; font-size: 9.8px; gap: 7px; justify-content: space-between; }
     }
   </style>
 </head>
@@ -968,19 +1114,87 @@ const html = `<!DOCTYPE html>
       <span class="tool-sep"></span>
       <button class="tool-btn active" id="btnHybrid" title="疊加 Esri 衛星地名與道路標註">衛星標註</button>
       <button class="tool-btn active" id="btnRegions" title="顯示五大地理分區圖層">五大分區</button>
+      <button class="tool-btn" id="btnSwipe" title="開啟雙底圖捲簾對比模式（快捷鍵 S）">捲簾對比</button>
       <button class="tool-btn" id="btnElev" title="開啟 4 日海拔剖面圖（快捷鍵 E）">海拔剖面</button>
       <button class="tool-btn" id="btnMeasure" title="距離與面積量測工具（快捷鍵 M）">空間量測</button>
       <button class="tool-btn" id="btnTour" title="依序飛覽全縣 4 天 3 夜景點">航線導覽</button>
     </div>
   </div>
 
-  <!-- Cartographic North Arrow -->
+  <!-- Split-Screen Swipe Compare Controls -->
+  <div class="swipe-divider" id="swipeDivider" title="左右拖曳對比雙底圖">
+    <div class="swipe-handle">⇄</div>
+  </div>
+  <div class="swipe-banner" id="swipeBanner">
+    <span class="swipe-tag">捲簾對比</span>
+    <span>左側：<strong id="swipeLeftLabel">Esri 衛星</strong></span>
+    <span>｜右側：</span>
+    <select class="swipe-select" id="swipeRightSelect">
+      <option value="gsi_pale" selected>國土地理院 淡色無印圖</option>
+      <option value="gsi_std">國土地理院 標準地形圖</option>
+      <option value="gsi_photo">國土地理院 航空寫真</option>
+      <option value="osm">OpenStreetMap 路網</option>
+      <option value="esri_topo">Esri 地形等高線</option>
+      <option value="esri_relief">Esri 地形暈渲</option>
+      <option value="carto_light">CartoDB 極簡白底</option>
+      <option value="esri_sat">Esri 高解析衛星</option>
+    </select>
+    <button class="measure-clear" id="btnSwipeClose">結束對比</button>
+  </div>
+
+  <!-- Cartographic North Arrow & Right Floating Stack -->
   <div class="north-arrow" title="正北方向（WGS84）">
     <span>N</span>
     <svg width="14" height="18" viewBox="0 0 14 18" fill="none">
       <path d="M7 1L12 16L7 12.6L2 16L7 1Z" fill="#2E2B27"/>
       <path d="M7 1L12 16L7 12.6V1Z" fill="#7F0019"/>
     </svg>
+  </div>
+  <div class="right-ctrl-stack">
+    <button class="map-fab" id="btnLocate" title="GPS 定位我的位置與最近景點（快捷鍵 L）">◎</button>
+    <button class="map-fab active" id="btnMiniMapToggle" title="顯示 / 隱藏全縣鷹眼縮圖">▣</button>
+    <button class="map-fab" id="btnHelp" title="鍵盤快捷鍵與 GIS 操作說明（快捷鍵 ?）">?</button>
+  </div>
+
+  <!-- Overview MiniMap -->
+  <div class="minimap-wrap" id="miniMapWrap">
+    <div class="minimap-head"><span>全縣鷹眼圖</span><span style="color:var(--muji-red)">點擊跳轉</span></div>
+    <div id="miniMap"></div>
+  </div>
+
+  <!-- GIS Right-Click Context Menu -->
+  <div class="ctx-menu" id="ctxMenu">
+    <div class="ctx-coord"><span id="ctxCoordText">32.0000, 131.3000</span><span>WGS84</span></div>
+    <button class="ctx-item" id="ctxCopyCoord">📋 複製此點 WGS84 坐標</button>
+    <button class="ctx-item" id="ctxBuffer">⭕ 以此點做 15 km 環域搜尋</button>
+    <button class="ctx-item" id="ctxMeasure">📏 從此點開始空間量測</button>
+    <button class="ctx-item" id="ctxAddPin">📌 釘選「我的自訂標記」</button>
+    <button class="ctx-item" id="ctxStreetView">🧭 開啟 Google Maps 街景</button>
+  </div>
+
+  <!-- Keyboard Shortcuts & Tips Modal -->
+  <div class="help-backdrop" id="helpModal">
+    <div class="help-card">
+      <div class="help-head">
+        <span class="help-title">WebGIS 快捷鍵與進階操作說明</span>
+        <button class="elev-close" id="btnHelpClose">×</button>
+      </div>
+      <div class="help-grid">
+        <div><span class="kbd">0</span>全縣總覽視角</div>
+        <div><span class="kbd">1-4</span>切換 Day 1–4</div>
+        <div><span class="kbd">S</span>雙底圖捲簾對比</div>
+        <div><span class="kbd">E</span>互動海拔剖面圖</div>
+        <div><span class="kbd">M</span>距離／面積量測</div>
+        <div><span class="kbd">P</span>開關 18 處停車場</div>
+        <div><span class="kbd">L</span>GPS 定位我的位置</div>
+        <div><span class="kbd">B</span>收合／展開側欄</div>
+        <div><span class="kbd">?</span>開啟本說明視窗</div>
+        <div><span class="kbd">Esc</span>關閉工具／彈窗</div>
+      </div>
+      <div style="margin-top:11px;padding-top:9px;border-top:1px solid var(--hairline);font-size:10.8px;color:var(--ink-soft);line-height:1.6">
+        <strong>專業操作技巧：</strong>在地圖任意處<strong>點擊右鍵</strong>，可直接複製 WGS84 坐標、執行 15 km 周邊停車/美食環域搜尋、開啟 Google 街景，或釘選屬於自己的私人景點標記（離線儲存於瀏覽器並支援 GPX/GeoJSON 匯出）。
+      </div>
+    </div>
   </div>
 
   <!-- Collapsible Cartographic Legend -->
@@ -1022,7 +1236,10 @@ const html = `<!DOCTYPE html>
     <div class="sb-header">
       <div class="sb-top-row">
         <div class="sb-kicker">ALL-MIYAZAKI REAL-ROAD WEBGIS</div>
-        <button class="print-mini-btn" id="btnPrint" title="列印 / 匯出無印風旅途手冊 PDF">列印旅途手冊</button>
+        <div class="sb-head-actions">
+          <button class="print-mini-btn" id="btnShareView" title="複製目前視角、底圖與天數之專屬分享網址">分享視角</button>
+          <button class="print-mini-btn" id="btnPrint" title="列印 / 匯出無印風旅途手冊 PDF">列印手冊</button>
+        </div>
       </div>
       <div class="sb-title">全宮崎縣 四天三夜旅圖</div>
       <div class="sb-sub">OSRM 實際公路路網（${totalRoadKm} km）× 9 款底圖 × ${PARKING_SPOTS.length} 處停車 × ${compactVideos.length} 部 YT × ${webGuides.length} 篇網頁攻略（更新 ${lastUpdated}）。</div>
@@ -1107,6 +1324,7 @@ const html = `<!DOCTYPE html>
           <div class="layer-row"><label class="layer-label"><input type="checkbox" id="chkRegions" checked /> 五大地理分區範圍（Polygon）</label></div>
           <div class="layer-row"><label class="layer-label"><input type="checkbox" id="chkRoutes" checked /> OSRM 實際公路路網（Polyline）</label></div>
           <div class="layer-row"><label class="layer-label"><input type="checkbox" id="chkHeat" checked /> YouTube 聲量比例圓（Heat Ring）</label></div>
+          <div class="layer-row"><label class="layer-label"><input type="checkbox" id="chkUserPins" checked /> <span class="swatch" style="background:var(--muji-red)"></span> 我的自訂標記（右鍵地圖釘選，<span id="userPinCount">0</span> 處）</label></div>
           <div class="slider-row">
             <span>疊加透明度</span>
             <input type="range" id="overlayOpacity" min="0" max="100" value="65" />
@@ -1185,6 +1403,10 @@ const html = `<!DOCTYPE html>
               <option value="travel">旅遊景點・官方指南</option>
               <option value="food">在地美食・邊走邊吃</option>
             </select>
+            <select class="yt-select" id="webSortFilter">
+              <option value="newest">排序：最新雲端更新優先</option>
+              <option value="curated">排序：官方精選指南優先</option>
+            </select>
           </div>
           <div class="yt-count-bar">
             <span id="webCountText">顯示 ${webGuides.length} 篇情報</span>
@@ -1201,7 +1423,7 @@ const html = `<!DOCTYPE html>
     <span>路網 <strong>OSRM 實際道路</strong></span>
     <span>坐標 <strong id="coordReadout">32.0500°N, 131.3200°E</strong></span>
     <span>Zoom <strong id="zoomReadout">9</strong></span>
-    <span style="color:#9E9589">鍵盤 <strong>1-4 · E · M · P</strong></span>
+    <span style="color:#9E9589;cursor:pointer" onclick="toggleHelpModal(true)" title="檢視完整快捷鍵說明">快捷鍵 <strong>S · E · M · L · ?</strong></span>
   </div>
 
   <div class="toast" id="toast"></div>
@@ -1271,70 +1493,34 @@ const html = `<!DOCTYPE html>
     };
 
     // =========================================================================
-    // INITIALIZE MAP WITH 9 PROFESSIONAL BASEMAPS (Default: Esri World Imagery)
+    // INITIALIZE MAP WITH 9 PROFESSIONAL BASEMAPS (Canvas-Accelerated Vectors)
     // =========================================================================
-    const map = L.map('map', { center: [32.05, 131.30], zoom: 9, zoomControl: false, maxZoom: 18 });
+    const map = L.map('map', { center: [32.05, 131.30], zoom: 9, zoomControl: false, maxZoom: 18, preferCanvas: true });
     L.control.zoom({ position: 'topright' }).addTo(map);
     L.control.scale({ position: 'bottomleft', imperial: false, metric: true }).addTo(map);
 
-    const basemaps = {
-      esri_sat: {
-        isSat: true,
-        layer: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-          attribution: 'Tiles &copy; Esri &mdash; Esri, Maxar, Earthstar Geographics, IGN', maxZoom: 18
-        })
-      },
-      esri_clarity: {
-        isSat: true,
-        layer: L.tileLayer('https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-          attribution: 'Tiles &copy; Esri Imagery Clarity', maxZoom: 18
-        })
-      },
-      gsi_photo: {
-        isSat: true,
-        layer: L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', {
-          attribution: '地理院タイル（国土地理院・シームレス空中写真）', maxZoom: 18
-        })
-      },
-      gsi_pale: {
-        isSat: false,
-        layer: L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
-          attribution: '地理院タイル（国土地理院・淡色地図）', maxZoom: 18
-        })
-      },
-      gsi_std: {
-        isSat: false,
-        layer: L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-          attribution: '地理院タイル（国土地理院・標準地図）', maxZoom: 18
-        })
-      },
-      esri_topo: {
-        isSat: false,
-        layer: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
-          attribution: 'Tiles &copy; Esri World Topo', maxZoom: 18
-        })
-      },
-      esri_relief: {
-        isSat: false,
-        layer: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', {
-          attribution: 'Tiles &copy; Esri Shaded Relief', maxZoom: 13
-        })
-      },
-      osm: {
-        isSat: false,
-        layer: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution: '&copy; OpenStreetMap contributors', maxZoom: 19
-        })
-      },
-      carto_light: {
-        isSat: false,
-        layer: L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-          attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19
-        })
-      }
+    const BASEMAP_META = {
+      esri_sat: { name: 'Esri 高解析衛星', isSat: true, url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri &mdash; Esri, Maxar, Earthstar Geographics, IGN', maxZoom: 18 } },
+      esri_clarity: { name: 'Esri Clarity 衛星', isSat: true, url: 'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri Imagery Clarity', maxZoom: 18 } },
+      gsi_photo: { name: '國土地理院 航空寫真', isSat: true, url: 'https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', opts: { attribution: '地理院タイル（国土地理院・シームレス空中写真）', maxZoom: 18 } },
+      gsi_pale: { name: '國土地理院 淡色無印圖', isSat: false, url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', opts: { attribution: '地理院タイル（国土地理院・淡色地図）', maxZoom: 18 } },
+      gsi_std: { name: '國土地理院 標準地形圖', isSat: false, url: 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', opts: { attribution: '地理院タイル（国土地理院・標準地図）', maxZoom: 18 } },
+      esri_topo: { name: 'Esri 地形等高線', isSat: false, url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri World Topo', maxZoom: 18 } },
+      esri_relief: { name: 'Esri 地形暈渲', isSat: false, url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri Shaded Relief', maxZoom: 13 } },
+      osm: { name: 'OpenStreetMap 路網', isSat: false, url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', opts: { attribution: '&copy; OpenStreetMap contributors', maxZoom: 19 } },
+      carto_light: { name: 'CartoDB 極簡白底', isSat: false, url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', opts: { attribution: '&copy; OpenStreetMap &copy; CARTO', subdomains: 'abcd', maxZoom: 19 } }
     };
+    const basemaps = {};
+    Object.keys(BASEMAP_META).forEach(k => {
+      basemaps[k] = { isSat: BASEMAP_META[k].isSat, name: BASEMAP_META[k].name, layer: L.tileLayer(BASEMAP_META[k].url, BASEMAP_META[k].opts) };
+    });
     let activeBasemap = 'esri_sat';
     basemaps.esri_sat.layer.addTo(map);
+
+    // Dedicated pane for Split-Screen Swipe Compare (sits above primary tilePane, below overlays)
+    map.createPane('swipePane');
+    map.getPane('swipePane').style.zIndex = 240;
+    map.getPane('swipePane').style.pointerEvents = 'none';
 
     const esriLabels = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18, opacity: 0.9 });
     const esriRoads = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Transportation/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18, opacity: 0.5 });
@@ -1349,6 +1535,9 @@ const html = `<!DOCTYPE html>
     const heatGroup = L.layerGroup().addTo(map);
     const bufferGroup = L.layerGroup().addTo(map);
     const measureGroup = L.layerGroup().addTo(map);
+    const userPinGroup = L.layerGroup().addTo(map);
+    const gpsGroup = L.layerGroup().addTo(map);
+    const elevBeaconGroup = L.layerGroup().addTo(map);
 
     const markersById = {};
     const regionPolys = [];
@@ -1366,8 +1555,10 @@ const html = `<!DOCTYPE html>
       basemaps[key].layer.bringToBack();
       document.getElementById('basemapQuick').value = key;
       document.querySelectorAll('.bm-card').forEach(c => c.classList.toggle('active', c.dataset.bm === key));
+      document.getElementById('swipeLeftLabel').textContent = basemaps[key].name;
       // Auto-toggle satellite hybrid labels cleanly when switching between satellite and vector street maps
       setHybrid(basemaps[key].isSat);
+      scheduleHashSync();
     }
 
     document.getElementById('basemapQuick').addEventListener('change', e => switchBasemap(e.target.value));
@@ -1389,15 +1580,20 @@ const html = `<!DOCTYPE html>
       }).addTo(regionGroup);
     });
 
-    // Draw REAL OSRM Road-Network Polylines
+    // Draw REAL OSRM Road-Network Polylines (with hover telemetry highlight)
     Object.keys(DAY_ROUTES).forEach(d => {
       const r = DAY_ROUTES[d];
-      L.polyline(r.coords, { color: '#F7F5F0', weight: 6, opacity: 0.85, lineJoin: 'round' }).addTo(dayRouteGroups[d]);
-      L.polyline(r.coords, {
-        color: r.color, weight: 3.4, opacity: 0.96, lineJoin: 'round',
+      const dayPois = POIS.filter(p => p.day === Number(d));
+      const minE = Math.min(...dayPois.map(p => p.elev)), maxE = Math.max(...dayPois.map(p => p.elev));
+      L.polyline(r.coords, { color: '#F7F5F0', weight: 6, opacity: 0.85, lineJoin: 'round', interactive: false }).addTo(dayRouteGroups[d]);
+      const line = L.polyline(r.coords, {
+        color: r.color, weight: 3.6, opacity: 0.96, lineJoin: 'round',
         dashArray: d === '4' ? '7, 6' : null
-      }).bindTooltip(\`<strong>\${r.name}</strong><br>OSRM 實際路網：\${r.distKm} km（約 \${Math.floor(r.driveMin/60)}h \${r.driveMin%60}m）\`, { sticky: true })
-        .addTo(dayRouteGroups[d]);
+      }).bindTooltip(\`<strong>\${r.name}</strong><br>OSRM 實際路網：\${r.distKm} km（約 \${Math.floor(r.driveMin/60)}h \${r.driveMin%60}m）<br>海拔範圍：\${minE} m ～ \${maxE} m（點擊縮放至本日）\`, { sticky: true });
+      line.on('mouseover', () => line.setStyle({ weight: 5.5, opacity: 1 }));
+      line.on('mouseout', () => line.setStyle({ weight: 3.6, opacity: 0.96 }));
+      line.on('click', () => { if (!measuring) fitDay(Number(d)); });
+      line.addTo(dayRouteGroups[d]);
     });
 
     function buildVideoBlock(tag) {
@@ -1657,13 +1853,20 @@ const html = `<!DOCTYPE html>
     document.addEventListener('click', e => { if (!e.target.closest('.omni-wrap')) omniResults.classList.remove('show'); });
 
     // =========================================================================
-    // ELEVATION PROFILE SVG
+    // ELEVATION PROFILE SVG (AllTrails-style Synchronized Map Beacon & Gain)
     // =========================================================================
     function renderElevationProfile() {
       const svg = document.getElementById('elevSvg');
       const W = 900, H = 112, padL = 36, padR = 16, padT = 14, padB = 22, maxElev = 1300;
       const stepX = (W - padL - padR) / (POIS.length - 1);
       const pts = POIS.map((p, idx) => ({ x: padL + idx * stepX, y: padT + (1 - p.elev / maxElev) * (H - padT - padB), p }));
+      let gainM = 0, lossM = 0;
+      for (let i = 1; i < POIS.length; i++) {
+        const diff = POIS[i].elev - POIS[i - 1].elev;
+        if (diff > 0) gainM += diff; else lossM += Math.abs(diff);
+      }
+      const headSpan = document.querySelector('#elevDock .elev-head > span');
+      if (headSpan) headSpan.textContent = \`全宮崎 4 日海拔剖面（最高 1,200 m · 總爬升 +\${gainM.toLocaleString()} m / 下降 -\${lossM.toLocaleString()} m）\`;
       let gridSvg = '';
       [0, 400, 800, 1200].forEach(val => {
         const y = padT + (1 - val / maxElev) * (H - padT - padB);
@@ -1681,13 +1884,32 @@ const html = `<!DOCTYPE html>
         if ([0, 7, 8, 10, 13, 21, pts.length - 1].includes(idx)) {
           nodeSvg += \`<text x="\${pt.x.toFixed(1)}" y="\${H - 6}" text-anchor="middle" font-size="8.5" fill="#59544C">\${esc(pt.p.area)}</text>\`;
         }
-        nodeSvg += \`<circle cx="\${pt.x.toFixed(1)}" cy="\${pt.y.toFixed(1)}" r="4.2" fill="\${c}" stroke="#F7F5F0" stroke-width="1.5" style="cursor:pointer"
-          onmouseenter="document.getElementById('elevHoverInfo').textContent='Day \${pt.p.day}-\${pt.p.seq} \${esc(pt.p.name)}｜海拔 \${pt.p.elev} m（點擊定位）'"
+        nodeSvg += \`<circle cx="\${pt.x.toFixed(1)}" cy="\${pt.y.toFixed(1)}" r="4.8" fill="\${c}" stroke="#F7F5F0" stroke-width="1.6" style="cursor:pointer"
+          onmouseenter="hoverElevNode(\${idx}, \${pt.x.toFixed(1)})"
+          onmouseleave="clearElevBeacon()"
           onclick="focusAny('\${pt.p.id}',\${pt.p.lat},\${pt.p.lng},14)"/>\`;
       });
       svg.setAttribute('viewBox', \`0 0 \${W} \${H}\`);
-      svg.innerHTML = \`<defs><linearGradient id="elevGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7F0019" stop-opacity="0.18"/><stop offset="100%" stop-color="#7F0019" stop-opacity="0.02"/></linearGradient></defs>\${gridSvg}<polygon points="\${polyPts}" fill="url(#elevGrad)"/>\${segSvg}\${nodeSvg}\`;
+      svg.innerHTML = \`<defs><linearGradient id="elevGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7F0019" stop-opacity="0.18"/><stop offset="100%" stop-color="#7F0019" stop-opacity="0.02"/></linearGradient></defs>\${gridSvg}<polygon points="\${polyPts}" fill="url(#elevGrad)"/>\${segSvg}<line id="elevHairline" x1="0" y1="\${padT}" x2="0" y2="\${H - padB}" stroke="#7F0019" stroke-width="1.2" stroke-dasharray="3,2" style="display:none"/>\${nodeSvg}\`;
     }
+
+    window.hoverElevNode = function(idx, svgX) {
+      const p = POIS[idx];
+      if (!p) return;
+      document.getElementById('elevHoverInfo').textContent = \`Day \${p.day}-\${p.seq} \${p.name}｜海拔 \${p.elev} m（點擊飛覽）\`;
+      const hl = document.getElementById('elevHairline');
+      if (hl) { hl.setAttribute('x1', svgX); hl.setAttribute('x2', svgX); hl.style.display = 'block'; }
+      elevBeaconGroup.clearLayers();
+      L.marker([p.lat, p.lng], {
+        interactive: false, zIndexOffset: 900,
+        icon: L.divIcon({ className: 'elev-beacon-wrap', html: '<div class="elev-beacon"></div>', iconSize: [16, 16], iconAnchor: [8, 8] })
+      }).addTo(elevBeaconGroup);
+    };
+    window.clearElevBeacon = function() {
+      const hl = document.getElementById('elevHairline');
+      if (hl) hl.style.display = 'none';
+      elevBeaconGroup.clearLayers();
+    };
 
     function toggleElevDock(force) {
       const dock = document.getElementById('elevDock');
@@ -1695,6 +1917,7 @@ const html = `<!DOCTYPE html>
       dock.classList.toggle('show', show);
       document.body.classList.toggle('elev-open', show);
       document.getElementById('btnElev').classList.toggle('active', show);
+      if (!show) clearElevBeacon();
     }
     document.getElementById('btnElev').addEventListener('click', () => toggleElevDock());
     document.getElementById('btnElevClose').addEventListener('click', () => toggleElevDock(false));
@@ -1949,12 +2172,21 @@ const html = `<!DOCTYPE html>
       TOPIC_STATS.forEach(s => { const opt = document.createElement('option'); opt.value = s.key; opt.textContent = \`\${s.label}（\${s.count} 部）\`; sel.appendChild(opt); });
     }
 
-    function renderVideoList() {
+    function debounce(fn, ms) {
+      let t = null;
+      return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+    }
+
+    const YT_PAGE_SIZE = 36;
+    let ytVisibleCount = YT_PAGE_SIZE;
+    function renderVideoList(resetPage = true) {
+      if (resetPage) ytVisibleCount = YT_PAGE_SIZE;
       const q = (document.getElementById('ytSearch').value || '').trim().toLowerCase();
       const tag = document.getElementById('ytTagFilter').value;
       const filtered = YT_VIDEOS.filter(v => (tag === 'all' || (v.g || []).includes(tag)) && (!q || v.t.toLowerCase().includes(q) || v.c.toLowerCase().includes(q)));
-      document.getElementById('ytCountText').textContent = \`顯示 \${filtered.length} / \${YT_VIDEOS.length} 部全縣實測影片\`;
-      document.getElementById('ytList').innerHTML = filtered.map((v, idx) => \`
+      const slice = filtered.slice(0, ytVisibleCount);
+      document.getElementById('ytCountText').textContent = \`顯示 \${slice.length} / \${filtered.length} 部（全庫 \${YT_VIDEOS.length} 部）\`;
+      const itemsHtml = slice.map((v, idx) => \`
         <a class="yt-item" href="https://www.youtube.com/watch?v=\${v.id}" target="_blank" rel="noopener">
           <img class="yt-thumb" loading="lazy" src="https://i.ytimg.com/vi/\${v.id}/mqdefault.jpg" alt="" />
           <div class="yt-info">
@@ -1964,7 +2196,12 @@ const html = `<!DOCTYPE html>
           </div>
         </a>
       \`).join('');
+      const moreBtn = filtered.length > slice.length
+        ? \`<button class="load-more-btn" onclick="loadMoreVideos()">載入更多影片（尚餘 \${filtered.length - slice.length} 部）</button>\`
+        : '';
+      document.getElementById('ytList').innerHTML = itemsHtml + moreBtn;
     }
+    window.loadMoreVideos = function() { ytVisibleCount += YT_PAGE_SIZE; renderVideoList(false); };
 
     window.openVideoTabWithTag = function(tag) {
       switchTab('videos');
@@ -1972,12 +2209,14 @@ const html = `<!DOCTYPE html>
       const sel = document.getElementById('ytTagFilter');
       sel.value = [...sel.options].some(o => o.value === tag) ? tag : 'all';
       document.getElementById('ytSearch').value = '';
-      renderVideoList();
+      renderVideoList(true);
     };
-    document.getElementById('ytSearch').addEventListener('input', renderVideoList);
-    document.getElementById('ytTagFilter').addEventListener('change', renderVideoList);
+    document.getElementById('ytSearch').addEventListener('input', debounce(() => renderVideoList(true), 140));
+    document.getElementById('ytTagFilter').addEventListener('change', () => renderVideoList(true));
 
     const WEB_CAT_LABELS = { souvenir: '伴手禮・土產', shopping: '購物商圈', travel: '旅遊景點', food: '在地美食' };
+    const WEB_PAGE_SIZE = 24;
+    let webVisibleCount = WEB_PAGE_SIZE;
     function switchIntelSub(mode) {
       document.querySelectorAll('#intelPills .sub-pill').forEach(b => b.classList.toggle('active', b.dataset.intel === mode));
       document.getElementById('intelYtPane').style.display = mode === 'yt' ? 'block' : 'none';
@@ -1987,12 +2226,16 @@ const html = `<!DOCTYPE html>
       const btn = e.target.closest('.sub-pill');
       if (btn) switchIntelSub(btn.dataset.intel);
     });
-    function renderWebGuides() {
+    function renderWebGuides(resetPage = true) {
+      if (resetPage) webVisibleCount = WEB_PAGE_SIZE;
       const q = (document.getElementById('webSearch').value || '').trim().toLowerCase();
       const cat = document.getElementById('webCatFilter').value;
-      const filtered = WEB_GUIDES.filter(g => (cat === 'all' || g.category === cat) && (!q || (g.title + ' ' + g.summary + ' ' + g.highlights + ' ' + g.region + ' ' + g.source).toLowerCase().includes(q)));
-      document.getElementById('webCountText').textContent = \`顯示 \${filtered.length} / \${WEB_GUIDES.length} 篇網頁攻略情報\`;
-      document.getElementById('webList').innerHTML = filtered.map((g, idx) => \`
+      const sortMode = document.getElementById('webSortFilter').value;
+      let filtered = WEB_GUIDES.filter(g => (cat === 'all' || g.category === cat) && (!q || (g.title + ' ' + g.summary + ' ' + g.highlights + ' ' + g.region + ' ' + g.source).toLowerCase().includes(q)));
+      if (sortMode === 'newest') filtered = [...filtered].reverse();
+      const slice = filtered.slice(0, webVisibleCount);
+      document.getElementById('webCountText').textContent = \`顯示 \${slice.length} / \${filtered.length} 篇（全庫 \${WEB_GUIDES.length} 篇）\`;
+      const itemsHtml = slice.map((g, idx) => \`
         <a class="poi-card" href="\${esc(g.url)}" target="_blank" rel="noopener" style="display:block;text-decoration:none;color:inherit">
           <div class="poi-top">
             <div class="poi-num sq" style="background:var(--muji-red)">\${String(idx + 1).padStart(2, '0')}</div>
@@ -2009,9 +2252,15 @@ const html = `<!DOCTYPE html>
           <div class="spec-footer"><span>\${esc(g.highlights || g.source)}</span><span class="spec-go">前往網頁 →</span></div>
         </a>
       \`).join('');
+      const moreBtn = filtered.length > slice.length
+        ? \`<button class="load-more-btn" onclick="loadMoreWebGuides()">載入更多網頁情報（尚餘 \${filtered.length - slice.length} 篇）</button>\`
+        : '';
+      document.getElementById('webList').innerHTML = itemsHtml + moreBtn;
     }
-    document.getElementById('webSearch').addEventListener('input', renderWebGuides);
-    document.getElementById('webCatFilter').addEventListener('change', renderWebGuides);
+    window.loadMoreWebGuides = function() { webVisibleCount += WEB_PAGE_SIZE; renderWebGuides(false); };
+    document.getElementById('webSearch').addEventListener('input', debounce(() => renderWebGuides(true), 140));
+    document.getElementById('webCatFilter').addEventListener('change', () => renderWebGuides(true));
+    document.getElementById('webSortFilter').addEventListener('change', () => renderWebGuides(true));
 
     window.switchTab = function(tabName) {
       document.querySelectorAll('.sb-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
@@ -2171,10 +2420,11 @@ const html = `<!DOCTYPE html>
         ...PARKING_SPOTS.map(pk => ({ type: 'Feature', properties: { layer: 'parking', id: pk.id, area: pk.area, name: pk.name, fee: pk.fee, capacity: pk.cap, walk: pk.walk }, geometry: { type: 'Point', coordinates: [pk.lng, pk.lat] } })),
         ...FOOD_SPOTS.map(f => ({ type: 'Feature', properties: { layer: 'food', id: f.id, area: f.area, name: f.name, dish: f.dish, mapcode: f.mapcode }, geometry: { type: 'Point', coordinates: [f.lng, f.lat] } })),
         ...SHOP_SPOTS.map(s => ({ type: 'Feature', properties: { layer: 'shopping', id: s.id, area: s.area, name: s.name, items: s.items, mapcode: s.mapcode }, geometry: { type: 'Point', coordinates: [s.lng, s.lat] } })),
+        ...userPins.map(u => ({ type: 'Feature', properties: { layer: 'user_pin', id: u.id, name: u.name }, geometry: { type: 'Point', coordinates: [u.lng, u.lat] } })),
         ...Object.keys(DAY_ROUTES).map(d => ({ type: 'Feature', properties: { layer: 'real_road_route', day: Number(d), name: DAY_ROUTES[d].name, distance_km: DAY_ROUTES[d].distKm, drive_min: DAY_ROUTES[d].driveMin }, geometry: { type: 'LineString', coordinates: DAY_ROUTES[d].coords.map(c => [c[1], c[0]]) } }))
       ];
       downloadText('miyazaki_realroad_parking_webgis.geojson', JSON.stringify({ type: 'FeatureCollection', features }, null, 2), 'application/geo+json');
-      showToast('已匯出實際路網與停車場 GeoJSON');
+      showToast('已匯出實際路網、停車場與自訂標記 GeoJSON');
     });
 
     document.getElementById('btnExportGPX').addEventListener('click', () => {
@@ -2182,23 +2432,310 @@ const html = `<!DOCTYPE html>
         ...POIS.map(p => \`  <wpt lat="\${p.lat}" lon="\${p.lng}"><ele>\${p.elev}</ele><name>\${esc('D' + p.day + '-' + p.seq + ' ' + p.name)}</name><desc>\${esc(p.parkBadge + ' | Mapcode: ' + p.mapcode)}</desc></wpt>\`),
         ...PARKING_SPOTS.map(pk => \`  <wpt lat="\${pk.lat}" lon="\${pk.lng}"><name>\${esc('[P] ' + pk.name)}</name><desc>\${esc(pk.fee + ' | ' + pk.cap + ' | ' + pk.walk)}</desc></wpt>\`),
         ...FOOD_SPOTS.map(f => \`  <wpt lat="\${f.lat}" lon="\${f.lng}"><name>\${esc('[食] ' + f.name)}</name><desc>\${esc(f.area + ' | ' + f.dish)}</desc></wpt>\`),
-        ...SHOP_SPOTS.map(s => \`  <wpt lat="\${s.lat}" lon="\${s.lng}"><name>\${esc('[買] ' + s.name)}</name><desc>\${esc(s.area + ' | ' + s.items)}</desc></wpt>\`)
+        ...SHOP_SPOTS.map(s => \`  <wpt lat="\${s.lat}" lon="\${s.lng}"><name>\${esc('[買] ' + s.name)}</name><desc>\${esc(s.area + ' | ' + s.items)}</desc></wpt>\`),
+        ...userPins.map(u => \`  <wpt lat="\${u.lat}" lon="\${u.lng}"><name>\${esc('[自訂] ' + u.name)}</name></wpt>\`)
       ].join('\\n');
       const trks = Object.keys(DAY_ROUTES).map(d => \`  <trk><name>\${esc(DAY_ROUTES[d].name)}</name><trkseg>\\n\${DAY_ROUTES[d].coords.map(c => \`      <trkpt lat="\${c[0]}" lon="\${c[1]}"></trkpt>\`).join('\\n')}\\n    </trkseg></trk>\`).join('\\n');
       downloadText('miyazaki_realroad_itinerary.gpx', \`<?xml version="1.0" encoding="UTF-8"?>\\n<gpx version="1.1" creator="Miyazaki Real-Road MUJI WebGIS">\\n\${wpts}\\n\${trks}\\n</gpx>\`, 'application/gpx+xml');
-      showToast('已匯出實際路網 GPX（含高程與停車場）');
+      showToast('已匯出實際路網 GPX（含高程、停車場與自訂標記）');
     });
 
-    // Keyboard Shortcuts
+    // =========================================================================
+    // SENIOR WEBGIS MODULE 1: SPLIT-SCREEN BASEMAP SWIPE COMPARE
+    // =========================================================================
+    let swipeActive = false, swipeRatio = 0.56, swipeRightLayer = null, swipeDragging = false;
+    const swipeDivider = document.getElementById('swipeDivider');
+    const swipeBanner = document.getElementById('swipeBanner');
+    const swipeRightSelect = document.getElementById('swipeRightSelect');
+
+    function updateSwipeClip() {
+      if (!swipeActive || !swipeRightLayer) return;
+      const container = swipeRightLayer.getContainer();
+      if (!container) return;
+      const rect = map.getContainer().getBoundingClientRect();
+      const splitX = Math.round(rect.width * swipeRatio);
+      swipeDivider.style.left = splitX + 'px';
+      const nw = map.containerPointToLayerPoint([splitX, 0]);
+      const se = map.containerPointToLayerPoint([rect.width, rect.height]);
+      container.style.clip = \`rect(\${nw.y}px, \${se.x}px, \${se.y}px, \${nw.x}px)\`;
+    }
+
+    function mountSwipeLayer(key) {
+      if (swipeRightLayer) { map.removeLayer(swipeRightLayer); swipeRightLayer = null; }
+      const meta = BASEMAP_META[key] || BASEMAP_META.gsi_pale;
+      swipeRightLayer = L.tileLayer(meta.url, { ...meta.opts, pane: 'swipePane' }).addTo(map);
+      updateSwipeClip();
+    }
+
+    function setSwipeActive(on) {
+      swipeActive = on;
+      document.getElementById('btnSwipe').classList.toggle('active', on);
+      swipeDivider.classList.toggle('show', on);
+      swipeBanner.classList.toggle('show', on);
+      document.getElementById('swipeLeftLabel').textContent = basemaps[activeBasemap].name;
+      if (on) {
+        if (measuring) setMeasureActive(false);
+        mountSwipeLayer(swipeRightSelect.value);
+        showToast('已開啟捲簾對比：左右拖曳紅白把手比較雙底圖');
+      } else if (swipeRightLayer) {
+        map.removeLayer(swipeRightLayer);
+        swipeRightLayer = null;
+      }
+    }
+    document.getElementById('btnSwipe').addEventListener('click', () => setSwipeActive(!swipeActive));
+    document.getElementById('btnSwipeClose').addEventListener('click', () => setSwipeActive(false));
+    swipeRightSelect.addEventListener('change', () => { if (swipeActive) mountSwipeLayer(swipeRightSelect.value); });
+
+    swipeDivider.addEventListener('pointerdown', e => {
+      swipeDragging = true;
+      swipeDivider.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+    window.addEventListener('pointermove', e => {
+      if (!swipeDragging || !swipeActive) return;
+      const rect = map.getContainer().getBoundingClientRect();
+      swipeRatio = Math.max(0.08, Math.min(0.92, (e.clientX - rect.left) / rect.width));
+      updateSwipeClip();
+    });
+    window.addEventListener('pointerup', () => { swipeDragging = false; });
+    map.on('move zoom resize', updateSwipeClip);
+
+    // =========================================================================
+    // SENIOR WEBGIS MODULE 2: GPS GEOLOCATION + NEAREST POI / PARKING
+    // =========================================================================
+    function locateUser() {
+      if (!navigator.geolocation) { showToast('此瀏覽器不支援 GPS 定位'); return; }
+      const btn = document.getElementById('btnLocate');
+      btn.classList.add('active');
+      showToast('正在取得 GPS 定位...');
+      navigator.geolocation.getCurrentPosition(pos => {
+        const { latitude: lat, longitude: lng, accuracy } = pos.coords;
+        gpsGroup.clearLayers();
+        L.circle([lat, lng], { radius: Math.min(accuracy || 80, 1500), color: '#2563EB', weight: 1.2, fillColor: '#2563EB', fillOpacity: 0.14 }).addTo(gpsGroup);
+        const nearestPoi = POIS.map(p => ({ p, d: haversineKm(lat, lng, p.lat, p.lng) })).sort((a, b) => a.d - b.d)[0];
+        const nearestPark = PARKING_SPOTS.map(pk => ({ pk, d: haversineKm(lat, lng, pk.lat, pk.lng) })).sort((a, b) => a.d - b.d)[0];
+        L.marker([lat, lng], {
+          zIndexOffset: 950,
+          icon: L.divIcon({ className: 'gps-dot-wrap', html: '<div class="gps-dot"></div>', iconSize: [14, 14], iconAnchor: [7, 7] })
+        }).bindPopup(\`
+          <div>
+            <div class="pop-head"><span class="pop-day" style="background:#2563EB">GPS 我的位置</span><span class="tag-chip">精度 ±\${Math.round(accuracy || 0)} m</span></div>
+            <div class="pop-grid">
+              <div><span>WGS84 坐標</span><strong>\${lat.toFixed(4)}, \${lng.toFixed(4)}</strong></div>
+              <div><span>最近行程站</span><strong>\${esc(nearestPoi.p.name)}（\${nearestPoi.d.toFixed(1)} km）</strong></div>
+            </div>
+            <div class="pop-park">最近登錄停車場：<strong>\${esc(nearestPark.pk.name)}</strong>（\${nearestPark.d.toFixed(1)} km）</div>
+            <div class="pop-actions">
+              <button class="pop-nav-btn" onclick="runBufferAnalysis(\${lat},\${lng},'我的位置')">搜尋周邊</button>
+              <button class="pop-nav-btn sec" onclick="fitAllBounds()">回到宮崎</button>
+              <button class="pop-nav-btn sec" onclick="gpsGroup.clearLayers();document.getElementById('btnLocate').classList.remove('active')">清除定位</button>
+            </div>
+          </div>
+        \`, { maxWidth: 330 }).addTo(gpsGroup).openPopup();
+        map.flyTo([lat, lng], Math.max(map.getZoom(), 13), { duration: 0.9 });
+        showToast(\`已定位！距最近宮崎景點 \${nearestPoi.d.toFixed(1)} km\`);
+      }, () => {
+        btn.classList.remove('active');
+        showToast('無法取得定位（請確認瀏覽器定位權限）');
+      }, { enableHighAccuracy: true, timeout: 9000 });
+    }
+    document.getElementById('btnLocate').addEventListener('click', locateUser);
+
+    // =========================================================================
+    // SENIOR WEBGIS MODULE 3: INTERACTIVE OVERVIEW MINIMAP
+    // =========================================================================
+    let miniMap = null, miniRect = null;
+    function initMiniMap() {
+      if (miniMap) return;
+      miniMap = L.map('miniMap', {
+        center: [32.04, 131.30], zoom: 7, zoomControl: false, attributionControl: false,
+        dragging: false, scrollWheelZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false, tap: false
+      });
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd', maxZoom: 12 }).addTo(miniMap);
+      Object.keys(DAY_ROUTES).forEach(d => {
+        L.polyline(DAY_ROUTES[d].coords, { color: DAY_ROUTES[d].color, weight: 1.6, opacity: 0.85, interactive: false }).addTo(miniMap);
+      });
+      miniRect = L.rectangle(map.getBounds(), { color: '#7F0019', weight: 1.6, fillColor: '#7F0019', fillOpacity: 0.14, interactive: false }).addTo(miniMap);
+      miniMap.on('click', e => map.panTo(e.latlng));
+      map.on('moveend zoomend', () => { if (miniRect) miniRect.setBounds(map.getBounds()); });
+    }
+    document.getElementById('btnMiniMapToggle').addEventListener('click', () => {
+      const wrap = document.getElementById('miniMapWrap');
+      const hide = !wrap.classList.contains('hidden');
+      wrap.classList.toggle('hidden', hide);
+      document.getElementById('btnMiniMapToggle').classList.toggle('active', !hide);
+      if (!hide && miniMap) setTimeout(() => { miniMap.invalidateSize(); miniRect.setBounds(map.getBounds()); }, 60);
+    });
+
+    // =========================================================================
+    // SENIOR WEBGIS MODULE 4: RIGHT-CLICK CONTEXT MENU & PERSISTENT USER PINS
+    // =========================================================================
+    const USER_PIN_KEY = 'miyazaki_webgis_userpins_v1';
+    let userPins = [];
+    try {
+      const savedPins = JSON.parse(localStorage.getItem(USER_PIN_KEY) || '[]');
+      if (Array.isArray(savedPins)) userPins = savedPins;
+    } catch (e) {}
+
+    function saveUserPins() {
+      try { localStorage.setItem(USER_PIN_KEY, JSON.stringify(userPins)); } catch (e) {}
+      document.getElementById('userPinCount').textContent = userPins.length;
+    }
+    function renderUserPins() {
+      userPinGroup.clearLayers();
+      userPins.forEach(u => {
+        const icon = L.divIcon({ className: 'user-pin-wrap', html: '<div class="user-pin"><span>★</span></div>', iconSize: [26, 26], iconAnchor: [13, 26], popupAnchor: [0, -24] });
+        const gmapsUrl = \`https://www.google.com/maps/search/?api=1&query=\${u.lat},\${u.lng}\`;
+        L.marker([u.lat, u.lng], { icon, zIndexOffset: 300 }).bindPopup(\`
+          <div>
+            <div class="pop-head"><span class="pop-day" style="background:var(--muji-red)">★ 我的自訂標記</span></div>
+            <div class="pop-title">\${esc(u.name)}</div>
+            <div class="pop-grid">
+              <div><span>WGS84 坐標（點擊複製）</span><strong class="copyable" onclick="copyText('\${u.lat.toFixed(5)},\${u.lng.toFixed(5)}','自訂坐標')">\${u.lat.toFixed(5)}, \${u.lng.toFixed(5)}</strong></div>
+              <div><span>儲存方式</span><strong>本機離線保存</strong></div>
+            </div>
+            <div class="pop-actions">
+              <a class="pop-nav-btn" href="\${gmapsUrl}" target="_blank" rel="noopener">Google 導航</a>
+              <button class="pop-nav-btn sec" onclick="runBufferAnalysis(\${u.lat},\${u.lng},'\${esc(u.name)}')">周邊搜尋</button>
+              <button class="pop-nav-btn sec" onclick="deleteUserPin('\${u.id}')">刪除標記</button>
+            </div>
+          </div>
+        \`, { maxWidth: 320 }).addTo(userPinGroup);
+      });
+      document.getElementById('userPinCount').textContent = userPins.length;
+    }
+    window.deleteUserPin = function(id) {
+      userPins = userPins.filter(u => u.id !== id);
+      saveUserPins(); renderUserPins(); map.closePopup();
+      showToast('已刪除自訂標記');
+    };
+    document.getElementById('chkUserPins').addEventListener('change', e => {
+      if (e.target.checked) userPinGroup.addTo(map); else map.removeLayer(userPinGroup);
+    });
+
+    const ctxMenu = document.getElementById('ctxMenu');
+    let ctxLatLng = null;
+    function hideCtxMenu() { ctxMenu.classList.remove('show'); }
+    map.on('contextmenu', e => {
+      ctxLatLng = e.latlng;
+      document.getElementById('ctxCoordText').textContent = \`\${e.latlng.lat.toFixed(5)}, \${e.latlng.lng.toFixed(5)}\`;
+      const x = Math.min(e.originalEvent.clientX, window.innerWidth - 225);
+      const y = Math.min(e.originalEvent.clientY, window.innerHeight - 210);
+      ctxMenu.style.left = x + 'px';
+      ctxMenu.style.top = y + 'px';
+      ctxMenu.classList.add('show');
+    });
+    map.on('click movestart zoomstart', hideCtxMenu);
+    document.addEventListener('click', e => { if (!e.target.closest('.ctx-menu')) hideCtxMenu(); });
+
+    document.getElementById('ctxCopyCoord').addEventListener('click', () => {
+      if (ctxLatLng) copyText(\`\${ctxLatLng.lat.toFixed(5)}, \${ctxLatLng.lng.toFixed(5)}\`, 'WGS84 坐標');
+      hideCtxMenu();
+    });
+    document.getElementById('ctxBuffer').addEventListener('click', () => {
+      if (ctxLatLng) runBufferAnalysis(ctxLatLng.lat, ctxLatLng.lng, \`指定坐標 (\${ctxLatLng.lat.toFixed(3)}, \${ctxLatLng.lng.toFixed(3)})\`);
+      hideCtxMenu();
+    });
+    document.getElementById('ctxMeasure').addEventListener('click', () => {
+      if (ctxLatLng) {
+        if (!measuring) setMeasureActive(true);
+        map.fire('click', { latlng: ctxLatLng });
+      }
+      hideCtxMenu();
+    });
+    document.getElementById('ctxAddPin').addEventListener('click', () => {
+      hideCtxMenu();
+      if (!ctxLatLng) return;
+      const name = prompt('請輸入自訂標記名稱（例：飯店、口袋咖啡廳、秘境停車點）：', '我的宮崎口袋名單');
+      if (!name || !name.trim()) return;
+      userPins.push({ id: 'up-' + Date.now(), name: name.trim(), lat: ctxLatLng.lat, lng: ctxLatLng.lng });
+      saveUserPins(); renderUserPins();
+      showToast(\`已釘選「\${name.trim()}」（支援匯出 GPX/GeoJSON）\`);
+    });
+    document.getElementById('ctxStreetView').addEventListener('click', () => {
+      if (ctxLatLng) window.open(\`https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=\${ctxLatLng.lat},\${ctxLatLng.lng}\`, '_blank', 'noopener');
+      hideCtxMenu();
+    });
+
+    // =========================================================================
+    // SENIOR WEBGIS MODULE 5: URL HASH DEEP-LINKING & SHARE VIEW
+    // =========================================================================
+    let hashSyncTimer = null;
+    function scheduleHashSync() {
+      if (hashSyncTimer) clearTimeout(hashSyncTimer);
+      hashSyncTimer = setTimeout(() => {
+        const c = map.getCenter();
+        const activeDay = (document.querySelector('.day-pill.active') || {}).dataset?.day || 'all';
+        const hash = \`#z=\${map.getZoom()}&lat=\${c.lat.toFixed(4)}&lng=\${c.lng.toFixed(4)}&bm=\${activeBasemap}&day=\${activeDay}\`;
+        try { history.replaceState(null, '', hash); } catch (e) {}
+      }, 240);
+    }
+    map.on('moveend zoomend', scheduleHashSync);
+
+    function applyUrlHashIfPresent() {
+      if (!location.hash || location.hash.length < 4) return false;
+      const params = new URLSearchParams(location.hash.slice(1));
+      const lat = parseFloat(params.get('lat')), lng = parseFloat(params.get('lng')), z = parseInt(params.get('z'), 10);
+      const bm = params.get('bm'), day = params.get('day');
+      if (bm && basemaps[bm]) switchBasemap(bm);
+      if (day && ['all', '1', '2', '3', '4'].includes(day) && day !== 'all') {
+        document.querySelectorAll('.day-pill').forEach(b => b.classList.toggle('active', b.dataset.day === day));
+        renderItinerary(day);
+        [1, 2, 3, 4].forEach(num => {
+          const show = Number(day) === num;
+          const chk = document.querySelector(\`.day-chk[data-day="\${num}"]\`);
+          if (chk) chk.checked = show;
+          toggleDayLayer(num, show);
+        });
+      }
+      if (!Number.isNaN(lat) && !Number.isNaN(lng) && !Number.isNaN(z)) {
+        map.setView([lat, lng], Math.max(6, Math.min(18, z)), { animate: false });
+        return true;
+      }
+      return false;
+    }
+
+    document.getElementById('btnShareView').addEventListener('click', () => {
+      scheduleHashSync();
+      setTimeout(() => {
+        const c = map.getCenter();
+        const activeDay = (document.querySelector('.day-pill.active') || {}).dataset?.day || 'all';
+        const shareUrl = \`\${location.origin}\${location.pathname}#z=\${map.getZoom()}&lat=\${c.lat.toFixed(4)}&lng=\${c.lng.toFixed(4)}&bm=\${activeBasemap}&day=\${activeDay}\`;
+        copyText(shareUrl, '目前視角分享網址');
+      }, 30);
+    });
+
+    // =========================================================================
+    // SENIOR WEBGIS MODULE 6: SHORTCUT HELP MODAL & KEYBOARD CONTROLS
+    // =========================================================================
+    window.toggleHelpModal = function(force) {
+      const m = document.getElementById('helpModal');
+      const show = typeof force === 'boolean' ? force : !m.classList.contains('show');
+      m.classList.toggle('show', show);
+    };
+    document.getElementById('btnHelp').addEventListener('click', () => toggleHelpModal());
+    document.getElementById('btnHelpClose').addEventListener('click', () => toggleHelpModal(false));
+    document.getElementById('helpModal').addEventListener('click', e => { if (e.target.id === 'helpModal') toggleHelpModal(false); });
+
     document.addEventListener('keydown', e => {
       if (['INPUT', 'SELECT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
       if (e.key === '0') selectDayFilter('all');
       else if (['1', '2', '3', '4'].includes(e.key)) { switchTab('itinerary'); selectDayFilter(e.key); }
+      else if (e.key.toLowerCase() === 's') setSwipeActive(!swipeActive);
       else if (e.key.toLowerCase() === 'e') toggleElevDock();
       else if (e.key.toLowerCase() === 'm') setMeasureActive(!measuring);
       else if (e.key.toLowerCase() === 'p') setParkLayer(!document.getElementById('chkPark').checked);
+      else if (e.key.toLowerCase() === 'l') locateUser();
       else if (e.key.toLowerCase() === 'b') { document.body.classList.toggle('sidebar-collapsed'); setTimeout(() => map.invalidateSize(), 300); }
-      else if (e.key === 'Escape') { if (measuring) setMeasureActive(false); if (tourTimer) stopTour(); map.closePopup(); }
+      else if (e.key === '?') toggleHelpModal();
+      else if (e.key === 'Escape') {
+        if (measuring) setMeasureActive(false);
+        if (swipeActive) setSwipeActive(false);
+        if (tourTimer) stopTour();
+        hideCtxMenu();
+        toggleHelpModal(false);
+        map.closePopup();
+      }
     });
 
     map.on('mousemove', e => { document.getElementById('coordReadout').textContent = \`\${e.latlng.lat.toFixed(4)}°N, \${e.latlng.lng.toFixed(4)}°E\`; });
@@ -2207,11 +2744,13 @@ const html = `<!DOCTYPE html>
     renderItinerary('all');
     renderGourmet('parking');
     renderStatsBars();
-    renderVideoList();
-    renderWebGuides();
+    renderVideoList(true);
+    renderWebGuides(true);
     renderElevationProfile();
+    renderUserPins();
     updateProgress();
-    fitAllBounds();
+    if (!applyUrlHashIfPresent()) fitAllBounds();
+    initMiniMap();
   </script>
 </body>
 </html>
