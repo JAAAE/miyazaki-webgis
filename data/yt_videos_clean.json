@@ -567,7 +567,8 @@
       "宮崎 自由行 攻略",
       "宮崎 美食 推薦",
       "宮崎 旅遊 2025",
-      "宮崎 4天3夜 行程"
+      "宮崎 4天3夜 行程",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
       "aoshima",
@@ -577,7 +578,8 @@
       "nanban",
       "karamen",
       "hotel",
-      "drive"
+      "drive",
+      "nichinan"
     ]
   },
   {
@@ -927,14 +929,18 @@
     "queries": [
       "宮崎 自駕",
       "日南海岸 鵜戶神宮 摩艾",
-      "宮崎縣 環島 全區 自駕"
+      "宮崎縣 環島 全區 自駕",
+      "宮崎 自駕 旅遊",
+      "延岡 辛麵 南蠻雞 旅遊"
     ],
     "tags": [
       "nichinan",
       "udo",
       "moai",
       "nanban",
-      "drive"
+      "drive",
+      "hyuga",
+      "karamen"
     ]
   },
   {
@@ -1357,7 +1363,8 @@
     "published": "10 個月前",
     "queries": [
       "青島神社 鬼之洗衣板",
-      "青島神社 日南海岸 旅遊"
+      "青島神社 日南海岸 旅遊",
+      "宮崎 観光 2025 おすすめ"
     ],
     "tags": [
       "aoshima",
@@ -1434,7 +1441,8 @@
     "length": "12:26",
     "published": "2 年前",
     "queries": [
-      "青島神社 鬼之洗衣板"
+      "青島神社 鬼之洗衣板",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
       "aoshima",
@@ -1653,7 +1661,8 @@
     "length": "19:31",
     "published": "1 年前",
     "queries": [
-      "日南海岸 鵜戶神宮 摩艾"
+      "日南海岸 鵜戶神宮 摩艾",
+      "宮崎 自駕 旅遊"
     ],
     "tags": [
       "nichinan",
@@ -3149,7 +3158,8 @@
     "length": "6:04",
     "published": "6 年前",
     "queries": [
-      "宮崎 観光 おすすめ"
+      "宮崎 観光 おすすめ",
+      "宮崎 観光 2025 おすすめ"
     ],
     "tags": [
       "drive"
@@ -6380,7 +6390,8 @@
     "length": "12:41",
     "published": "8 年前",
     "queries": [
-      "宮崎 日向市 旅遊 馬背"
+      "宮崎 日向市 旅遊 馬背",
+      "日向市 馬背 祈願之海 旅遊"
     ],
     "tags": [
       "hyuga",
@@ -9025,13 +9036,15 @@
     "queries": [
       "宮崎 自由行 攻略",
       "宮崎 4天3夜 行程",
-      "宮崎 旅遊 2025"
+      "宮崎 旅遊 2025",
+      "青島神社 日南海岸 旅遊"
     ],
     "tags": [
       "aoshima",
       "udo",
       "obi",
-      "drive"
+      "drive",
+      "nichinan"
     ]
   },
   {
@@ -11544,6 +11557,472 @@
       "udo",
       "moai",
       "drive"
+    ]
+  },
+  {
+    "id": "6zAaJm8B5P0",
+    "title": "【溢遊未盡3】#3-7自駕遊九州~探索宮崎│關之尾瀑布│東霧島神社│宮崎牛 週六 21:00 #緯來育樂台",
+    "channel": "緯來育樂台",
+    "views": "觀看次數：252次",
+    "length": "0:31",
+    "published": "3 年前",
+    "queries": [
+      "宮崎 自駕 旅遊"
+    ],
+    "tags": [
+      "west_kirishima",
+      "beef",
+      "drive"
+    ]
+  },
+  {
+    "id": "LVFLdJXexq4",
+    "title": "【貝遊南九州】*鹿兒島宮崎6天自駕遊之旅*EP1→鹿兒島機場暴雨中到步＋霧島神宮",
+    "channel": "貝遊日本",
+    "views": "觀看次數：301,039次",
+    "length": "7:30",
+    "published": "8 年前",
+    "queries": [
+      "宮崎 自駕 旅遊"
+    ],
+    "tags": [
+      "west_kirishima",
+      "drive"
+    ]
+  },
+  {
+    "id": "cRAG8553dUU",
+    "title": "【wafoo旅遊】宮崎日南・番外編（地道美食）",
+    "channel": "wafoo TV",
+    "views": "觀看次數：285次",
+    "length": "0:50",
+    "published": "8 年前",
+    "queries": [
+      "宮崎 美食 推薦"
+    ],
+    "tags": [
+      "nichinan",
+      "karamen"
+    ]
+  },
+  {
+    "id": "kCLhMsnputY",
+    "title": "[宮崎 美食 必去 攻略] 高千穗峽| 高千穗牛| 宮崎牛| 地雞內臟刺身 好麻油味| 日本瀑布100選真名井之滝|蝦野市 絕景| 日向市 海岸 馬ヶ背  絕景| 日版可樂廠| 十月伊勢海老大解禁|",
+    "channel": "Lamlam",
+    "views": "觀看次數：451次",
+    "length": "9:27",
+    "published": "4 年前",
+    "queries": [
+      "宮崎 美食 推薦"
+    ],
+    "tags": [
+      "takachiho",
+      "hyuga",
+      "west_kirishima",
+      "beef",
+      "jidori",
+      "karamen",
+      "drive"
+    ]
+  },
+  {
+    "id": "0vYWDrwup3Y",
+    "title": "邊境解封第一站！宮崎縣美食來台推廣　宮崎牛、青眼魚上桌－民視新聞",
+    "channel": "民視新聞網 Formosa TV News network",
+    "views": "觀看次數：217次",
+    "length": "1:55",
+    "published": "4 年前",
+    "queries": [
+      "宮崎 美食 推薦"
+    ],
+    "tags": [
+      "beef",
+      "karamen"
+    ]
+  },
+  {
+    "id": "aW0nvA_55ec",
+    "title": "日本九州自由行ep5│超夢幻の高千穗峽划船＋熊本城鐵腿行│熊本新NEW公寓式酒店-FAV HOTEL KUMAMOTO開箱｜九州自駕｜Miyazaki,Divine Takachiho Gorge",
+    "channel": "旅行輕哇 light wa travel",
+    "views": "觀看次數：29,210次",
+    "length": "13:28",
+    "published": "2 年前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "hotel",
+      "drive"
+    ]
+  },
+  {
+    "id": "vT9TvgtHHy8",
+    "title": "【九州自駕遊下集】解鎖九州雙絕景！高千穗峽划船超詳細教學🛶 避坑指南！阿蘇火山、草之里絕景🌋",
+    "channel": "Mrs Tracy",
+    "views": "觀看次數：5,016次",
+    "length": "21:35",
+    "published": "5 個月前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "drive"
+    ]
+  },
+  {
+    "id": "LAj3IvJqQks",
+    "title": "EP.39｜高千穗峽划船超夢幻！真名井瀑布就在眼前｜熊本城景觀早餐＋上色見熊野座神社＋別府溫泉 Kyushu Day 2",
+    "channel": " PawPeak・汪汪探險隊",
+    "views": "觀看次數：97次",
+    "length": "1:26",
+    "published": "11 天前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "hotel",
+      "drive"
+    ]
+  },
+  {
+    "id": "B-dJvUxHd74",
+    "title": "阿蘇火山直升機・草千里騎馬・高千穗峽划船！別府/由布院/熊本阿蘇｜北九州全攻略【趣編出任務】",
+    "channel": "去趣 chicTrip",
+    "views": "觀看次數：120,734次",
+    "length": "17:24",
+    "published": "1 年前",
+    "queries": [
+      "高千穗峽 划船 攻略"
+    ],
+    "tags": [
+      "takachiho",
+      "drive"
+    ]
+  },
+  {
+    "id": "NmsuC0Z-r78",
+    "title": "【魚的旅行日記】南九州之旅-Day3 宮崎海岸｜青島神社｜日南海岸｜太陽花園｜鵜戶神宮｜都井岬｜交通&美食&住宿",
+    "channel": "西貢河裡的魚",
+    "views": "觀看次數：887次",
+    "length": "21:36",
+    "published": "1 年前",
+    "queries": [
+      "青島神社 日南海岸 旅遊"
+    ],
+    "tags": [
+      "aoshima",
+      "nichinan",
+      "udo",
+      "toi",
+      "karamen",
+      "hotel"
+    ]
+  },
+  {
+    "id": "wdP4ZqE-hNY",
+    "title": "日向岬",
+    "channel": "小豆芽的日本生活",
+    "views": "觀看次數：51次",
+    "length": "10:42",
+    "published": "3 年前",
+    "queries": [
+      "日向市 馬背 祈願之海 旅遊"
+    ],
+    "tags": [
+      "hyuga"
+    ]
+  },
+  {
+    "id": "mWSlDAEh1TY",
+    "title": "日向岬展望台（馬ケ背の柱状節理）",
+    "channel": "福岡発九州観光ガイド",
+    "views": "觀看次數：6次",
+    "length": "0:25",
+    "published": "1 年前",
+    "queries": [
+      "日向市 馬背 祈願之海 旅遊"
+    ],
+    "tags": [
+      "hyuga"
+    ]
+  },
+  {
+    "id": "lPOH4HT26dM",
+    "title": "【宮崎 延岡】直ちゃん 元祖チキン南蛮と絶景 縄文時代の巨石がそびえる遺跡を巡る車中旅",
+    "channel": "ナントカナール",
+    "views": "觀看次數：475次",
+    "length": "29:58",
+    "published": "1 年前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "JuA0rYxZdKw",
+    "title": "日本料理——刺身海鮮蓋飯製作與切割+宮崎名雞南蠻 Japanese Food ‐ Sashimi Seafood Bowl Making Famous Chicken Nanban",
+    "channel": "Japan Travel Rec",
+    "views": "觀看次數：275次",
+    "length": "9:43",
+    "published": "6 年前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "Knuqi6qW1Mk",
+    "title": "日本-南九州怎麼玩/挑戰獨自一人帶長輩出國/流水麵教學/高千穗峽谷/櫻花樹下野餐",
+    "channel": "we are 伐木累",
+    "views": "觀看次數：129次",
+    "length": "23:17",
+    "published": "2 年前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "takachiho",
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "evZ3HH9mMoE",
+    "title": "宮崎県延岡市で元祖チキン南蛮を食べてみた【桑田龍征切り抜き】",
+    "channel": "ヒカリュウ【桑田龍征切り抜き】",
+    "views": "觀看次數：13,651次",
+    "length": "9:48",
+    "published": "1 個月前",
+    "queries": [
+      "延岡 辛麵 南蠻雞 旅遊"
+    ],
+    "tags": [
+      "hyuga",
+      "nanban",
+      "karamen"
+    ]
+  },
+  {
+    "id": "70293CaZOvQ",
+    "title": "12日間の終わり　霧島神宮、黒酢の里、えびの高原、延岡城を経て自宅へ",
+    "channel": "えむでい60s",
+    "views": "觀看次數：28,723次",
+    "length": "41:12",
+    "published": "1 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "hyuga",
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "fyE8eY2TCTE",
+    "title": "【宮崎観光】えびの高原　トレッキングコースとススキの風景　紅葉は見られるか？　宮崎の風景　宮崎県えびの市　散歩　旅行",
+    "channel": "南国みやざきTV",
+    "views": "觀看次數：822次",
+    "length": "37:47",
+    "published": "2 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "gA6zGEDpfGE",
+    "title": "【宮崎情報】えびの高原　宮崎県えびの市　白鳥山山頂からの絶景は必見です",
+    "channel": "南国みやざきTV",
+    "views": "觀看次數：2,009次",
+    "length": "20:48",
+    "published": "4 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "EQq_5lU00dU",
+    "title": "【HD】えびの高原のミヤマキリシマ　宮崎県えびの市",
+    "channel": "MORI MORI",
+    "views": "觀看次數：13,159次",
+    "length": "3:23",
+    "published": "12 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "VIpfBCfHikE",
+    "title": "ドライブ｜癒し音楽｜宮崎県｜都城～えびの高原編②｜高崎町～高原町｜ピアノ曲｜",
+    "channel": "蔵之介どんが行く",
+    "views": "觀看次數：2,800次",
+    "length": "14:59",
+    "published": "3 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima",
+      "drive"
+    ]
+  },
+  {
+    "id": "SHTSlK3BRwQ",
+    "title": "霧島えびの高原エクストリームトレイル2026#霧島えびの高原エクストリームトレイル#トレラン#宮崎県 #アウトドア#霧島 ",
+    "channel": "interpreter MIYAZAKI",
+    "views": "觀看次數：175次",
+    "length": "2:04",
+    "published": "4 個月前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "KL4qV2JoyA0",
+    "title": "白鳥山 雪山 登山 2024｜初雪のえびの高原を歩く【宮崎 霧島】",
+    "channel": "Mt. Sushi",
+    "views": "觀看次數：605次",
+    "length": "14:12",
+    "published": "1 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "bjgXIDjcte0",
+    "title": "宮崎温泉めぐり[えびの・小林・高原・北郷・西都]【2025年九州西部南部旅DAY7・8】",
+    "channel": "todoの旅と備忘録",
+    "views": "觀看次數：368次",
+    "length": "14:50",
+    "published": "1 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima",
+      "hotel"
+    ]
+  },
+  {
+    "id": "TNYk6coSS4M",
+    "title": "【高原と水郷のくに】宮崎県えびの市どんな市？えびの駅周辺や市街地を【散策・観光】白鳥展望台　道の駅えびの　グリーンパーク　えびの高原　韓国岳川内川島津義弘Miyazaki EbinoCityJAPAN",
+    "channel": "UKIらん・街ふらch　",
+    "views": "觀看次數：6,002次",
+    "length": "11:48",
+    "published": "3 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "PIvret__qhU",
+    "title": "えびの高原キャンプ村（宮崎県えびの市）『シェラカップは基本です！』",
+    "channel": "【キャンプ番組】『シェラカップは基本です!』『Camp Style Shot』",
+    "views": "觀看次數：9,921次",
+    "length": "27:01",
+    "published": "3 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "jdl-J05iVII",
+    "title": "霧島連山・えびの高原：吉都線　えびの駅～森岡城【空から公式】",
+    "channel": "sorakara",
+    "views": "觀看次數：1,494次",
+    "length": "0:56",
+    "published": "11 年前",
+    "queries": [
+      "都城 蝦野高原 霧島 宮崎"
+    ],
+    "tags": [
+      "west_kirishima"
+    ]
+  },
+  {
+    "id": "I4r84YprcKw",
+    "title": "【宮崎観光】宮崎を観光するなら絶対に外せない絶景スポット７選",
+    "channel": "旅行の達人",
+    "views": "觀看次數：1,935次",
+    "length": "12:07",
+    "published": "2 年前",
+    "queries": [
+      "宮崎 観光 2025 おすすめ"
+    ],
+    "tags": []
+  },
+  {
+    "id": "Rj82mU1LMPw",
+    "title": "【宮崎観光】宮崎県のグルメと観光を堪能するドライブ旅行が最高すぎた！宮崎旅行vlog｜九州旅行におすすめ",
+    "channel": "bien旅行🤧国内旅行Vlogと観光スポット紹介",
+    "views": "觀看次數：53,367次",
+    "length": "1:36:21",
+    "published": "1 年前",
+    "queries": [
+      "宮崎 観光 2025 おすすめ"
+    ],
+    "tags": [
+      "karamen",
+      "drive"
+    ]
+  },
+  {
+    "id": "AvFxlRxd9ao",
+    "title": "日本竟然還有這種地方！台灣直飛2小時✈宮崎四天三夜，跟我們想像中的日本完全不一樣！",
+    "channel": "六一遛阿寬",
+    "views": "觀看次數：12,520次",
+    "length": "28:30",
+    "published": "19 小時前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": []
+  },
+  {
+    "id": "OFBwu97sNIY",
+    "title": "Miyazaki Travel Guide | #moaistatues | #aoshima | #miyazaki | #kyushu l #japantravel",
+    "channel": "MeKyo's Travel",
+    "views": "觀看次數：368次",
+    "length": "16:47",
+    "published": "3 年前",
+    "queries": [
+      "Miyazaki Japan travel vlog"
+    ],
+    "tags": [
+      "aoshima",
+      "moai"
     ]
   }
 ]
