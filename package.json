@@ -2,7 +2,7 @@
   "name": "miyazaki-webgis",
   "version": "1.0.0",
   "private": true,
-  "description": "宮崎縣 4 天 3 夜旅遊 WebGIS（無印風 × 9款底圖 × 18處停車攻略 × 每日雲端自動更新 YT 與網頁攻略）",
+  "description": "宮崎縣 4 天 3 夜旅遊 WebGIS（9款底圖 × 18處停車攻略 × 每日雲端自動更新 YT 與網頁攻略）",
   "scripts": {
     "build": "node scripts/build_webgis.js",
     "validate": "node scripts/validate_webgis.js",

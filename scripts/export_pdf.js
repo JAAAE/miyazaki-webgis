@@ -484,7 +484,7 @@ async function main() {
 
   <!-- COVER PAGE -->
   <div class="cover">
-    <div class="kicker">MIYAZAKI TRAVEL ILLUSTRATED ARCHIVE · MUJI EDITION</div>
+    <div class="kicker">MIYAZAKI TRAVEL ILLUSTRATED ARCHIVE</div>
     <div class="cover-title">宮崎縣旅遊・購物・伴手禮 圖文影音全覽手冊</div>
     <div class="cover-sub">
       整合宮崎縣 4 天 3 夜旅遊 WebGIS 每日雲端更新資料庫，收錄<strong>全縣五大分區實景・伴手禮・美食截圖圖鑑</strong>、精選網頁／部落格攻略，以及完整實測 YouTube 影片總目錄；PDF 內所有卡片與標題皆支援<strong>點擊直達原網頁與影片</strong>。

@@ -385,7 +385,7 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>宮崎縣 4 天 3 夜旅遊 WebGIS｜無印風 × 9款底圖 × 停車攻略 × ${compactVideos.length}部 YT</title>
+  <title>宮崎縣 4 天 3 夜旅遊 WebGIS｜9款底圖 × 停車攻略 × ${compactVideos.length}部 YT</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <style>
     :root {
@@ -1283,7 +1283,7 @@ const html = `<!DOCTYPE html>
         <div class="sb-kicker">ALL-MIYAZAKI REAL-ROAD WEBGIS</div>
         <div class="sb-head-actions">
           <button class="print-mini-btn" id="btnShareView" title="複製目前視角、底圖與天數之專屬分享網址">分享視角</button>
-          <button class="print-mini-btn" id="btnPrint" title="列印 / 匯出無印風旅途手冊 PDF">列印手冊</button>
+          <button class="print-mini-btn" id="btnPrint" title="列印 / 匯出旅途手冊 PDF">列印手冊</button>
         </div>
       </div>
       <div class="sb-title">全宮崎縣 四天三夜旅圖</div>
