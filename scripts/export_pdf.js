@@ -103,7 +103,7 @@ const YT_GROUPS = [
   { key: 'west_central', title: '05｜縣西霧島與縣央內陸：都城・蝦野高原・西都原・綾町・宮崎神宮', color: '#7B6D8D', match: ['west_kirishima', 'saito_aya', 'miyazakijingu'] },
   { key: 'gourmet', title: '06｜宮崎必吃餐桌：宮崎牛・元祖南蠻雞・炭火地頭雞・辛麵・芒果甜點', color: '#A64B3C', match: ['beef', 'nanban', 'jidori', 'karamen'] },
   { key: 'hotel', title: '07｜宿泊與度假村：喜來登海洋渡假村・溫泉旅館', color: '#5B6C7D', match: ['hotel'] },
-  { key: 'general', title: '08｜全宮崎自由行總覽・自駕攻略・4天3夜行程 Vlog', color: '#2E2B27', match: [] }
+  { key: 'general', title: '08｜全宮崎自由行總覽・自駕攻略・4天3夜行程 Vlog', color: '#0F172A', match: [] }
 ];
 
 const TAG_LABELS = {
@@ -114,7 +114,7 @@ const TAG_LABELS = {
 };
 
 const WEB_CATS = [
-  { key: 'souvenir', title: 'A｜伴手禮・土產必買情報', color: '#7F0019' },
+  { key: 'souvenir', title: 'A｜伴手禮・土產必買情報', color: '#2563EB' },
   { key: 'shopping', title: 'B｜購物商圈・商場免稅指南', color: '#9C7A3C' },
   { key: 'travel', title: 'C｜旅遊景點・官方觀光攻略', color: '#3B6E8C' },
   { key: 'food', title: 'D｜在地美食・邊走邊吃情報', color: '#A64B3C' }
@@ -168,7 +168,7 @@ async function main() {
     items: webGuides.filter(g => g.category === c.key)
   }));
   const otherWeb = webGuides.filter(g => !WEB_CATS.some(c => c.key === g.category));
-  if (otherWeb.length) groupedWeb.push({ key: 'other', title: 'E｜其他綜合情報', color: '#59544C', items: otherWeb });
+  if (otherWeb.length) groupedWeb.push({ key: 'other', title: 'E｜其他綜合情報', color: '#475569', items: otherWeb });
 
   const maxYtGrp = Math.max(...groupedVideos.map(g => g.items.length), 1);
 
@@ -185,41 +185,41 @@ async function main() {
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Noto Sans CJK TC", "Noto Sans TC", "Microsoft JhengHei", "Noto Sans CJK JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif;
-      color: #2E2B27;
+      color: #0F172A;
       background: #FFFFFF;
       font-size: 9pt;
       line-height: 1.45;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
-    a { color: #2E2B27; text-decoration: none; }
+    a { color: #0F172A; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     /* Cover Page */
     .cover {
-      border: 1px solid #D8D1C5;
-      background: #F7F5F0;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
       padding: 22px 24px;
-      border-top: 5px solid #7F0019;
+      border-top: 5px solid #2563EB;
       margin-bottom: 14px;
     }
     .kicker {
       font-size: 8.2pt;
       font-weight: 700;
       letter-spacing: 0.14em;
-      color: #7F0019;
+      color: #2563EB;
       text-transform: uppercase;
     }
     .cover-title {
       font-size: 20pt;
       font-weight: 800;
-      color: #2E2B27;
+      color: #0F172A;
       margin-top: 5px;
       letter-spacing: 0.03em;
     }
     .cover-sub {
       font-size: 9.4pt;
-      color: #59544C;
+      color: #475569;
       margin-top: 6px;
       line-height: 1.58;
     }
@@ -231,29 +231,29 @@ async function main() {
     }
     .kpi {
       background: #FFFFFF;
-      border: 1px solid #D8D1C5;
+      border: 1px solid #E2E8F0;
       padding: 9px 6px;
       text-align: center;
     }
     .kpi-val {
       font-size: 14.5pt;
       font-weight: 800;
-      color: #7F0019;
+      color: #2563EB;
       font-variant-numeric: tabular-nums;
     }
-    .kpi-lbl { font-size: 7.8pt; color: #59544C; margin-top: 2px; }
+    .kpi-lbl { font-size: 7.8pt; color: #475569; margin-top: 2px; }
     .webgis-bar {
       margin-top: 12px;
       padding: 7px 11px;
-      background: #EFECE6;
-      border-left: 3px solid #7F0019;
+      background: #F1F5F9;
+      border-left: 3px solid #2563EB;
       font-size: 8.3pt;
-      color: #2E2B27;
+      color: #0F172A;
     }
-    .webgis-bar a { color: #7F0019; font-weight: 700; text-decoration: underline; }
+    .webgis-bar a { color: #2563EB; font-weight: 700; text-decoration: underline; }
 
     .box {
-      border: 1px solid #D8D1C5;
+      border: 1px solid #E2E8F0;
       padding: 12px 14px;
       margin-bottom: 12px;
       break-inside: avoid;
@@ -261,16 +261,16 @@ async function main() {
     .box-title {
       font-size: 10pt;
       font-weight: 700;
-      color: #2E2B27;
+      color: #0F172A;
       padding-bottom: 5px;
       margin-bottom: 8px;
-      border-bottom: 1px solid #D8D1C5;
+      border-bottom: 1px solid #E2E8F0;
       display: flex;
       justify-content: space-between;
     }
     .bar-row { margin-bottom: 5px; }
     .bar-head { display: flex; justify-content: space-between; font-size: 8.2pt; margin-bottom: 2px; }
-    .bar-track { height: 5.5px; background: #EFECE6; overflow: hidden; }
+    .bar-track { height: 5.5px; background: #F1F5F9; overflow: hidden; }
     .bar-fill { height: 100%; }
 
     .toc-grid {
@@ -282,21 +282,21 @@ async function main() {
     .toc-item {
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px dotted #D8D1C5;
+      border-bottom: 1px dotted #E2E8F0;
       padding: 2.5px 0;
     }
-    .toc-cnt { font-weight: 700; color: #7F0019; white-space: nowrap; }
+    .toc-cnt { font-weight: 700; color: #2563EB; white-space: nowrap; }
 
     /* Section Dividers */
     .part-header {
       page-break-before: always;
-      background: #2E2B27;
-      color: #F7F5F0;
+      background: #0F172A;
+      color: #F8FAFC;
       padding: 11px 15px;
-      border-left: 5px solid #7F0019;
+      border-left: 5px solid #2563EB;
       margin-bottom: 11px;
     }
-    .part-kicker { font-size: 7.5pt; letter-spacing: 0.14em; color: #D8D1C5; text-transform: uppercase; }
+    .part-kicker { font-size: 7.5pt; letter-spacing: 0.14em; color: #E2E8F0; text-transform: uppercase; }
     .part-title { font-size: 14pt; font-weight: 800; margin-top: 2px; }
     .part-desc { font-size: 8.2pt; color: #E6E0D6; margin-top: 2px; }
 
@@ -307,8 +307,8 @@ async function main() {
       gap: 9px;
     }
     .spot-card {
-      border: 1px solid #D8D1C5;
-      background: #FAF8F4;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
       overflow: hidden;
       break-inside: avoid;
       page-break-inside: avoid;
@@ -341,7 +341,7 @@ async function main() {
       top: 6px;
       left: 6px;
       background: rgba(46, 43, 39, 0.88);
-      color: #F7F5F0;
+      color: #F8FAFC;
       font-size: 7pt;
       font-weight: 700;
       padding: 2px 6px;
@@ -350,22 +350,22 @@ async function main() {
       position: absolute;
       top: 6px;
       right: 6px;
-      background: #7F0019;
-      color: #F7F5F0;
+      background: #2563EB;
+      color: #F8FAFC;
       font-size: 7pt;
       font-weight: 700;
       padding: 2px 6px;
     }
     .spot-body { padding: 7px 9px 8px; }
-    .spot-title { font-size: 9.2pt; font-weight: 800; color: #2E2B27; }
-    .spot-note { font-size: 7.7pt; color: #59544C; margin-top: 3px; line-height: 1.42; }
+    .spot-title { font-size: 9.2pt; font-weight: 800; color: #0F172A; }
+    .spot-note { font-size: 7.7pt; color: #475569; margin-top: 3px; line-height: 1.42; }
     .spot-vid {
       display: block;
       margin-top: 4px;
       padding-top: 4px;
       border-top: 1px solid #E4DED4;
       font-size: 7.2pt;
-      color: #7F0019;
+      color: #2563EB;
       font-weight: 600;
       white-space: nowrap;
       overflow: hidden;
@@ -373,9 +373,9 @@ async function main() {
     }
 
     .cat-head {
-      background: #F7F5F0;
-      border: 1px solid #D8D1C5;
-      border-left: 4px solid #7F0019;
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+      border-left: 4px solid #2563EB;
       padding: 6px 10px;
       margin: 12px 0 7px;
       font-size: 9.8pt;
@@ -386,7 +386,7 @@ async function main() {
       break-after: avoid;
       page-break-after: avoid;
     }
-    .cat-cnt { font-size: 8pt; color: #59544C; font-weight: 600; }
+    .cat-cnt { font-size: 8pt; color: #475569; font-weight: 600; }
 
     /* Blog / Web Guide Cards */
     .web-grid {
@@ -395,18 +395,18 @@ async function main() {
       gap: 7px;
     }
     .web-card {
-      border: 1px solid #D8D1C5;
+      border: 1px solid #E2E8F0;
       padding: 7px 9px;
       background: #FFFFFF;
       break-inside: avoid;
       page-break-inside: avoid;
     }
-    .web-title { font-size: 8.6pt; font-weight: 700; color: #2E2B27; line-height: 1.35; display: block; }
+    .web-title { font-size: 8.6pt; font-weight: 700; color: #0F172A; line-height: 1.35; display: block; }
     .web-meta { margin-top: 3px; display: flex; flex-wrap: wrap; gap: 4px; font-size: 7.2pt; }
-    .chip { background: #EFECE6; border: 1px solid #D8D1C5; padding: 1px 5px; color: #59544C; }
-    .chip-red { background: #F9EFF1; border: 1px solid #DFB8BF; color: #7F0019; font-weight: 700; }
-    .web-summary { font-size: 7.8pt; color: #59544C; margin-top: 3px; line-height: 1.4; }
-    .web-url { font-size: 6.9pt; color: #7F0019; margin-top: 3px; word-break: break-all; display: block; }
+    .chip { background: #F1F5F9; border: 1px solid #E2E8F0; padding: 1px 5px; color: #475569; }
+    .chip-red { background: #EFF6FF; border: 1px solid #DFB8BF; color: #2563EB; font-weight: 700; }
+    .web-summary { font-size: 7.8pt; color: #475569; margin-top: 3px; line-height: 1.4; }
+    .web-url { font-size: 6.9pt; color: #2563EB; margin-top: 3px; word-break: break-all; display: block; }
 
     /* Featured Illustrated YouTube Cards per Section */
     .yt-feat-grid {
@@ -418,8 +418,8 @@ async function main() {
     .yt-feat-card {
       display: flex;
       gap: 7px;
-      border: 1px solid #D8D1C5;
-      background: #FAF8F4;
+      border: 1px solid #E2E8F0;
+      background: #F8FAFC;
       padding: 6px;
       break-inside: avoid;
       page-break-inside: avoid;
@@ -429,19 +429,19 @@ async function main() {
       height: 54px;
       object-fit: cover;
       flex-shrink: 0;
-      border: 1px solid #D8D1C5;
+      border: 1px solid #E2E8F0;
       background: #E6E0D6;
     }
     .yt-feat-info { min-width: 0; flex: 1; }
     .yt-feat-title {
       font-size: 7.9pt;
       font-weight: 700;
-      color: #2E2B27;
+      color: #0F172A;
       line-height: 1.32;
       display: block;
     }
-    .yt-feat-meta { font-size: 7pt; color: #59544C; margin-top: 2px; }
-    .yt-feat-url { font-size: 6.8pt; color: #7F0019; font-weight: 600; margin-top: 1px; display: inline-block; }
+    .yt-feat-meta { font-size: 7pt; color: #475569; margin-top: 2px; }
+    .yt-feat-url { font-size: 6.8pt; color: #2563EB; font-weight: 600; margin-top: 1px; display: inline-block; }
 
     /* YouTube Directory Table */
     table.yt-table {
@@ -451,29 +451,29 @@ async function main() {
       font-size: 7.9pt;
     }
     table.yt-table thead th {
-      background: #EFECE6;
-      color: #2E2B27;
+      background: #F1F5F9;
+      color: #0F172A;
       font-weight: 700;
       text-align: left;
       padding: 4.5px 6px;
-      border: 1px solid #D8D1C5;
+      border: 1px solid #E2E8F0;
       font-size: 7.5pt;
     }
     table.yt-table tbody tr { break-inside: avoid; page-break-inside: avoid; }
-    table.yt-table tbody tr:nth-child(even) { background: #FAF8F4; }
+    table.yt-table tbody tr:nth-child(even) { background: #F8FAFC; }
     table.yt-table td { border: 1px solid #E4DED4; padding: 4px 6px; vertical-align: top; }
     .col-idx { width: 28px; text-align: center; color: #857E73; font-variant-numeric: tabular-nums; font-weight: 700; }
-    .col-ch { width: 112px; color: #59544C; font-size: 7.4pt; }
-    .col-stat { width: 88px; color: #59544C; font-size: 7.3pt; font-variant-numeric: tabular-nums; }
-    .yt-link { font-weight: 700; color: #2E2B27; line-height: 1.33; display: block; }
-    .yt-link-sub { font-size: 6.8pt; color: #7F0019; margin-top: 1px; display: inline-block; }
+    .col-ch { width: 112px; color: #475569; font-size: 7.4pt; }
+    .col-stat { width: 88px; color: #475569; font-size: 7.3pt; font-variant-numeric: tabular-nums; }
+    .yt-link { font-weight: 700; color: #0F172A; line-height: 1.33; display: block; }
+    .yt-link-sub { font-size: 6.8pt; color: #2563EB; margin-top: 1px; display: inline-block; }
     .yt-tags { margin-top: 2px; display: flex; flex-wrap: wrap; gap: 3px; }
-    .mini-tag { font-size: 6.7pt; background: #EFECE6; color: #59544C; padding: 0 4px; border: 1px solid #D8D1C5; }
+    .mini-tag { font-size: 6.7pt; background: #F1F5F9; color: #475569; padding: 0 4px; border: 1px solid #E2E8F0; }
 
     .footer-note {
       margin-top: 14px;
       padding-top: 8px;
-      border-top: 1px solid #D8D1C5;
+      border-top: 1px solid #E2E8F0;
       font-size: 7.6pt;
       color: #857E73;
       text-align: center;

@@ -30,7 +30,7 @@ const topicDefs = [
   { key: 'nichinan', label: '縣南海岸｜日南海岸・堀切峠・道之驛', color: '#C66B3D' },
   { key: 'udo', label: '縣南海岸｜鵜戶神宮（海崖洞窟）', color: '#8F3D38' },
   { key: 'saito_aya', label: '縣央內陸｜西都原古墳群・綾照葉大吊橋', color: '#6E7F6B' },
-  { key: 'beef', label: '宮崎餐桌｜頂級宮崎牛（燒肉・鐵板燒）', color: '#7F0019' },
+  { key: 'beef', label: '宮崎餐桌｜頂級宮崎牛（燒肉・鐵板燒）', color: '#DC2626' },
   { key: 'nanban', label: '宮崎餐桌｜元祖南蠻炸雞（延岡・宮崎）', color: '#B5894C' },
   { key: 'moai', label: '縣南海岸｜日南太陽花園（摩艾石像）', color: '#9A8455' },
   { key: 'amanoiwato', label: '縣北山區｜天岩戶神社・天安河原', color: '#587A6E' },
@@ -361,9 +361,9 @@ const SOUVENIRS = [
   { id: 'sv-4', name: '高千穗「夜神樂面具擺飾」・神樂鈴＆夫婦杉御守', area: '高千穗町', cat: '神話工藝', price: '¥800～¥4,500', targetKind: 'shop', targetId: 's-10', targetLabel: '高千穗神社 / がまだせ市場', desc: '迷你木雕陶器神樂面具、避邪神樂鈴與祈求圓滿的夫婦杉御守。' },
   { id: 'sv-5', name: '日南太陽花園「官方授權摩艾石像」公仔與文創', area: '日南市', cat: '限定公仔', price: '¥400～¥2,800', targetKind: 'poi', targetId: 'd3-3', targetLabel: '日南太陽花園 紀念品店', desc: '全球唯一復活節島授權園區！推薦迷你彩色摩艾扭蛋、熔岩桌上擺飾與鑰匙圈。' },
   { id: 'sv-6', name: '宮崎縣吉祥物「宮崎犬（みやざき犬）」周邊雜貨', area: '宮崎市', cat: '在地萌物', price: '¥550～¥2,200', targetKind: 'shop', targetId: 's-1', targetLabel: '物產館 KONNE / 宮崎機場', desc: '戴日向夏、鳳凰木與地雞頭套的三隻舞王吉祥物絨毛吊飾與刺繡毛巾。' },
-  { id: 'sv-7', name: '平和台・西都原「古代埴輪（はにわ）」素陶公仔', area: '宮崎・西都', cat: '文創陶藝', price: '¥600～¥2,500', targetKind: 'poi', targetId: 'd1-3', targetLabel: '西都原考古博物館 / 平和台', desc: '古墳時代呆萌陶俑擺飾！溫潤素燒赤陶質感宛如無印良品家飾。' },
+  { id: 'sv-7', name: '平和台・西都原「古代埴輪（はにわ）」素陶公仔', area: '宮崎・西都', cat: '文創陶藝', price: '¥600～¥2,500', targetKind: 'poi', targetId: 'd1-3', targetLabel: '西都原考古博物館 / 平和台', desc: '古墳時代呆萌陶俑擺飾！溫潤素燒赤陶質感，極具簡約日系家飾美感。' },
   { id: 'sv-8', name: '日向市「日向蛤殼工藝」＆ 祈願之海「叶」字鑰匙圈', area: '日向市', cat: '海濱紀念', price: '¥500～¥3,000', targetKind: 'shop', targetId: 's-6', targetLabel: '道の駅 日向 / 祈願之海周邊', desc: '日本第一高級圍棋白子「日向蛤碁石」產地！天然貝殼飾品與祈願之海叶字御守。' },
-  { id: 'sv-9', name: '綾町照葉林「天然原木餐具・草木染織・綾玻璃」', area: '綾町', cat: '無印感工藝', price: '¥1,200～¥6,000', targetKind: 'shop', targetId: 's-9', targetLabel: '綾国際クラフトの城 / KONNE', desc: '疏伐木手工原木餐具、柔和草木染手帕與黑木國昭系綾玻璃杯。' },
+  { id: 'sv-9', name: '綾町照葉林「天然原木餐具・草木染織・綾玻璃」', area: '綾町', cat: '簡約工藝', price: '¥1,200～¥6,000', targetKind: 'shop', targetId: 's-9', targetLabel: '綾国際クラフトの城 / KONNE', desc: '疏伐木手工原木餐具、柔和草木染手帕與黑木國昭系綾玻璃杯。' },
   { id: 'sv-10', name: '飫肥杉（おびすぎ）香氛木片・手作筷與木質明信片', area: '日南市飫肥', cat: '木作小物', price: '¥450～¥2,200', targetKind: 'poi', targetId: 'd3-5', targetLabel: '飫肥城下町 / 物產館 KONNE', desc: '富含天然杉木香的日南名木，製成杯墊、除臭香氛塊、手作筷與木質明信片。' },
   { id: 'sv-11', name: '傳統鄉土玩具「佐土原人形」＆ 宮崎繪馬工藝', area: '宮崎市', cat: '傳統工藝', price: '¥1,000～¥3,500', targetKind: 'shop', targetId: 's-1', targetLabel: '物產館 KONNE / 宮崎山形屋', desc: '傳承 400 年縣指定傳統工藝，古樸泥塑手繪歌舞伎與十二生肖土偶。' },
   { id: 'sv-12', name: '都城燒酎黑陶壺（黒ぢょか）＆ 都城大弓開運小物', area: '都城市', cat: '酒器民藝', price: '¥1,200～¥5,500', targetKind: 'shop', targetId: 's-8', targetLabel: '道の駅都城 NiQLL / 霧島酒造', desc: '溫酒專用黑陶壺「黒ぢょか」、手作陶杯與日本九成產地都城大弓破魔小物。' }
@@ -371,10 +371,10 @@ const SOUVENIRS = [
 
 // Embed REAL OSRM Road-Network Polylines & Real Driving Totals
 const dayRoutes = {
-  1: { name: 'Day 01｜縣央宮崎・西都原 ➔ 縣北沿海（日向市・延岡）', color: '#3B6E8C', distKm: osrmRoutes[1].distKm, driveMin: osrmRoutes[1].driveMin, coords: osrmRoutes[1].coords },
-  2: { name: 'Day 02｜延岡 ➔ 高千穗神話山區 ➔ 綾町大吊橋 ➔ 宮崎市區', color: '#4A7C59', distKm: osrmRoutes[2].distKm, driveMin: osrmRoutes[2].driveMin, coords: osrmRoutes[2].coords },
-  3: { name: 'Day 03｜青島 ➔ 日南海岸・鵜戶・飫肥 ➔ 都井岬 ➔ 宿都城', color: '#C66B3D', distKm: osrmRoutes[3].distKm, driveMin: osrmRoutes[3].driveMin, coords: osrmRoutes[3].coords },
-  4: { name: 'Day 04｜縣西霧島（關之尾・牧場・蝦野高原）➔ 宮崎機場', color: '#7B6D8D', distKm: osrmRoutes[4].distKm, driveMin: osrmRoutes[4].driveMin, coords: osrmRoutes[4].coords }
+  1: { name: 'Day 01｜縣央宮崎・西都原 ➔ 縣北沿海（日向市・延岡）', color: '#2563EB', distKm: osrmRoutes[1].distKm, driveMin: osrmRoutes[1].driveMin, coords: osrmRoutes[1].coords },
+  2: { name: 'Day 02｜延岡 ➔ 高千穗神話山區 ➔ 綾町大吊橋 ➔ 宮崎市區', color: '#059669', distKm: osrmRoutes[2].distKm, driveMin: osrmRoutes[2].driveMin, coords: osrmRoutes[2].coords },
+  3: { name: 'Day 03｜青島 ➔ 日南海岸・鵜戶・飫肥 ➔ 都井岬 ➔ 宿都城', color: '#D97706', distKm: osrmRoutes[3].distKm, driveMin: osrmRoutes[3].driveMin, coords: osrmRoutes[3].coords },
+  4: { name: 'Day 04｜縣西霧島（關之尾・牧場・蝦野高原）➔ 宮崎機場', color: '#7C3AED', distKm: osrmRoutes[4].distKm, driveMin: osrmRoutes[4].driveMin, coords: osrmRoutes[4].coords }
 };
 const totalRoadKm = dayRoutes[1].distKm + dayRoutes[2].distKm + dayRoutes[3].distKm + dayRoutes[4].distKm;
 const totalRoadPts = dayRoutes[1].coords.length + dayRoutes[2].coords.length + dayRoutes[3].coords.length + dayRoutes[4].coords.length;
@@ -389,37 +389,38 @@ const html = `<!DOCTYPE html>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <style>
     :root {
-      --paper: #F7F5F0;
-      --paper-glass: rgba(247, 245, 240, 0.96);
-      --linen: #EFECE6;
-      --kraft: #E6E0D6;
-      --hairline: #D8D1C5;
-      --hairline-soft: rgba(130, 120, 106, 0.22);
-      --ink: #2E2B27;
-      --ink-soft: #59544C;
-      --ink-muted: #857E73;
-      --muji-red: #7F0019;
-      --muji-red-soft: rgba(127, 0, 25, 0.08);
-      --muji-red-border: rgba(127, 0, 25, 0.28);
-      --food-c: #A64B3C;
-      --shop-c: #9C7A3C;
-      --park-c: #33546D;
-      --d1: #3B6E8C;
-      --d2: #4A7C59;
-      --d3: #C66B3D;
-      --d4: #7B6D8D;
-      --radius: 4px;
-      --shadow: 0 6px 24px rgba(46, 43, 39, 0.14);
-      --shadow-sm: 0 2px 10px rgba(46, 43, 39, 0.11);
-      --sb-w: 406px;
+      --paper: #FFFFFF;
+      --paper-glass: rgba(255, 255, 255, 0.96);
+      --linen: #F8FAFC;
+      --kraft: #F1F5F9;
+      --hairline: #E2E8F0;
+      --hairline-soft: rgba(148, 163, 184, 0.25);
+      --ink: #0F172A;
+      --ink-soft: #475569;
+      --ink-muted: #64748B;
+      --muji-red: #0F172A;
+      --muji-red-soft: rgba(37, 99, 235, 0.07);
+      --muji-red-border: rgba(37, 99, 235, 0.24);
+      --accent: #2563EB;
+      --food-c: #DC2626;
+      --shop-c: #B45309;
+      --park-c: #334155;
+      --d1: #2563EB;
+      --d2: #059669;
+      --d3: #D97706;
+      --d4: #7C3AED;
+      --radius: 10px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.09);
+      --shadow-sm: 0 2px 10px rgba(15, 23, 42, 0.07);
+      --sb-w: 400px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       height: 100%; height: 100dvh; width: 100%; overflow: hidden;
-      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans TC", "Microsoft JhengHei", -apple-system, sans-serif;
-      background: #E6E0D6; color: var(--ink);
-      -webkit-font-smoothing: antialiased; letter-spacing: 0.02em;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: #F1F5F9; color: var(--ink);
+      -webkit-font-smoothing: antialiased; letter-spacing: 0.01em;
       overscroll-behavior: none;
     }
 
@@ -446,23 +447,23 @@ const html = `<!DOCTYPE html>
     .tool-btn {
       display: inline-flex; align-items: center; gap: 4px;
       background: transparent; color: var(--ink-soft);
-      border: 1px solid transparent; border-radius: 3px;
-      padding: 5px 8px; font-size: 11.2px; font-weight: 500;
+      border: 1px solid transparent; border-radius: 7px;
+      padding: 5px 9px; font-size: 11.2px; font-weight: 500;
       cursor: pointer; transition: all 0.15s ease; white-space: nowrap; font-family: inherit;
     }
-    .tool-btn:hover { background: var(--linen); color: var(--ink); }
-    .tool-btn.active { background: var(--muji-red); color: #F7F5F0; border-color: var(--muji-red); }
-    .tool-btn.active-food { background: var(--food-c); color: #F7F5F0; border-color: var(--food-c); }
-    .tool-btn.active-shop { background: var(--shop-c); color: #F7F5F0; border-color: var(--shop-c); }
-    .tool-btn.active-park { background: var(--park-c); color: #F7F5F0; border-color: var(--park-c); }
-    .tool-sep { width: 1px; height: 16px; background: var(--hairline); margin: 0 2px; }
+    .tool-btn:hover { background: var(--kraft); color: var(--ink); }
+    .tool-btn.active { background: var(--ink); color: #FFFFFF; border-color: var(--ink); }
+    .tool-btn.active-food { background: var(--food-c); color: #FFFFFF; border-color: var(--food-c); }
+    .tool-btn.active-shop { background: var(--shop-c); color: #FFFFFF; border-color: var(--shop-c); }
+    .tool-btn.active-park { background: var(--park-c); color: #FFFFFF; border-color: var(--park-c); }
+    .tool-sep { width: 1px; height: 16px; background: var(--hairline); margin: 0 3px; }
 
     .basemap-quick {
       background: var(--linen); color: var(--ink); border: 1px solid var(--hairline);
-      border-radius: 3px; padding: 4px 7px; font-size: 11px; font-weight: 600;
+      border-radius: 7px; padding: 4px 8px; font-size: 11px; font-weight: 600;
       font-family: inherit; outline: none; cursor: pointer;
     }
-    .basemap-quick:focus { border-color: var(--muji-red); }
+    .basemap-quick:focus { border-color: var(--accent); }
 
     /* ---- CARTOGRAPHIC NORTH ARROW ---- */
     .north-arrow {
@@ -497,26 +498,27 @@ const html = `<!DOCTYPE html>
     .sidebar-toggle:hover { background: var(--linen); }
     body.sidebar-collapsed .sidebar-toggle { left: 16px; }
 
-    .sb-header { padding: 14px 16px 11px; background: var(--paper); border-bottom: 1px solid var(--hairline); }
+    .sb-header { padding: 14px 16px 12px; background: var(--paper); border-bottom: 1px solid var(--hairline); }
     .sb-top-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-    .sb-kicker { font-size: 9.4px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muji-red); }
+    .sb-kicker { font-size: 9.2px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
     .print-mini-btn {
       background: var(--linen); border: 1px solid var(--hairline); color: var(--ink-soft);
-      font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 2px;
+      font-size: 10px; font-weight: 600; padding: 4px 9px; border-radius: 6px;
       cursor: pointer; font-family: inherit; transition: all 0.15s;
     }
     .print-mini-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
-    .sb-title { font-size: 17.5px; font-weight: 700; letter-spacing: 0.04em; color: var(--ink); margin-top: 3px; }
+    .sb-title { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin-top: 3px; }
     .sb-sub { font-size: 11px; color: var(--ink-soft); margin-top: 3px; line-height: 1.5; }
 
     .omni-wrap { position: relative; margin-top: 9px; }
     .omni-input {
-      width: 100%; background: #FFFFFF; color: var(--ink);
-      border: 1px solid var(--hairline); border-radius: 3px;
-      padding: 7px 28px 7px 10px; font-size: 11.4px; outline: none; font-family: inherit;
+      width: 100%; background: var(--linen); color: var(--ink);
+      border: 1px solid var(--hairline); border-radius: 8px;
+      padding: 8px 28px 8px 11px; font-size: 11.6px; outline: none; font-family: inherit;
+      transition: background 0.15s, border-color 0.15s;
     }
-    .omni-input:focus { border-color: var(--muji-red); }
+    .omni-input:focus { background: #FFFFFF; border-color: var(--accent); }
     .omni-clear {
       position: absolute; right: 7px; top: 50%; transform: translateY(-50%);
       border: none; background: transparent; color: var(--ink-muted); cursor: pointer;
@@ -540,26 +542,26 @@ const html = `<!DOCTYPE html>
 
     .kpi-strip {
       display: grid; grid-template-columns: repeat(4, 1fr);
-      margin-top: 9px; border: 1px solid var(--hairline); border-radius: 3px;
+      margin-top: 9px; border: 1px solid var(--hairline); border-radius: 8px;
       background: var(--linen); overflow: hidden;
     }
-    .kpi-box { padding: 5px 4px; text-align: center; border-right: 1px solid var(--hairline); }
+    .kpi-box { padding: 6px 4px; text-align: center; border-right: 1px solid var(--hairline); }
     .kpi-box:last-child { border-right: none; }
-    .kpi-val { font-size: 12.8px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
-    .kpi-lbl { font-size: 9.4px; color: var(--ink-muted); margin-top: 1px; }
+    .kpi-val { font-size: 12.6px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .kpi-lbl { font-size: 9.2px; color: var(--ink-muted); margin-top: 1px; }
 
     .progress-row { margin-top: 8px; display: flex; align-items: center; gap: 8px; font-size: 10.2px; color: var(--ink-muted); }
-    .progress-track { flex: 1; height: 4px; background: var(--kraft); border-radius: 2px; overflow: hidden; }
-    .progress-fill { height: 100%; background: var(--muji-red); width: 0%; transition: width 0.25s ease; }
+    .progress-track { flex: 1; height: 4px; background: var(--kraft); border-radius: 99px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.25s ease; }
 
     .sb-tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--hairline); background: var(--linen); }
     .sb-tab {
-      padding: 9px 4px; font-size: 11.3px; font-weight: 600; color: var(--ink-muted);
+      padding: 10px 4px; font-size: 11.4px; font-weight: 600; color: var(--ink-muted);
       background: transparent; border: none; border-bottom: 2px solid transparent;
       cursor: pointer; transition: all 0.16s; font-family: inherit;
     }
     .sb-tab:hover { color: var(--ink); }
-    .sb-tab.active { color: var(--muji-red); border-bottom-color: var(--muji-red); background: var(--paper); }
+    .sb-tab.active { color: var(--ink); border-bottom-color: var(--accent); background: var(--paper); }
 
     .sb-body {
       flex: 1; overflow-y: auto; padding: 12px 14px 20px; background: var(--paper);
@@ -630,12 +632,12 @@ const html = `<!DOCTYPE html>
     /* Cards */
     .poi-card {
       background: #FFFFFF; border: 1px solid var(--hairline);
-      border-radius: var(--radius); padding: 10px 12px; margin-bottom: 6px;
-      cursor: pointer; transition: border-color 0.15s ease, background 0.15s ease;
+      border-radius: 8px; padding: 11px 12px; margin-bottom: 7px;
+      cursor: pointer; transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
     }
-    .poi-card:hover { background: #FCFBF9; border-color: #9E9589; }
-    .poi-card.selected { border-color: var(--muji-red); background: #FFFEFC; box-shadow: inset 3px 0 0 var(--muji-red); }
-    .poi-card.checked { background: #FAF8F4; }
+    .poi-card:hover { background: #F8FAFC; border-color: #CBD5E1; }
+    .poi-card.selected { border-color: var(--accent); background: #FFFFFF; box-shadow: inset 3px 0 0 var(--accent); }
+    .poi-card.checked { background: #F8FAFC; opacity: 0.85; }
     .poi-card.checked .poi-name { color: var(--ink-muted); text-decoration: line-through; }
 
     .poi-top { display: flex; align-items: flex-start; gap: 9px; }
@@ -762,9 +764,9 @@ const html = `<!DOCTYPE html>
     .yt-item {
       display: flex; gap: 9px; text-decoration: none; color: inherit;
       background: #FFFFFF; border: 1px solid var(--hairline);
-      border-radius: var(--radius); padding: 8px; margin-bottom: 7px; transition: all 0.15s;
+      border-radius: 8px; padding: 8px; margin-bottom: 7px; transition: border-color 0.15s, background 0.15s;
     }
-    .yt-item:hover { border-color: var(--muji-red); background: #FCFBF9; }
+    .yt-item:hover { border-color: var(--accent); background: #F8FAFC; }
     .yt-thumb { width: 90px; height: 51px; border-radius: 2px; object-fit: cover; background: var(--linen); flex-shrink: 0; border: 1px solid var(--hairline-soft); }
     .yt-info { min-width: 0; flex: 1; }
     .yt-title { font-size: 11.4px; font-weight: 600; line-height: 1.38; color: var(--ink); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -806,7 +808,7 @@ const html = `<!DOCTYPE html>
       border: 1px solid rgba(247, 245, 240, 0.2);
     }
     .measure-banner.show { display: flex; }
-    .measure-mode-btn { background: rgba(247,245,240,0.14); border: 1px solid rgba(247,245,240,0.28); color: #F7F5F0; padding: 2px 8px; border-radius: 2px; font-size: 10.4px; cursor: pointer; font-family: inherit; }
+    .measure-mode-btn { background: rgba(247,245,240,0.14); border: 1px solid rgba(247,245,240,0.28); color: #FFFFFF; padding: 2px 8px; border-radius: 2px; font-size: 10.4px; cursor: pointer; font-family: inherit; }
     .measure-mode-btn.active { background: var(--muji-red); border-color: var(--muji-red); }
     .measure-clear { background: var(--muji-red); border: none; color: #fff; padding: 3px 9px; border-radius: 2px; font-size: 10.6px; cursor: pointer; font-weight: 600; font-family: inherit; }
 
@@ -822,16 +824,16 @@ const html = `<!DOCTYPE html>
     .custom-pin {
       width: 28px; height: 28px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      border: 2.5px solid #F7F5F0; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45); transition: transform 0.16s ease;
+      border: 2.5px solid #FFFFFF; box-shadow: 0 2px 8px rgba(15, 23, 42, 0.35); transition: transform 0.16s ease;
     }
-    .custom-pin:hover { transform: scale(1.18); }
+    .custom-pin:hover { transform: scale(1.16); }
     .custom-pin span { font-size: 10px; font-weight: 700; color: #FFFFFF; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
 
     .food-pin, .shop-pin, .park-pin {
-      width: 25px; height: 25px; border-radius: 4px; border: 2px solid #F7F5F0;
+      width: 25px; height: 25px; border-radius: 6px; border: 2px solid #FFFFFF;
       display: flex; align-items: center; justify-content: center;
       color: #FFFFFF; font-size: 11px; font-weight: 700;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.48); transition: transform 0.16s;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.35); transition: transform 0.16s;
     }
     .food-pin { background: var(--food-c); }
     .shop-pin { background: var(--shop-c); }
@@ -839,9 +841,9 @@ const html = `<!DOCTYPE html>
     .food-pin:hover, .shop-pin:hover, .park-pin:hover { transform: scale(1.18); }
 
     .region-tag {
-      background: rgba(247, 245, 240, 0.88); color: var(--ink);
-      border: 1px solid var(--hairline); border-radius: 2px;
-      padding: 2px 7px; font-size: 10.2px; font-weight: 700; white-space: nowrap; box-shadow: var(--shadow-sm);
+      background: rgba(255, 255, 255, 0.92); color: var(--ink);
+      border: 1px solid var(--hairline); border-radius: 6px;
+      padding: 2px 8px; font-size: 10px; font-weight: 700; white-space: nowrap; box-shadow: var(--shadow-sm);
     }
 
     /* MUJI Leaflet Popup */
@@ -900,7 +902,7 @@ const html = `<!DOCTYPE html>
     .leaflet-control-scale { margin-left: 430px !important; margin-bottom: 16px !important; transition: margin-left 0.28s ease; }
     body.sidebar-collapsed .leaflet-control-scale { margin-left: 16px !important; }
     .leaflet-control-scale-line { background: var(--paper-glass) !important; color: var(--ink) !important; border-color: var(--ink) !important; font-weight: 600; font-size: 10.4px; }
-    .leaflet-control-attribution { background: rgba(247, 245, 240, 0.84) !important; color: var(--ink-muted) !important; font-size: 9.6px !important; }
+    .leaflet-control-attribution { background: rgba(255, 255, 255, 0.88) !important; color: var(--ink-muted) !important; font-size: 9.6px !important; }
     .leaflet-control-attribution a { color: var(--ink-soft) !important; }
     .leaflet-tooltip { background: var(--paper) !important; color: var(--ink) !important; border: 1px solid var(--hairline) !important; border-radius: 3px !important; box-shadow: var(--shadow-sm) !important; font-size: 11px; padding: 4px 8px; }
 
@@ -918,12 +920,12 @@ const html = `<!DOCTYPE html>
       transition: all 0.16s ease; font-family: inherit;
     }
     .map-fab:hover { background: var(--linen); border-color: var(--ink); }
-    .map-fab.active { background: var(--muji-red); color: #F7F5F0; border-color: var(--muji-red); }
+    .map-fab.active { background: var(--muji-red); color: #FFFFFF; border-color: var(--muji-red); }
 
     /* Split-Screen Basemap Swipe Compare */
     .swipe-divider {
       position: fixed; top: 0; bottom: 0; left: 55%; width: 3px; z-index: 880;
-      background: #F7F5F0; box-shadow: 0 0 12px rgba(0, 0, 0, 0.55);
+      background: #FFFFFF; box-shadow: 0 0 12px rgba(0, 0, 0, 0.55);
       cursor: ew-resize; display: none; touch-action: none;
     }
     .swipe-divider.show { display: block; }
@@ -971,7 +973,7 @@ const html = `<!DOCTYPE html>
     /* Custom User Pin, GPS Pulse & Elevation Beacon */
     .user-pin {
       width: 26px; height: 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
-      background: var(--muji-red); border: 2px solid #F7F5F0;
+      background: var(--muji-red); border: 2px solid #FFFFFF;
       box-shadow: 0 3px 9px rgba(0, 0, 0, 0.45);
       display: flex; align-items: center; justify-content: center;
     }
@@ -1040,16 +1042,16 @@ const html = `<!DOCTYPE html>
     @media print {
       html, body { overflow: visible !important; height: auto !important; background: #fff !important; }
       #map, .sidebar, .sidebar-toggle, .mobile-sheet-fab, .top-bar, .north-arrow, .right-ctrl-stack, .swipe-divider, .swipe-banner, .ctx-menu, .help-backdrop, .map-legend, .status-bar, .measure-banner, .toast { display: none !important; }
-      #printSheet { display: block !important; padding: 20px; color: #2E2B27; font-size: 11px; line-height: 1.5; }
-      .pr-header { border-bottom: 2px solid #7F0019; padding-bottom: 10px; margin-bottom: 14px; }
+      #printSheet { display: block !important; padding: 20px; color: #0F172A; font-size: 11px; line-height: 1.5; }
+      .pr-header { border-bottom: 2px solid #0F172A; padding-bottom: 10px; margin-bottom: 14px; }
       .pr-title { font-size: 19px; font-weight: 700; }
-      .pr-sub { font-size: 10.5px; color: #59544C; margin-top: 3px; }
-      .pr-h2 { font-size: 13.5px; font-weight: 700; color: #7F0019; margin: 14px 0 7px; border-bottom: 1px solid #D8D1C5; padding-bottom: 3px; page-break-after: avoid; }
+      .pr-sub { font-size: 10.5px; color: #475569; margin-top: 3px; }
+      .pr-h2 { font-size: 13.5px; font-weight: 700; color: #0F172A; margin: 14px 0 7px; border-bottom: 1px solid #E2E8F0; padding-bottom: 3px; page-break-after: avoid; }
       .pr-table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 10px; }
-      .pr-table th, .pr-table td { border: 1px solid #D8D1C5; padding: 4px 6px; text-align: left; vertical-align: top; }
-      .pr-table th { background: #EFECE6; font-weight: 700; }
+      .pr-table th, .pr-table td { border: 1px solid #E2E8F0; padding: 4px 6px; text-align: left; vertical-align: top; }
+      .pr-table th { background: #F8FAFC; font-weight: 700; }
       .pr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
-      .pr-card { border: 1px solid #D8D1C5; padding: 6px 8px; break-inside: avoid; }
+      .pr-card { border: 1px solid #E2E8F0; padding: 6px 8px; break-inside: avoid; }
     }
 
     /* ---- RWD BREAKPOINT 1: LAPTOP (<= 1366px) ---- */
@@ -1162,7 +1164,7 @@ const html = `<!DOCTYPE html>
         <option value="esri_sat" selected>底圖：Esri 高解析衛星</option>
         <option value="esri_clarity">底圖：Esri Clarity 清晰衛星</option>
         <option value="gsi_photo">底圖：日本國土地理院 航空寫真</option>
-        <option value="gsi_pale">底圖：國土地理院 淡色無印圖</option>
+        <option value="gsi_pale">底圖：國土地理院 淡色極簡圖</option>
         <option value="gsi_std">底圖：國土地理院 標準地形圖</option>
         <option value="esri_topo">底圖：Esri 地形等高線</option>
         <option value="esri_relief">底圖：Esri 地形暈渲</option>
@@ -1191,7 +1193,7 @@ const html = `<!DOCTYPE html>
     <span>左側：<strong id="swipeLeftLabel">Esri 衛星</strong></span>
     <span>｜右側：</span>
     <select class="swipe-select" id="swipeRightSelect">
-      <option value="gsi_pale" selected>國土地理院 淡色無印圖</option>
+      <option value="gsi_pale" selected>國土地理院 淡色極簡圖</option>
       <option value="gsi_std">國土地理院 標準地形圖</option>
       <option value="gsi_photo">國土地理院 航空寫真</option>
       <option value="osm">OpenStreetMap 路網</option>
@@ -1207,8 +1209,8 @@ const html = `<!DOCTYPE html>
   <div class="north-arrow" title="正北方向（WGS84）">
     <span>N</span>
     <svg width="14" height="18" viewBox="0 0 14 18" fill="none">
-      <path d="M7 1L12 16L7 12.6L2 16L7 1Z" fill="#2E2B27"/>
-      <path d="M7 1L12 16L7 12.6V1Z" fill="#7F0019"/>
+      <path d="M7 1L12 16L7 12.6L2 16L7 1Z" fill="#0F172A"/>
+      <path d="M7 1L12 16L7 12.6V1Z" fill="#2563EB"/>
     </svg>
   </div>
   <div class="right-ctrl-stack">
@@ -1355,7 +1357,7 @@ const html = `<!DOCTYPE html>
             <button class="bm-card active" data-bm="esri_sat"><span class="bm-name">Esri 衛星影像</span><span class="bm-sub">World Imagery（預設）</span></button>
             <button class="bm-card" data-bm="esri_clarity"><span class="bm-name">Esri Clarity 衛星</span><span class="bm-sub">高清晰無雲衛星</span></button>
             <button class="bm-card" data-bm="gsi_photo"><span class="bm-name">國土地理院 航照</span><span class="bm-sub">日本官方無縫航空寫真</span></button>
-            <button class="bm-card" data-bm="gsi_pale"><span class="bm-name">國土地理院 淡色</span><span class="bm-sub">無印感極簡官方地形</span></button>
+            <button class="bm-card" data-bm="gsi_pale"><span class="bm-name">國土地理院 淡色</span><span class="bm-sub">極簡淺色官方地形</span></button>
             <button class="bm-card" data-bm="gsi_std"><span class="bm-name">國土地理院 標準</span><span class="bm-sub">詳細日文路名與等高線</span></button>
             <button class="bm-card" data-bm="esri_topo"><span class="bm-name">Esri 地形圖</span><span class="bm-sub">World Topo Map</span></button>
             <button class="bm-card" data-bm="esri_relief"><span class="bm-name">Esri 地形暈渲</span><span class="bm-sub">山脈立體陰影地形</span></button>
@@ -1493,7 +1495,7 @@ const html = `<!DOCTYPE html>
     const YT_VIDEOS = ${JSON.stringify(compactVideos)};
     const WEB_GUIDES = ${JSON.stringify(webGuides)};
 
-    const DAY_COLORS = { 1: '#3B6E8C', 2: '#4A7C59', 3: '#C66B3D', 4: '#7B6D8D' };
+    const DAY_COLORS = { 1: '#2563EB', 2: '#059669', 3: '#D97706', 4: '#7C3AED' };
     const CAT_LABELS = { spot: '景點', food: '餐桌', stay: '宿泊', transport: '交通' };
 
     const VIDEOS_BY_TAG = {};
@@ -1556,7 +1558,7 @@ const html = `<!DOCTYPE html>
       esri_sat: { name: 'Esri 高解析衛星', isSat: true, url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri &mdash; Esri, Maxar, Earthstar Geographics, IGN', maxZoom: 18 } },
       esri_clarity: { name: 'Esri Clarity 衛星', isSat: true, url: 'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri Imagery Clarity', maxZoom: 18 } },
       gsi_photo: { name: '國土地理院 航空寫真', isSat: true, url: 'https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg', opts: { attribution: '地理院タイル（国土地理院・シームレス空中写真）', maxZoom: 18 } },
-      gsi_pale: { name: '國土地理院 淡色無印圖', isSat: false, url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', opts: { attribution: '地理院タイル（国土地理院・淡色地図）', maxZoom: 18 } },
+      gsi_pale: { name: '國土地理院 淡色極簡圖', isSat: false, url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', opts: { attribution: '地理院タイル（国土地理院・淡色地図）', maxZoom: 18 } },
       gsi_std: { name: '國土地理院 標準地形圖', isSat: false, url: 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', opts: { attribution: '地理院タイル（国土地理院・標準地図）', maxZoom: 18 } },
       esri_topo: { name: 'Esri 地形等高線', isSat: false, url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri World Topo', maxZoom: 18 } },
       esri_relief: { name: 'Esri 地形暈渲', isSat: false, url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri Shaded Relief', maxZoom: 13 } },
@@ -1622,7 +1624,7 @@ const html = `<!DOCTYPE html>
     // 5 Geographic Regions Overlay
     REGIONS.forEach(reg => {
       const poly = L.polygon(reg.poly, {
-        color: '#F7F5F0', weight: 1.4, dashArray: '5, 5', opacity: 0.65,
+        color: '#FFFFFF', weight: 1.4, dashArray: '5, 5', opacity: 0.65,
         fillColor: reg.color, fillOpacity: 0.09, interactive: false
       }).addTo(regionGroup);
       regionPolys.push(poly);
@@ -1637,7 +1639,7 @@ const html = `<!DOCTYPE html>
       const r = DAY_ROUTES[d];
       const dayPois = POIS.filter(p => p.day === Number(d));
       const minE = Math.min(...dayPois.map(p => p.elev)), maxE = Math.max(...dayPois.map(p => p.elev));
-      L.polyline(r.coords, { color: '#F7F5F0', weight: 6, opacity: 0.85, lineJoin: 'round', smoothFactor: 2.5, interactive: false }).addTo(dayRouteGroups[d]);
+      L.polyline(r.coords, { color: '#FFFFFF', weight: 6, opacity: 0.85, lineJoin: 'round', smoothFactor: 2.5, interactive: false }).addTo(dayRouteGroups[d]);
       const line = L.polyline(r.coords, {
         color: r.color, weight: 3.6, opacity: 0.96, lineJoin: 'round', smoothFactor: 2.5,
         dashArray: d === '4' ? '7, 6' : null
@@ -1664,7 +1666,7 @@ const html = `<!DOCTYPE html>
       if (p.cat !== 'transport') {
         const c = L.circle([p.lat, p.lng], {
           radius: Math.max(1400, Math.min(8200, vb.count * 105)),
-          color: '#F7F5F0', weight: 1.1, opacity: 0.65, fillColor: color, fillOpacity: 0.18, interactive: false
+          color: '#FFFFFF', weight: 1.1, opacity: 0.65, fillColor: color, fillOpacity: 0.18, interactive: false
         }).addTo(heatGroup);
         heatCircles.push(c);
       }
@@ -1838,7 +1840,7 @@ const html = `<!DOCTYPE html>
       clearBtn.style.display = 'inline-block';
       const { lat, lng, title } = currentBufferCenter;
       const circle = L.circle([lat, lng], {
-        radius: bufferRadiusKm * 1000, color: '#7F0019', weight: 2, dashArray: '6, 5', fillColor: '#7F0019', fillOpacity: 0.12
+        radius: bufferRadiusKm * 1000, color: '#2563EB', weight: 2, dashArray: '6, 5', fillColor: '#2563EB', fillOpacity: 0.10
       }).addTo(bufferGroup);
       map.fitBounds(circle.getBounds(), getMapPadding());
 
@@ -2056,7 +2058,7 @@ const html = `<!DOCTYPE html>
           \`;
         }).join('');
       } else {
-        const note = '<div class="customs-note"><strong>紀念品選購指南：</strong>收錄宮崎限定椰蛋樹寶可夢聯名、神話神社限定御守與御朱印、傳統民藝與無印感手作工藝，點擊卡片即精準定位購買處。</div>';
+        const note = '<div class="customs-note"><strong>紀念品選購指南：</strong>收錄宮崎限定椰蛋樹寶可夢聯名、神話神社限定御守與御朱印、傳統民藝與簡約手作工藝，點擊卡片即精準定位購買處。</div>';
         el.innerHTML = note + SOUVENIRS.map((sv, i) => {
           const isDone = checkedSet.has(sv.id);
           const targetObj = sv.targetKind === 'shop' ? SHOP_SPOTS.find(x => x.id === sv.targetId) : POIS.find(x => x.id === sv.targetId);
@@ -2401,14 +2403,14 @@ const html = `<!DOCTYPE html>
     map.on('click', e => {
       if (!measuring) return;
       measurePoints.push(e.latlng);
-      L.circleMarker(e.latlng, { radius: 5, color: '#F7F5F0', fillColor: '#7F0019', fillOpacity: 1, weight: 2 }).addTo(measureGroup);
+      L.circleMarker(e.latlng, { radius: 5, color: '#FFFFFF', fillColor: '#2563EB', fillOpacity: 1, weight: 2 }).addTo(measureGroup);
       if (measureShape) measureGroup.removeLayer(measureShape);
       if (measureMode === 'dist' && measurePoints.length > 1) {
-        measureShape = L.polyline(measurePoints, { color: '#F7F5F0', weight: 3, dashArray: '6, 5' }).addTo(measureGroup);
+        measureShape = L.polyline(measurePoints, { color: '#2563EB', weight: 3, dashArray: '6, 5' }).addTo(measureGroup);
         let totalM = 0; for (let i = 1; i < measurePoints.length; i++) totalM += measurePoints[i - 1].distanceTo(measurePoints[i]);
         document.getElementById('measureText').textContent = \`已選 \${measurePoints.length} 點 · 累計距離：\${totalM >= 1000 ? (totalM / 1000).toFixed(2) + ' km' : Math.round(totalM) + ' m'}\`;
       } else if (measureMode === 'area' && measurePoints.length >= 3) {
-        measureShape = L.polygon(measurePoints, { color: '#F7F5F0', weight: 2.5, fillColor: '#7F0019', fillOpacity: 0.25 }).addTo(measureGroup);
+        measureShape = L.polygon(measurePoints, { color: '#2563EB', weight: 2.5, fillColor: '#2563EB', fillOpacity: 0.18 }).addTo(measureGroup);
         const km2 = calcPolygonAreaKm2(measurePoints);
         document.getElementById('measureText').textContent = \`已選 \${measurePoints.length} 頂點 · 多邊形面積：\${km2 >= 1 ? km2.toFixed(2) + ' km²' : (km2 * 100).toFixed(1) + ' 公頃'}\`;
       }
