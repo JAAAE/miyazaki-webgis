@@ -425,9 +425,12 @@ const html = `<!DOCTYPE html>
     }
 
     #map { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; background: #2C3338; contain: strict; }
-    .leaflet-map-pane { will-change: transform; }
+    .leaflet-map-pane, .leaflet-tile-pane { will-change: transform; }
+    .leaflet-zoom-anim .leaflet-zoom-animated { transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1) !important; }
     body.map-dragging .leaflet-marker-pane,
-    body.map-dragging .leaflet-overlay-pane { pointer-events: none !important; }
+    body.map-dragging .leaflet-overlay-pane,
+    body.map-zooming .leaflet-marker-pane,
+    body.map-zooming .leaflet-overlay-pane { pointer-events: none !important; }
 
     /* ---- TOP TOOLBAR ---- */
     .top-bar {
@@ -1583,16 +1586,18 @@ const html = `<!DOCTYPE html>
     };
 
     // =========================================================================
-    // INITIALIZE MAP WITH 9 PROFESSIONAL BASEMAPS (60fps GPU-Composited Pan)
+    // INITIALIZE MAP WITH 9 PROFESSIONAL BASEMAPS (60fps Fluid Zoom & Pan)
     // =========================================================================
     const map = L.map('map', {
-      center: [32.05, 131.30], zoom: 9, zoomControl: false, maxZoom: 18,
-      preferCanvas: false, inertiaDeceleration: 2800, wheelDebounceTime: 40
+      center: [32.05, 131.30], zoom: 9, minZoom: 7, maxZoom: 18, zoomControl: false,
+      preferCanvas: false, zoomSnap: 0, zoomDelta: 0.75, scrollWheelZoom: false,
+      zoomAnimation: true, fadeAnimation: true, markerZoomAnimation: true,
+      inertiaDeceleration: 2600, easeLinearity: 0.22
     });
     L.control.zoom({ position: 'topright' }).addTo(map);
     L.control.scale({ position: 'bottomleft', imperial: false, metric: true }).addTo(map);
 
-    const TILE_PERF_OPTS = { updateWhenIdle: true, updateWhenZooming: false, keepBuffer: 2 };
+    const TILE_PERF_OPTS = { updateWhenIdle: true, updateWhenZooming: false, keepBuffer: 3 };
     const BASEMAP_META = {
       esri_sat: { name: 'Esri 高解析衛星', isSat: true, url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri &mdash; Esri, Maxar, Earthstar Geographics, IGN', maxZoom: 18 } },
       esri_clarity: { name: 'Esri Clarity 衛星', isSat: true, url: 'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', opts: { attribution: 'Tiles &copy; Esri Imagery Clarity', maxZoom: 18 } },
@@ -3188,7 +3193,7 @@ const html = `<!DOCTYPE html>
       hashSyncTimer = setTimeout(() => {
         const c = map.getCenter();
         const activeDay = (document.querySelector('.day-pill.active') || {}).dataset?.day || 'all';
-        const hash = \`#z=\${map.getZoom()}&lat=\${c.lat.toFixed(4)}&lng=\${c.lng.toFixed(4)}&bm=\${activeBasemap}&day=\${activeDay}\`;
+        const hash = \`#z=\${Number(map.getZoom().toFixed(2))}&lat=\${c.lat.toFixed(4)}&lng=\${c.lng.toFixed(4)}&bm=\${activeBasemap}&day=\${activeDay}\`;
         try { history.replaceState(null, '', hash); } catch (e) {}
       }, 240);
     }
@@ -3197,7 +3202,7 @@ const html = `<!DOCTYPE html>
     function applyUrlHashIfPresent() {
       if (!location.hash || location.hash.length < 4) return false;
       const params = new URLSearchParams(location.hash.slice(1));
-      const lat = parseFloat(params.get('lat')), lng = parseFloat(params.get('lng')), z = parseInt(params.get('z'), 10);
+      const lat = parseFloat(params.get('lat')), lng = parseFloat(params.get('lng')), z = parseFloat(params.get('z'));
       const bm = params.get('bm'), day = params.get('day');
       if (bm && basemaps[bm]) switchBasemap(bm);
       if (day && ['all', '1', '2', '3', '4'].includes(day) && day !== 'all') {
@@ -3222,7 +3227,7 @@ const html = `<!DOCTYPE html>
       setTimeout(() => {
         const c = map.getCenter();
         const activeDay = (document.querySelector('.day-pill.active') || {}).dataset?.day || 'all';
-        const shareUrl = \`\${location.origin}\${location.pathname}#z=\${map.getZoom()}&lat=\${c.lat.toFixed(4)}&lng=\${c.lng.toFixed(4)}&bm=\${activeBasemap}&day=\${activeDay}\`;
+        const shareUrl = \`\${location.origin}\${location.pathname}#z=\${Number(map.getZoom().toFixed(2))}&lat=\${c.lat.toFixed(4)}&lng=\${c.lng.toFixed(4)}&bm=\${activeBasemap}&day=\${activeDay}\`;
         copyText(shareUrl, '目前視角分享網址');
       }, 30);
     });
@@ -3259,12 +3264,82 @@ const html = `<!DOCTYPE html>
       }
     });
 
-    // 60fps Drag Fast-Path & rAF-Throttled Coordinate Readout
+    // =========================================================================
+    // 60FPS FLUID MOMENTUM WHEEL ZOOM + DRAG FAST-PATH & rAF COORD READOUT
+    // =========================================================================
     let isMapDragging = false, coordRaf = 0, lastLatLng = null;
     const coordEl = document.getElementById('coordReadout');
     const zoomEl = document.getElementById('zoomReadout');
+    const fmtZoom = z => Number(z).toFixed(1).replace(/\.0$/, '');
+
+    // Continuous inertial wheel & trackpad zoom (zero tile spam mid-zoom)
+    (function initSmoothWheelZoom() {
+      let zoomRaf = 0, isWheelZooming = false, targetZoom = map.getZoom(), anchorPt = null;
+      const mapEl = map.getContainer();
+
+      function stopSmoothZoom(commitEnd = true) {
+        if (zoomRaf) { cancelAnimationFrame(zoomRaf); zoomRaf = 0; }
+        if (isWheelZooming) {
+          isWheelZooming = false;
+          document.body.classList.remove('map-zooming');
+          if (commitEnd && typeof map._moveEnd === 'function') map._moveEnd(true);
+        }
+      }
+
+      function tickZoom() {
+        zoomRaf = 0;
+        if (!isWheelZooming || !anchorPt) return;
+        const curZ = map.getZoom();
+        const diff = targetZoom - curZ;
+        const done = Math.abs(diff) < 0.008;
+        const nextZ = done ? targetZoom : curZ + diff * 0.24;
+
+        if (typeof map._move === 'function') {
+          const scale = map.getZoomScale(nextZ, curZ);
+          const viewHalf = map.getSize().divideBy(2);
+          const offset = anchorPt.subtract(viewHalf).multiplyBy(1 - 1 / scale);
+          const newCenter = map.unproject(map.project(map.getCenter(), curZ).add(offset), curZ);
+          map._move(newCenter, nextZ, { pinch: true, round: false });
+          zoomEl.textContent = fmtZoom(nextZ);
+        } else {
+          map.setZoomAround(anchorPt, nextZ, { animate: false });
+        }
+
+        if (done) stopSmoothZoom(true);
+        else zoomRaf = requestAnimationFrame(tickZoom);
+      }
+
+      mapEl.addEventListener('wheel', e => {
+        if (e.target.closest('.leaflet-popup, .sidebar, .ctx-menu, .help-card, .top-bar')) return;
+        e.preventDefault();
+        let dy = e.deltaY;
+        if (e.deltaMode === 1) dy *= 18;
+        else if (e.deltaMode === 2) dy *= 320;
+        const mult = e.ctrlKey ? 2.1 : 1;
+        const step = Math.max(-0.65, Math.min(0.65, (-dy * mult) / 230));
+        if (Math.abs(step) < 0.001) return;
+
+        anchorPt = map.mouseEventToContainerPoint(e);
+        if (!isWheelZooming) {
+          isWheelZooming = true;
+          targetZoom = map.getZoom();
+          document.body.classList.add('map-zooming');
+          if (typeof map._moveStart === 'function') map._moveStart(true, false);
+        }
+        targetZoom = Math.max(map.getMinZoom(), Math.min(map.getMaxZoom(), targetZoom + step));
+        if (!zoomRaf) zoomRaf = requestAnimationFrame(tickZoom);
+      }, { passive: false });
+
+      map.on('dragstart dblclick zoomanim', () => stopSmoothZoom(false));
+    })();
+
     map.on('dragstart', () => { isMapDragging = true; document.body.classList.add('map-dragging'); });
     map.on('dragend', () => { isMapDragging = false; document.body.classList.remove('map-dragging'); });
+    map.on('zoomstart', () => document.body.classList.add('map-zooming'));
+    map.on('zoomend', () => {
+      document.body.classList.remove('map-zooming');
+      zoomEl.textContent = fmtZoom(map.getZoom());
+    });
     map.on('mousemove', e => {
       if (isMapDragging) return;
       lastLatLng = e.latlng;
@@ -3274,7 +3349,6 @@ const html = `<!DOCTYPE html>
         if (lastLatLng) coordEl.textContent = \`\${lastLatLng.lat.toFixed(4)}°N, \${lastLatLng.lng.toFixed(4)}°E\`;
       });
     });
-    map.on('zoomend', () => { zoomEl.textContent = map.getZoom(); });
 
     renderItinerary('all');
     renderGourmet('parking');
