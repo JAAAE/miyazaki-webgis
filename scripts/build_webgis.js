@@ -560,6 +560,13 @@ const html = `<!DOCTYPE html>
     }
     .replan-btn:hover { background: var(--accent); border-color: var(--accent); }
     .replan-btn.has-items { background: var(--accent); border-color: var(--accent); }
+    .clear-chk-btn {
+      flex-shrink: 0; background: var(--linen); color: var(--ink-soft); border: 1px solid var(--hairline);
+      border-radius: 6px; padding: 3px 7px; font-size: 10px; font-weight: 600;
+      cursor: pointer; font-family: inherit; transition: all 0.15s; white-space: nowrap; display: none;
+    }
+    .clear-chk-btn.show { display: inline-block; }
+    .clear-chk-btn:hover { border-color: var(--ink); color: var(--ink); background: var(--kraft); }
 
     .custom-plan-banner {
       display: none; background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 3px solid var(--accent);
@@ -1329,6 +1336,7 @@ const html = `<!DOCTYPE html>
       <div class="progress-row">
         <span id="progText">旅途清單：0 / ${pois.length + FOOD_SPOTS.length + SHOP_SPOTS.length + SPECIALTIES.length + SOUVENIRS.length}</span>
         <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+        <button class="clear-chk-btn" id="btnClearChecks" title="取消全部勾選項目">取消全選</button>
         <button class="replan-btn" id="btnReplan" title="依已勾選 ✓ 的景點、美食、購物與伴手禮自動重排最順路 4 天 3 夜">重排 4天3夜</button>
       </div>
     </div>
@@ -1548,6 +1556,8 @@ const html = `<!DOCTYPE html>
         rb.textContent = checkedSet.size > 0 ? \`重排 4天3夜 (\${checkedSet.size})\` : '重排 4天3夜';
         rb.classList.toggle('has-items', checkedSet.size > 0);
       }
+      const cb = document.getElementById('btnClearChecks');
+      if (cb) cb.classList.toggle('show', checkedSet.size > 0);
     }
     window.toggleCheck = function(ev, id) {
       ev.stopPropagation();
@@ -2579,13 +2589,18 @@ const html = `<!DOCTYPE html>
 
     document.getElementById('btnPrint').addEventListener('click', buildAndPrintHandbook);
     document.getElementById('btnPrint2').addEventListener('click', buildAndPrintHandbook);
-    document.getElementById('btnResetChecks').addEventListener('click', () => {
+    function clearAllChecks() {
+      if (!checkedSet.size && !customPlan) { showToast('目前沒有已勾選的項目'); return; }
       checkedSet.clear(); saveChecks();
       if (customPlan) resetToDefaultPlan(true);
-      renderItinerary(document.querySelector('.day-pill.active').dataset.day);
-      renderGourmet(document.querySelector('.sub-pill.active').dataset.sub);
-      showToast('已重設所有旅途勾選清單');
-    });
+      const activeDay = (document.querySelector('.day-pill.active') || {}).dataset?.day || 'all';
+      const activeSub = (document.querySelector('#gourmetPills .sub-pill.active') || {}).dataset?.sub || 'parking';
+      renderItinerary(activeDay);
+      renderGourmet(activeSub);
+      showToast('已取消全部勾選項目');
+    }
+    document.getElementById('btnResetChecks').addEventListener('click', clearAllChecks);
+    document.getElementById('btnClearChecks').addEventListener('click', clearAllChecks);
 
     function downloadText(filename, content, mime) {
       const blob = new Blob([content], { type: mime });
