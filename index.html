@@ -171,6 +171,28 @@
     .progress-row { margin-top: 8px; display: flex; align-items: center; gap: 8px; font-size: 10.2px; color: var(--ink-muted); }
     .progress-track { flex: 1; height: 4px; background: var(--kraft); border-radius: 99px; overflow: hidden; }
     .progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.25s ease; }
+    .replan-btn {
+      flex-shrink: 0; background: var(--ink); color: #FFFFFF; border: 1px solid var(--ink);
+      border-radius: 6px; padding: 3px 9px; font-size: 10.2px; font-weight: 600;
+      cursor: pointer; font-family: inherit; transition: all 0.15s; white-space: nowrap;
+    }
+    .replan-btn:hover { background: var(--accent); border-color: var(--accent); }
+    .replan-btn.has-items { background: var(--accent); border-color: var(--accent); }
+
+    .custom-plan-banner {
+      display: none; background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 3px solid var(--accent);
+      border-radius: 8px; padding: 9px 11px; margin-bottom: 10px; font-size: 10.8px; color: var(--ink);
+    }
+    .custom-plan-banner.show { display: block; }
+    .cpb-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-weight: 700; color: #1E3A8A; }
+    .cpb-sub { font-size: 10px; color: var(--ink-soft); margin-top: 3px; line-height: 1.45; }
+    .cpb-actions { display: flex; gap: 6px; margin-top: 7px; }
+    .cpb-btn {
+      flex: 1; padding: 5px 8px; border-radius: 6px; font-size: 10.4px; font-weight: 600;
+      cursor: pointer; font-family: inherit; border: 1px solid var(--hairline); background: #FFFFFF; color: var(--ink);
+    }
+    .cpb-btn.primary { background: var(--accent); border-color: var(--accent); color: #FFFFFF; }
+    .cpb-btn:hover { opacity: 0.9; }
 
     .sb-tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--hairline); background: var(--linen); }
     .sb-tab {
@@ -907,7 +929,7 @@
         </div>
       </div>
       <div class="sb-title">全宮崎縣 四天三夜旅圖</div>
-      <div class="sb-sub">OSRM 實際公路路網（686 km）× 9 款底圖 × 18 處停車 × 769 部 YT × 100 篇網頁攻略（更新 2026-11-27）。</div>
+      <div class="sb-sub">OSRM 實際公路路網（686 km）× 9 款底圖 × 18 處停車 × 769 部 YT × 100 篇網頁攻略（更新 2026-11-28）。</div>
 
       <div class="omni-wrap">
         <input type="text" class="omni-input" id="omniInput" placeholder="全域搜尋：景點、停車場、餐廳、商場、市町或 Mapcode..." autocomplete="off" />
@@ -916,15 +938,16 @@
       </div>
 
       <div class="kpi-strip">
-        <div class="kpi-box"><div class="kpi-val">686 km</div><div class="kpi-lbl">實際路網總長</div></div>
+        <div class="kpi-box"><div class="kpi-val" id="kpiRoadKm">686 km</div><div class="kpi-lbl">實際路網總長</div></div>
         <div class="kpi-box"><div class="kpi-val">18 處</div><div class="kpi-lbl">實測停車場</div></div>
         <div class="kpi-box"><div class="kpi-val">100 篇</div><div class="kpi-lbl">網頁攻略情報</div></div>
         <div class="kpi-box"><div class="kpi-val">769</div><div class="kpi-lbl">實測 YT 影片</div></div>
       </div>
 
       <div class="progress-row">
-        <span id="progText">旅途清單進度：0 / 58</span>
+        <span id="progText">旅途清單：0 / 68</span>
         <div class="progress-track"><div class="progress-fill" id="progFill"></div></div>
+        <button class="replan-btn" id="btnReplan" title="依已勾選 ✓ 的景點、美食、購物與伴手禮自動重排最順路 4 天 3 夜">重排 4天3夜</button>
       </div>
     </div>
 
@@ -938,6 +961,7 @@
     <div class="sb-body">
       <!-- TAB 1: ITINERARY -->
       <div class="tab-pane active" id="tab-itinerary">
+        <div class="custom-plan-banner" id="customPlanBanner"></div>
         <div class="region-strip">
           <button class="region-chip" onclick="zoomRegion('north_coast')">日向・延岡</button>
           <button class="region-chip" onclick="zoomRegion('north_mountain')">高千穗</button>
@@ -1077,7 +1101,7 @@
           </div>
           <div class="yt-count-bar">
             <span id="webCountText">顯示 100 篇情報</span>
-            <span>更新：2026-11-27</span>
+            <span>更新：2026-11-28</span>
           </div>
           <div id="webList"></div>
         </div>
@@ -1088,7 +1112,7 @@
   <button class="mobile-sheet-fab" id="mobileSheetFab">▲ 行程・停車・美食・影音</button>
 
   <div class="status-bar">
-    <span>更新 <strong>2026-11-27</strong></span>
+    <span>更新 <strong>2026-11-28</strong></span>
     <span>路網 <strong>OSRM 實際道路</strong></span>
     <span>坐標 <strong id="coordReadout">32.0500°N, 131.3200°E</strong></span>
     <span>Zoom <strong id="zoomReadout">9</strong></span>
@@ -1134,9 +1158,14 @@
       updateProgress();
     }
     function updateProgress() {
-      const total = POIS.length + FOOD_SPOTS.length + SPECIALTIES.length + SOUVENIRS.length;
-      document.getElementById('progText').textContent = `旅途清單進度：${checkedSet.size} / ${total}`;
+      const total = POIS.length + FOOD_SPOTS.length + SHOP_SPOTS.length + SPECIALTIES.length + SOUVENIRS.length;
+      document.getElementById('progText').textContent = `旅途清單：${checkedSet.size} / ${total}`;
       document.getElementById('progFill').style.width = Math.round((checkedSet.size / total) * 100) + '%';
+      const rb = document.getElementById('btnReplan');
+      if (rb) {
+        rb.textContent = checkedSet.size > 0 ? `重排 4天3夜 (${checkedSet.size})` : '重排 4天3夜';
+        rb.classList.toggle('has-items', checkedSet.size > 0);
+      }
     }
     window.toggleCheck = function(ev, id) {
       ev.stopPropagation();
@@ -1252,78 +1281,110 @@
       }).addTo(regionGroup);
     });
 
-    // Draw REAL OSRM Road-Network Polylines (smoothFactor simplified for 60fps pan)
-    Object.keys(DAY_ROUTES).forEach(d => {
-      const r = DAY_ROUTES[d];
-      const dayPois = POIS.filter(p => p.day === Number(d));
-      const minE = Math.min(...dayPois.map(p => p.elev)), maxE = Math.max(...dayPois.map(p => p.elev));
-      L.polyline(r.coords, { color: '#FFFFFF', weight: 6, opacity: 0.85, lineJoin: 'round', smoothFactor: 2.5, interactive: false }).addTo(dayRouteGroups[d]);
-      const line = L.polyline(r.coords, {
-        color: r.color, weight: 3.6, opacity: 0.96, lineJoin: 'round', smoothFactor: 2.5,
-        dashArray: d === '4' ? '7, 6' : null
-      }).bindTooltip(`<strong>${r.name}</strong><br>OSRM 實際路網：${r.distKm} km（約 ${Math.floor(r.driveMin/60)}h ${r.driveMin%60}m）<br>海拔範圍：${minE} m ～ ${maxE} m（點擊縮放至本日）`);
-      line.on('mouseover', () => { if (!isMapDragging) line.setStyle({ weight: 5.5, opacity: 1 }); });
-      line.on('mouseout', () => line.setStyle({ weight: 3.6, opacity: 0.96 }));
-      line.on('click', () => { if (!measuring) fitDay(Number(d)); });
-      line.addTo(dayRouteGroups[d]);
-    });
+    // =========================================================================
+    // ACTIVE ITINERARY STATE (Default Full-Prefecture vs Custom Checklist Plan)
+    // =========================================================================
+    const CUSTOM_PLAN_KEY = 'miyazaki_custom_4d3n_plan_v1';
+    let customPlan = null;
+    try {
+      const savedPlan = JSON.parse(localStorage.getItem(CUSTOM_PLAN_KEY) || 'null');
+      if (savedPlan && Array.isArray(savedPlan.pois) && savedPlan.routes) customPlan = savedPlan;
+    } catch (e) {}
+
+    function getActivePois() { return customPlan ? customPlan.pois : POIS; }
+    function getActiveRoutes() { return customPlan ? customPlan.routes : DAY_ROUTES; }
 
     function buildVideoBlock(tag) {
       const rel = VIDEOS_BY_TAG[tag] || [];
       const sample = rel.slice(0, 4);
       const links = sample.map(v =>
-        `<a class="pop-yt-link" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">▸ ${esc(v.t)} <span style="color:#857E73">（${esc(v.c)}${v.l ? ' · ' + esc(v.l) : ''}）</span></a>`
+        `<a class="pop-yt-link" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">▸ ${esc(v.t)} <span style="color:#64748B">（${esc(v.c)}${v.l ? ' · ' + esc(v.l) : ''}）</span></a>`
       ).join('');
-      return { count: rel.length, html: `<div class="pop-yt-title">相關實測 YouTube 影片（精選 ${sample.length} / ${rel.length} 部）</div><div class="pop-yt-list">${links}</div>` };
+      return { count: rel.length, html: rel.length ? `<div class="pop-yt-title">相關實測 YouTube 影片（精選 ${sample.length} / ${rel.length} 部）</div><div class="pop-yt-list">${links}</div>` : '' };
     }
 
-    // Itinerary POI Markers
-    POIS.forEach(p => {
-      const color = DAY_COLORS[p.day];
-      const vb = buildVideoBlock(p.tag);
-      if (p.cat !== 'transport') {
-        const c = L.circle([p.lat, p.lng], {
-          radius: Math.max(1400, Math.min(8200, vb.count * 105)),
-          color: '#FFFFFF', weight: 1.1, opacity: 0.65, fillColor: color, fillOpacity: 0.18, interactive: false
-        }).addTo(heatGroup);
-        heatCircles.push(c);
-      }
-      const icon = L.divIcon({
-        className: 'custom-pin-wrap',
-        html: `<div class="custom-pin" style="background:${color};"><span>${p.day}-${p.seq}</span></div>`,
-        iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -16]
+    // Dynamic Map Itinerary Renderer (Works for both Default & Custom 4D3N Re-planned Mode)
+    function renderMapItinerary() {
+      const activePois = getActivePois();
+      const activeRoutes = getActiveRoutes();
+      [1, 2, 3, 4].forEach(d => {
+        dayRouteGroups[d].clearLayers();
+        dayMarkerGroups[d].clearLayers();
       });
-      const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
-      const popupHtml = `
-        <div>
-          <div class="pop-head">
-            <span class="pop-day" style="background:${color}">DAY 0${p.day} · 0${p.seq} · ${esc(p.area)}</span>
-            <span class="park-chip">${esc(p.parkBadge)}</span>
+      heatGroup.clearLayers();
+      heatCircles.length = 0;
+
+      let totalKm = 0;
+      Object.keys(activeRoutes).forEach(d => {
+        const r = activeRoutes[d];
+        if (!r || !r.coords || r.coords.length < 2) return;
+        totalKm += (r.distKm || 0);
+        const dayPois = activePois.filter(p => p.day === Number(d));
+        const elevs = dayPois.map(p => p.elev || 20);
+        const minE = elevs.length ? Math.min(...elevs) : 0, maxE = elevs.length ? Math.max(...elevs) : 0;
+        const modeTag = r.isRealRoad === false ? '路網估算' : 'OSRM 實際路網';
+        L.polyline(r.coords, { color: '#FFFFFF', weight: 6, opacity: 0.85, lineJoin: 'round', smoothFactor: 2.5, interactive: false }).addTo(dayRouteGroups[d]);
+        const line = L.polyline(r.coords, {
+          color: r.color || DAY_COLORS[d], weight: 3.6, opacity: 0.96, lineJoin: 'round', smoothFactor: 2.5,
+          dashArray: d === '4' ? '7, 6' : null
+        }).bindTooltip(`<strong>${esc(r.name)}</strong><br>${modeTag}：${r.distKm} km（約 ${Math.floor(r.driveMin/60)}h ${r.driveMin%60}m）${elevs.length ? `<br>海拔範圍：${minE} m ～ ${maxE} m` : ''}<br>（點擊縮放至本日）`);
+        line.on('mouseover', () => { if (!isMapDragging) line.setStyle({ weight: 5.5, opacity: 1 }); });
+        line.on('mouseout', () => line.setStyle({ weight: 3.6, opacity: 0.96 }));
+        line.on('click', () => { if (!measuring) fitDay(Number(d)); });
+        line.addTo(dayRouteGroups[d]);
+      });
+
+      const kpiEl = document.getElementById('kpiRoadKm');
+      if (kpiEl) kpiEl.textContent = totalKm + ' km';
+
+      activePois.forEach(p => {
+        const color = DAY_COLORS[p.day] || '#2563EB';
+        const vb = buildVideoBlock(p.tag || 'drive');
+        if (p.cat !== 'transport') {
+          const c = L.circle([p.lat, p.lng], {
+            radius: Math.max(1400, Math.min(8200, (vb.count || 12) * 105)),
+            color: '#FFFFFF', weight: 1.1, opacity: 0.65, fillColor: color, fillOpacity: 0.16, interactive: false
+          }).addTo(heatGroup);
+          heatCircles.push(c);
+        }
+        const icon = L.divIcon({
+          className: 'custom-pin-wrap',
+          html: `<div class="custom-pin" style="background:${color};"><span>${p.day}-${p.seq}</span></div>`,
+          iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -16]
+        });
+        const gmapsUrl = `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
+        const popupHtml = `
+          <div>
+            <div class="pop-head">
+              <span class="pop-day" style="background:${color}">DAY 0${p.day} · 0${p.seq} · ${esc(p.area)}</span>
+              <span class="park-chip">${esc(p.parkBadge || 'P 現場停車')}</span>
+            </div>
+            <div class="pop-title">${esc(p.name)}</div>
+            <div class="pop-jp">${esc(p.jp || p.area)}${p.elev ? ' · 海拔 ' + p.elev + 'm' : ''}${vb.count ? ' · YT ' + vb.count + '部' : ''}</div>
+            <div class="pop-grid">
+              <div><span>建議時段</span><strong>${esc(p.time || '彈性安排')}</strong></div>
+              <div><span>停留時間</span><strong>${esc(p.stay || '60 分鐘')}</strong></div>
+              <div><span>自駕 Mapcode（點擊複製）</span><strong class="copyable" onclick="copyText('${esc(p.mapcode || '')}','Mapcode')">${esc(p.mapcode || '坐標導航')}</strong></div>
+              <div><span>WGS84（點擊複製）</span><strong class="copyable" onclick="copyText('${p.lat.toFixed(4)},${p.lng.toFixed(4)}','坐標')">${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}</strong></div>
+            </div>
+            ${p.parkDetail ? `<div class="pop-park"><strong>🅿 停車規劃：</strong>${esc(p.parkDetail)}</div>` : ''}
+            <div class="pop-desc">${esc(p.summary || '')}</div>
+            ${p.tips ? `<div class="pop-tip">旅途備註：${esc(p.tips)}</div>` : ''}
+            ${vb.html}
+            <div class="pop-actions">
+              <a class="pop-nav-btn" href="${gmapsUrl}" target="_blank" rel="noopener">Google 導航</a>
+              <button class="pop-nav-btn sec" onclick="runBufferAnalysis(${p.lat}, ${p.lng}, '${esc(p.name)}')">周邊停車/美食</button>
+              <button class="pop-nav-btn sec" onclick="openVideoTabWithTag('${p.tag || 'drive'}')">看 ${vb.count} 部YT</button>
+            </div>
           </div>
-          <div class="pop-title">${esc(p.name)}</div>
-          <div class="pop-jp">${esc(p.jp)} · 海拔 ${p.elev}m · YT ${vb.count}部</div>
-          <div class="pop-grid">
-            <div><span>建議時段</span><strong>${esc(p.time)}</strong></div>
-            <div><span>停留時間</span><strong>${esc(p.stay)}</strong></div>
-            <div><span>自駕 Mapcode（點擊複製）</span><strong class="copyable" onclick="copyText('${esc(p.mapcode)}','Mapcode')">${esc(p.mapcode)}</strong></div>
-            <div><span>WGS84（點擊複製）</span><strong class="copyable" onclick="copyText('${p.lat.toFixed(4)},${p.lng.toFixed(4)}','坐標')">${p.lat.toFixed(4)}, ${p.lng.toFixed(4)}</strong></div>
-          </div>
-          <div class="pop-park"><strong>🅿 停車規劃：</strong>${esc(p.parkDetail)}</div>
-          <div class="pop-desc">${esc(p.summary)}</div>
-          <div class="pop-tip">旅途備註：${esc(p.tips)}</div>
-          ${vb.html}
-          <div class="pop-actions">
-            <a class="pop-nav-btn" href="${gmapsUrl}" target="_blank" rel="noopener">Google 導航</a>
-            <button class="pop-nav-btn sec" onclick="runBufferAnalysis(${p.lat}, ${p.lng}, '${esc(p.name)}')">周邊停車/美食</button>
-            <button class="pop-nav-btn sec" onclick="openVideoTabWithTag('${p.tag}')">看 ${vb.count} 部YT</button>
-          </div>
-        </div>
-      `;
-      const marker = L.marker([p.lat, p.lng], { icon }).bindPopup(popupHtml, { maxWidth: 360 });
-      marker.on('click', () => highlightCard(p.id));
-      marker.addTo(dayMarkerGroups[p.day]);
-      markersById[p.id] = marker;
-    });
+        `;
+        const marker = L.marker([p.lat, p.lng], { icon }).bindPopup(popupHtml, { maxWidth: 360 });
+        marker.on('click', () => highlightCard(p.id));
+        marker.addTo(dayMarkerGroups[p.day]);
+        markersById[p.id] = marker;
+      });
+    }
+    renderMapItinerary();
 
     // Dedicated Parking GIS Markers (P)
     PARKING_SPOTS.forEach(pk => {
@@ -1526,46 +1587,79 @@
     document.addEventListener('click', e => { if (!e.target.closest('.omni-wrap')) omniResults.classList.remove('show'); });
 
     // =========================================================================
-    // RENDER ITINERARY (With Real OSRM Leg Km/Min & Parking Badges)
+    // RENDER ITINERARY (Supports Default Grand Loop & Custom Re-planned 4D3N)
     // =========================================================================
+    function renderCustomBanner() {
+      const banner = document.getElementById('customPlanBanner');
+      if (!banner) return;
+      if (!customPlan) {
+        banner.classList.remove('show');
+        banner.innerHTML = '';
+        return;
+      }
+      const routes = getActiveRoutes();
+      const totalKm = Object.values(routes).reduce((s, r) => s + (r.distKm || 0), 0);
+      const totalStops = customPlan.pois.length;
+      const roadBadge = customPlan.osrmReady ? 'OSRM 實際公路路網' : '路網計算中 / 估算';
+      banner.classList.add('show');
+      banner.innerHTML = `
+        <div class="cpb-top">
+          <span>自訂 4 天 3 夜最佳化行程</span>
+          <span style="font-size:9.6px;background:#DBEAFE;color:#1D4ED8;padding:1px 6px;border-radius:4px">${roadBadge}</span>
+        </div>
+        <div class="cpb-sub">依您勾選清單自動規劃最順路動線（含機場取還車共 ${totalStops} 站 · 總車程約 ${totalKm} km），支援直接列印手冊與匯出 GPX / GeoJSON。</div>
+        <div class="cpb-actions">
+          <button class="cpb-btn primary" onclick="replanFromChecklist()">依最新勾選重新最佳化</button>
+          <button class="cpb-btn" onclick="resetToDefaultPlan()">還原全縣預設</button>
+        </div>
+      `;
+    }
+
     function renderItinerary(dayFilter = 'all') {
+      renderCustomBanner();
       const container = document.getElementById('itineraryList');
-      const days = dayFilter === 'all' ? [1, 2, 3, 4] : [Number(dayFilter)];
+      const activePois = getActivePois();
+      const activeRoutes = getActiveRoutes();
+      const allDays = Object.keys(activeRoutes).map(Number).sort((a, b) => a - b);
+      const days = dayFilter === 'all' ? allDays : allDays.filter(d => d === Number(dayFilter));
       let html = '';
       days.forEach(d => {
-        const route = DAY_ROUTES[d];
-        const dayPois = POIS.filter(p => p.day === d);
+        const route = activeRoutes[d];
+        const dayPois = activePois.filter(p => p.day === d);
+        if (!route || !dayPois.length) return;
+        const modeTxt = route.isRealRoad === false ? '路網估算' : 'OSRM 實際路網';
         html += `
-          <div class="day-banner" style="border-left-color:${route.color}">
+          <div class="day-banner" style="border-left-color:${route.color || DAY_COLORS[d]}">
             <div>
               <div class="day-banner-title">${esc(route.name)}</div>
-              <div class="day-banner-meta">OSRM 實際路網 ${route.distKm} km · 約 ${Math.floor(route.driveMin/60)}h ${route.driveMin%60}m · 共 ${dayPois.length} 站</div>
+              <div class="day-banner-meta">${modeTxt} ${route.distKm} km · 約 ${Math.floor(route.driveMin/60)}h ${route.driveMin%60}m · 共 ${dayPois.length} 站</div>
             </div>
             <button class="fit-btn" onclick="fitDay(${d})">定位</button>
           </div>
         `;
         dayPois.forEach((p, idx) => {
           if (p.legKm > 0) {
-            const label = idx === 0 ? '由前晚住宿出發・實際路網' : '實際路網自駕';
+            const label = idx === 0 ? '由前晚住宿出發・自駕' : '順路自駕';
             html += `<div class="leg-conn"><span class="leg-line"></span><span>${label} ${p.legKm} km · 約 ${p.legMin} 分</span></div>`;
           }
-          const color = DAY_COLORS[p.day];
+          const color = DAY_COLORS[p.day] || '#2563EB';
           const vidCount = (VIDEOS_BY_TAG[p.tag] || []).length;
-          const isDone = checkedSet.has(p.id);
+          const origId = p.srcId || p.id;
+          const isDone = checkedSet.has(origId);
           html += `
-            <div class="poi-card ${isDone ? 'checked' : ''}" id="card-${p.id}" onclick="focusAny('${p.id}', ${p.lat}, ${p.lng}, 14)">
+            <div class="poi-card ${!customPlan && isDone ? 'checked' : ''}" id="card-${p.id}" onclick="focusAny('${p.id}', ${p.lat}, ${p.lng}, 14)">
               <div class="poi-top">
                 <div class="poi-num" style="background:${color}">${p.seq}</div>
                 <div style="flex:1;min-width:0">
                   <div class="poi-head-row">
                     <div class="poi-name">${esc(p.name)}</div>
-                    <button class="chk-btn ${isDone ? 'done' : ''}" id="chk-${p.id}" onclick="toggleCheck(event,'${p.id}')" title="標記已造訪">✓</button>
+                    ${!customPlan ? `<button class="chk-btn ${isDone ? 'done' : ''}" id="chk-${p.id}" onclick="toggleCheck(event,'${p.id}')" title="加入旅途清單">✓</button>` : `<span class="tag-chip">${esc(p.kindLabel || '自選')}</span>`}
                   </div>
                   <div class="poi-meta">
                     <span class="area-chip">${esc(p.area)}</span>
                     <span class="tag-chip">${esc(p.time)}</span>
                     <span class="park-chip">${esc(p.parkBadge)}</span>
-                    <span class="yt-chip">YT ${vidCount}部</span>
+                    ${vidCount ? `<span class="yt-chip">YT ${vidCount}部</span>` : ''}
                   </div>
                 </div>
               </div>
@@ -1573,11 +1667,13 @@
             </div>
           `;
         });
-        if (d === 3 && DAY3_STAY_LEG) {
+        if (!customPlan && d === 3 && DAY3_STAY_LEG) {
           html += `<div class="leg-conn"><span class="leg-line"></span><span>往西北赴都城市區飯店夜宿・實際路網 ${DAY3_STAY_LEG.km} km · 約 ${DAY3_STAY_LEG.min} 分</span></div>`;
+        } else if (customPlan && route.stayHint) {
+          html += `<div class="leg-conn"><span class="leg-line"></span><span>🌙 ${esc(route.stayHint)}</span></div>`;
         }
       });
-      container.innerHTML = html;
+      container.innerHTML = html || '<div style="padding:14px;font-size:11.5px;color:var(--ink-muted)">本日無安排據點</div>';
     }
 
     // =========================================================================
@@ -1632,23 +1728,29 @@
           `;
         }).join('');
       } else if (sub === 'shop') {
-        el.innerHTML = SHOP_SPOTS.map((s, i) => `
-          <div class="poi-card" id="card-${s.id}" onclick="ensureLayerAndFocus('shop', '${s.id}', ${s.lat}, ${s.lng}, 15)">
-            <div class="poi-top">
-              <div class="poi-num sq" style="background:var(--shop-c)">買</div>
-              <div style="flex:1;min-width:0">
-                <div class="poi-name">${String(i + 1).padStart(2, '0')}. ${esc(s.name)}</div>
-                <div class="poi-sub">${esc(s.sub)}</div>
-                <div class="poi-meta">
-                  <span class="area-chip">${esc(s.area)}</span>
-                  <span class="tag-chip">${esc(s.hours)}</span>
-                  <span class="park-chip">🅿 ${esc(s.park)}</span>
+        el.innerHTML = SHOP_SPOTS.map((s, i) => {
+          const isDone = checkedSet.has(s.id);
+          return `
+            <div class="poi-card ${isDone ? 'checked' : ''}" id="card-${s.id}" onclick="ensureLayerAndFocus('shop', '${s.id}', ${s.lat}, ${s.lng}, 15)">
+              <div class="poi-top">
+                <div class="poi-num sq" style="background:var(--shop-c)">買</div>
+                <div style="flex:1;min-width:0">
+                  <div class="poi-head-row">
+                    <div class="poi-name">${String(i + 1).padStart(2, '0')}. ${esc(s.name)}</div>
+                    <button class="chk-btn ${isDone ? 'done' : ''}" id="chk-${s.id}" onclick="toggleCheck(event,'${s.id}')" title="加入旅途清單">✓</button>
+                  </div>
+                  <div class="poi-sub">${esc(s.sub)}</div>
+                  <div class="poi-meta">
+                    <span class="area-chip">${esc(s.area)}</span>
+                    <span class="tag-chip">${esc(s.hours)}</span>
+                    <span class="park-chip">🅿 ${esc(s.park)}</span>
+                  </div>
                 </div>
               </div>
+              <div class="poi-desc"><strong>精選商品：</strong>${esc(s.items)}<br>${esc(s.desc)}</div>
             </div>
-            <div class="poi-desc"><strong>精選商品：</strong>${esc(s.items)}<br>${esc(s.desc)}</div>
-          </div>
-        `).join('');
+          `;
+        }).join('');
       } else if (sub === 'spec') {
         const note = '<div class="customs-note"><strong>返台檢疫與託運備忘：</strong>起司饅頭、青島煎餅、茶葉與無肉塊辛麵可攜帶回台；燒肉醬、平兵衛酢、燒酎與果凍布丁須放<strong>託運行李</strong>；<strong>炭火地雞肉品與生鮮芒果</strong>禁止攜帶入境台灣。</div>';
         el.innerHTML = note + SPECIALTIES.map((sp, i) => {
@@ -1764,8 +1866,19 @@
       if (kind === 'shop' && !document.getElementById('chkShop').checked) setShopLayer(true);
       focusAny(id, lat, lng, zoom);
     };
-    window.fitDay = function(d) { map.fitBounds(L.latLngBounds(DAY_ROUTES[d].coords), getMapPadding()); };
-    function fitAllBounds() { map.fitBounds(L.latLngBounds(POIS.map(p => [p.lat, p.lng])), getMapPadding()); }
+    window.fitDay = function(d) {
+      const r = getActiveRoutes()[d];
+      if (r && r.coords && r.coords.length >= 2) {
+        map.fitBounds(L.latLngBounds(r.coords), getMapPadding());
+      } else {
+        const pts = getActivePois().filter(p => p.day === Number(d)).map(p => [p.lat, p.lng]);
+        if (pts.length) map.fitBounds(L.latLngBounds(pts), getMapPadding());
+      }
+    };
+    function fitAllBounds() {
+      const pts = getActivePois().map(p => [p.lat, p.lng]);
+      if (pts.length) map.fitBounds(L.latLngBounds(pts), getMapPadding());
+    }
 
     function selectDayFilter(d) {
       document.querySelectorAll('.day-pill').forEach(b => b.classList.toggle('active', b.dataset.day === String(d)));
@@ -2038,8 +2151,9 @@
     let tourTimer = null, tourIndex = 0;
     function stopTour() { if (tourTimer) clearTimeout(tourTimer); tourTimer = null; document.getElementById('btnTour').classList.remove('active'); document.getElementById('btnTour').textContent = '航線導覽'; }
     function stepTour() {
-      if (tourIndex >= POIS.length) { stopTour(); fitAllBounds(); return; }
-      const p = POIS[tourIndex]; focusAny(p.id, p.lat, p.lng, 14); tourIndex++;
+      const activePois = getActivePois();
+      if (tourIndex >= activePois.length) { stopTour(); fitAllBounds(); return; }
+      const p = activePois[tourIndex]; focusAny(p.id, p.lat, p.lng, 14); tourIndex++;
       tourTimer = setTimeout(stepTour, 4200);
     }
     document.getElementById('btnTour').addEventListener('click', () => {
@@ -2047,27 +2161,32 @@
       else { tourIndex = 0; document.getElementById('btnTour').classList.add('active'); document.getElementById('btnTour').textContent = '停止導覽'; stepTour(); }
     });
 
-    // Print Handbook (Now includes Parking Strategy & Real Road Distances!)
+    // Print Handbook (Supports both Default & Custom 4D3N Re-planned Itinerary!)
     function buildAndPrintHandbook() {
       const sheet = document.getElementById('printSheet');
+      const activePois = getActivePois();
+      const activeRoutes = getActiveRoutes();
+      const totalKm = Object.values(activeRoutes).reduce((s, r) => s + (r.distKm || 0), 0);
       let dayHtml = '';
-      [1, 2, 3, 4].forEach(d => {
-        const r = DAY_ROUTES[d];
-        const rows = POIS.filter(p => p.day === d).map(p => `
+      Object.keys(activeRoutes).map(Number).sort((a, b) => a - b).forEach(d => {
+        const r = activeRoutes[d];
+        const dayPois = activePois.filter(p => p.day === d);
+        if (!dayPois.length) return;
+        const rows = dayPois.map(p => `
           <tr>
-            <td>${p.seq}</td><td>${esc(p.time)}</td><td><strong>${esc(p.name)}</strong><br><span style="color:#857E73">${esc(p.area)} · 海拔 ${p.elev}m</span></td>
-            <td style="white-space:nowrap">${esc(p.mapcode)}</td><td><strong>${esc(p.parkBadge)}</strong><br>${esc(p.parkDetail)}</td>
+            <td>${p.seq}</td><td>${esc(p.time)}</td><td><strong>${esc(p.name)}</strong><br><span style="color:#64748B">${esc(p.area)}${p.elev ? ' · 海拔 ' + p.elev + 'm' : ''}</span></td>
+            <td style="white-space:nowrap">${esc(p.mapcode || '坐標導航')}</td><td><strong>${esc(p.parkBadge || '')}</strong><br>${esc(p.parkDetail || '')}</td>
           </tr>`).join('');
-        dayHtml += `<div class="pr-h2">${esc(r.name)}（OSRM 實際路網 ${r.distKm} km・約 ${Math.floor(r.driveMin/60)}h ${r.driveMin%60}m）</div>
+        dayHtml += `<div class="pr-h2">${esc(r.name)}（${r.isRealRoad === false ? '路網估算' : 'OSRM 實際路網'} ${r.distKm} km・約 ${Math.floor(r.driveMin/60)}h ${r.driveMin%60}m）</div>
           <table class="pr-table"><thead><tr><th>站</th><th>時段</th><th>據點</th><th>Mapcode</th><th>停車規劃</th></tr></thead><tbody>${rows}</tbody></table>`;
       });
       const foodHtml = FOOD_SPOTS.map(f => `<div class="pr-card"><strong>${esc(f.name)}</strong>（${esc(f.area)}）<br>必點：${esc(f.dish)}<br>停車：${esc(f.park)}｜Mapcode：${esc(f.mapcode)}</div>`).join('');
-      const buyHtml = [...SPECIALTIES.map(s => `<div class="pr-card">☐ <strong>${esc(s.name)}</strong>（${esc(s.carry)}）— ${esc(s.shopName)}</div>`),
-                       ...SOUVENIRS.map(s => `<div class="pr-card">☐ <strong>${esc(s.name)}</strong>（${esc(s.price)}）— ${esc(s.targetLabel)}</div>`)].join('');
+      const buyHtml = [...SPECIALTIES.map(s => `<div class="pr-card">${checkedSet.has(s.id) ? '☑' : '☐'} <strong>${esc(s.name)}</strong>（${esc(s.carry)}）— ${esc(s.shopName)}</div>`),
+                       ...SOUVENIRS.map(s => `<div class="pr-card">${checkedSet.has(s.id) ? '☑' : '☐'} <strong>${esc(s.name)}</strong>（${esc(s.price)}）— ${esc(s.targetLabel)}</div>`)].join('');
       sheet.innerHTML = `
         <div class="pr-header">
-          <div class="pr-title">全宮崎縣 四天三夜實際路網旅途手冊（含停車攻略）</div>
-          <div class="pr-sub">實測彙整 769 部 YouTube 影片｜OSRM 實際公路總長 686 km｜4日停車預算約 ¥2,900–¥4,200</div>
+          <div class="pr-title">${customPlan ? '我的客製化宮崎 四天三夜自駕旅途手冊' : '全宮崎縣 四天三夜實際路網旅途手冊（含停車攻略）'}</div>
+          <div class="pr-sub">實測彙整 769 部 YouTube 影片｜公路總長 ${totalKm} km｜共 ${activePois.length} 站</div>
         </div>
         ${dayHtml}
         <div class="pr-h2">全宮崎必吃美食清單（12 間名店）</div><div class="pr-grid">${foodHtml}</div>
@@ -2080,6 +2199,7 @@
     document.getElementById('btnPrint2').addEventListener('click', buildAndPrintHandbook);
     document.getElementById('btnResetChecks').addEventListener('click', () => {
       checkedSet.clear(); saveChecks();
+      if (customPlan) resetToDefaultPlan(true);
       renderItinerary(document.querySelector('.day-pill.active').dataset.day);
       renderGourmet(document.querySelector('.sub-pill.active').dataset.sub);
       showToast('已重設所有旅途勾選清單');
@@ -2093,30 +2213,382 @@
     }
 
     document.getElementById('btnExportGeoJSON').addEventListener('click', () => {
+      const activePois = getActivePois();
+      const activeRoutes = getActiveRoutes();
       const features = [
-        ...POIS.map(p => ({ type: 'Feature', properties: { layer: 'itinerary', id: p.id, day: p.day, seq: p.seq, area: p.area, elevation_m: p.elev, parking: p.parkBadge, name: p.name, mapcode: p.mapcode }, geometry: { type: 'Point', coordinates: [p.lng, p.lat] } })),
+        ...activePois.map(p => ({ type: 'Feature', properties: { layer: 'itinerary', id: p.id, day: p.day, seq: p.seq, area: p.area, elevation_m: p.elev || 0, parking: p.parkBadge || '', name: p.name, mapcode: p.mapcode || '' }, geometry: { type: 'Point', coordinates: [p.lng, p.lat] } })),
         ...PARKING_SPOTS.map(pk => ({ type: 'Feature', properties: { layer: 'parking', id: pk.id, area: pk.area, name: pk.name, fee: pk.fee, capacity: pk.cap, walk: pk.walk }, geometry: { type: 'Point', coordinates: [pk.lng, pk.lat] } })),
         ...FOOD_SPOTS.map(f => ({ type: 'Feature', properties: { layer: 'food', id: f.id, area: f.area, name: f.name, dish: f.dish, mapcode: f.mapcode }, geometry: { type: 'Point', coordinates: [f.lng, f.lat] } })),
         ...SHOP_SPOTS.map(s => ({ type: 'Feature', properties: { layer: 'shopping', id: s.id, area: s.area, name: s.name, items: s.items, mapcode: s.mapcode }, geometry: { type: 'Point', coordinates: [s.lng, s.lat] } })),
         ...userPins.map(u => ({ type: 'Feature', properties: { layer: 'user_pin', id: u.id, name: u.name }, geometry: { type: 'Point', coordinates: [u.lng, u.lat] } })),
-        ...Object.keys(DAY_ROUTES).map(d => ({ type: 'Feature', properties: { layer: 'real_road_route', day: Number(d), name: DAY_ROUTES[d].name, distance_km: DAY_ROUTES[d].distKm, drive_min: DAY_ROUTES[d].driveMin }, geometry: { type: 'LineString', coordinates: DAY_ROUTES[d].coords.map(c => [c[1], c[0]]) } }))
+        ...Object.keys(activeRoutes).map(d => ({ type: 'Feature', properties: { layer: 'real_road_route', day: Number(d), name: activeRoutes[d].name, distance_km: activeRoutes[d].distKm, drive_min: activeRoutes[d].driveMin }, geometry: { type: 'LineString', coordinates: activeRoutes[d].coords.map(c => [c[1], c[0]]) } }))
       ];
-      downloadText('miyazaki_realroad_parking_webgis.geojson', JSON.stringify({ type: 'FeatureCollection', features }, null, 2), 'application/geo+json');
-      showToast('已匯出實際路網、停車場與自訂標記 GeoJSON');
+      downloadText(customPlan ? 'miyazaki_custom_4d3n.geojson' : 'miyazaki_realroad_parking_webgis.geojson', JSON.stringify({ type: 'FeatureCollection', features }, null, 2), 'application/geo+json');
+      showToast(customPlan ? '已匯出客製化 4 天 3 夜 GeoJSON' : '已匯出實際路網與停車場 GeoJSON');
     });
 
     document.getElementById('btnExportGPX').addEventListener('click', () => {
+      const activePois = getActivePois();
+      const activeRoutes = getActiveRoutes();
       const wpts = [
-        ...POIS.map(p => `  <wpt lat="${p.lat}" lon="${p.lng}"><ele>${p.elev}</ele><name>${esc('D' + p.day + '-' + p.seq + ' ' + p.name)}</name><desc>${esc(p.parkBadge + ' | Mapcode: ' + p.mapcode)}</desc></wpt>`),
+        ...activePois.map(p => `  <wpt lat="${p.lat}" lon="${p.lng}"><ele>${p.elev || 0}</ele><name>${esc('D' + p.day + '-' + p.seq + ' ' + p.name)}</name><desc>${esc((p.parkBadge || '') + ' | Mapcode: ' + (p.mapcode || ''))}</desc></wpt>`),
         ...PARKING_SPOTS.map(pk => `  <wpt lat="${pk.lat}" lon="${pk.lng}"><name>${esc('[P] ' + pk.name)}</name><desc>${esc(pk.fee + ' | ' + pk.cap + ' | ' + pk.walk)}</desc></wpt>`),
         ...FOOD_SPOTS.map(f => `  <wpt lat="${f.lat}" lon="${f.lng}"><name>${esc('[食] ' + f.name)}</name><desc>${esc(f.area + ' | ' + f.dish)}</desc></wpt>`),
         ...SHOP_SPOTS.map(s => `  <wpt lat="${s.lat}" lon="${s.lng}"><name>${esc('[買] ' + s.name)}</name><desc>${esc(s.area + ' | ' + s.items)}</desc></wpt>`),
         ...userPins.map(u => `  <wpt lat="${u.lat}" lon="${u.lng}"><name>${esc('[自訂] ' + u.name)}</name></wpt>`)
       ].join('\n');
-      const trks = Object.keys(DAY_ROUTES).map(d => `  <trk><name>${esc(DAY_ROUTES[d].name)}</name><trkseg>\n${DAY_ROUTES[d].coords.map(c => `      <trkpt lat="${c[0]}" lon="${c[1]}"></trkpt>`).join('\n')}\n    </trkseg></trk>`).join('\n');
-      downloadText('miyazaki_realroad_itinerary.gpx', `<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="Miyazaki Real-Road MUJI WebGIS">\n${wpts}\n${trks}\n</gpx>`, 'application/gpx+xml');
-      showToast('已匯出實際路網 GPX（含高程、停車場與自訂標記）');
+      const trks = Object.keys(activeRoutes).map(d => `  <trk><name>${esc(activeRoutes[d].name)}</name><trkseg>\n${activeRoutes[d].coords.map(c => `      <trkpt lat="${c[0]}" lon="${c[1]}"></trkpt>`).join('\n')}\n    </trkseg></trk>`).join('\n');
+      downloadText(customPlan ? 'miyazaki_custom_4d3n.gpx' : 'miyazaki_realroad_itinerary.gpx', `<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="Miyazaki Travel WebGIS">\n${wpts}\n${trks}\n</gpx>`, 'application/gpx+xml');
+      showToast(customPlan ? '已匯出客製化 4 天 3 夜 GPX' : '已匯出實際路網 GPX（含高程與停車場）');
     });
+
+    // =========================================================================
+    // SMART 4D3N ITINERARY RE-PLANNER (TSP + 2-opt + Balanced DP + Live OSRM)
+    // =========================================================================
+    const KMI_START = {
+      id: 'c-kmi-start', srcId: 'd1-1', area: '宮崎市', elev: 6, cat: 'transport', kindLabel: '出發',
+      name: '宮崎九重葛機場（KMI 取車）', jp: '宮崎ブーゲンビリア空港',
+      lat: 31.8728, lng: 131.4417, stayMin: 40, stay: '40 分鐘', mapcode: '66 135 552*14',
+      parkBadge: '租車據點', parkDetail: '機場旁各家租車營業所免費接駁，領車確認 ETC 卡與 Mapcode。',
+      summary: '由宮崎機場領車出發，展開依您勾選清單量身最佳化的 4 天 3 夜環縣自駕旅程。',
+      tips: '建議加租 ETC 卡，搭配東九州自動車道與宮崎自動車道更省時。', tag: 'drive'
+    };
+    const KMI_END = {
+      id: 'c-kmi-end', srcId: 'd4-5', area: '宮崎市', elev: 6, cat: 'transport', kindLabel: '還車',
+      name: '宮崎九重葛機場（KMI 還車搭機）', jp: '宮崎ブーゲンビリア空港',
+      lat: 31.8742, lng: 131.4442, stayMin: 60, stay: '60 分鐘', mapcode: '66 135 552*14',
+      parkBadge: '還車據點', parkDetail: '還車前請於機場旁加油站加滿 Regular 汽油並留存收據。',
+      summary: '返回宮崎機場還車，2 樓商場還可把握最後時間補齊起司饅頭與日向夏伴手禮！',
+      tips: '建議起飛前 2 小時抵達還車與託運行李。', tag: 'shopping'
+    };
+
+    function parseStayMinutes(stayStr, fallback = 60) {
+      const m = String(stayStr || '').match(/(d+)/);
+      return m ? Math.max(25, Math.min(180, parseInt(m[1], 10))) : fallback;
+    }
+
+    function fmtClock(totalMins) {
+      const h = Math.floor(totalMins / 60) % 24;
+      const m = Math.round(totalMins % 60);
+      return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0');
+    }
+
+    function inferStayCity(stop) {
+      if (!stop) return '建議夜宿：宮崎市區橘通／JR 宮崎站周邊飯店';
+      const a = stop.area || '';
+      if (a.includes('高千穗')) return '建議夜宿：高千穗町溫泉旅館（可順看 20:00 高千穗神社夜神樂）';
+      if (a.includes('延岡') || a.includes('日向')) return '建議夜宿：延岡市區或日向市飯店（近國道 218／東九州道）';
+      if (a.includes('日南') || a.includes('串間')) return '建議夜宿：日南海岸溫泉飯店或飫肥城下町古民家';
+      if (a.includes('都城') || a.includes('蝦野')) return '建議夜宿：都城市區飯店或霧島溫泉區';
+      return '建議夜宿：宮崎市區橘通／JR 宮崎站周邊飯店（晚餐覓食最便利）';
+    }
+
+    function collectSelectedStops() {
+      const byKey = new Map();
+      function upsert(key, stopObj, buyNote) {
+        for (const [k, existing] of byKey.entries()) {
+          if (k === key || haversineKm(existing.lat, existing.lng, stopObj.lat, stopObj.lng) < 0.14) {
+            if (buyNote) {
+              existing.buyList = existing.buyList || [];
+              if (!existing.buyList.includes(buyNote)) existing.buyList.push(buyNote);
+            }
+            return;
+          }
+        }
+        const clone = { ...stopObj, buyList: buyNote ? [buyNote] : [] };
+        byKey.set(key, clone);
+      }
+
+      POIS.forEach(p => {
+        if (!checkedSet.has(p.id) || p.id === 'd1-1' || p.id === 'd4-5') return;
+        upsert(p.id, {
+          srcId: p.id, name: p.name, jp: p.jp, area: p.area, elev: p.elev, cat: p.cat,
+          kindLabel: '景點', lat: p.lat, lng: p.lng, stayMin: parseStayMinutes(p.stay, 65), stay: p.stay,
+          mapcode: p.mapcode, parkBadge: p.parkBadge, parkDetail: p.parkDetail,
+          summary: p.summary, tips: p.tips, tag: p.tag
+        });
+      });
+
+      FOOD_SPOTS.forEach(f => {
+        if (!checkedSet.has(f.id)) return;
+        upsert(f.id, {
+          srcId: f.id, name: f.name, jp: f.sub, area: f.area, elev: 20, cat: 'food',
+          kindLabel: '美食', lat: f.lat, lng: f.lng, stayMin: 60, stay: '60 分鐘',
+          mapcode: f.mapcode, parkBadge: 'P 餐廳停車', parkDetail: f.park,
+          summary: `必點：${f.dish}｜${f.desc}`, tips: `營業時間：${f.hours}`, tag: f.tag
+        });
+      });
+
+      SHOP_SPOTS.forEach(s => {
+        if (!checkedSet.has(s.id)) return;
+        upsert(s.id, {
+          srcId: s.id, name: s.name, jp: s.sub, area: s.area, elev: 15, cat: 'spot',
+          kindLabel: '購物', lat: s.lat, lng: s.lng, stayMin: 50, stay: '50 分鐘',
+          mapcode: s.mapcode, parkBadge: 'P 商場停車', parkDetail: s.park,
+          summary: `精選商品：${s.items}｜${s.desc}`, tips: `營業時間：${s.hours}`, tag: 'shopping'
+        });
+      });
+
+      SPECIALTIES.forEach(sp => {
+        if (!checkedSet.has(sp.id)) return;
+        const s = SHOP_SPOTS.find(x => x.id === sp.shopId);
+        if (!s) return;
+        upsert(s.id, {
+          srcId: s.id, name: s.name, jp: s.sub, area: s.area, elev: 15, cat: 'spot',
+          kindLabel: '伴手禮', lat: s.lat, lng: s.lng, stayMin: 45, stay: '45 分鐘',
+          mapcode: s.mapcode, parkBadge: 'P 商場停車', parkDetail: s.park,
+          summary: s.desc, tips: `營業時間：${s.hours}`, tag: 'shopping'
+        }, `${sp.name}（${sp.carry}）`);
+      });
+
+      SOUVENIRS.forEach(sv => {
+        if (!checkedSet.has(sv.id)) return;
+        const tgt = sv.targetKind === 'shop'
+          ? SHOP_SPOTS.find(x => x.id === sv.targetId)
+          : POIS.find(x => x.id === sv.targetId);
+        if (!tgt) return;
+        upsert(tgt.id, {
+          srcId: tgt.id, name: tgt.name, jp: tgt.jp || tgt.sub || tgt.area, area: tgt.area,
+          elev: tgt.elev || 15, cat: 'spot', kindLabel: '紀念品', lat: tgt.lat, lng: tgt.lng,
+          stayMin: 50, stay: '50 分鐘', mapcode: tgt.mapcode || '',
+          parkBadge: tgt.parkBadge || 'P 現場停車', parkDetail: tgt.parkDetail || tgt.park || '',
+          summary: tgt.summary || tgt.desc || '', tips: tgt.tips || '', tag: tgt.tag || 'shopping'
+        }, `${sv.name}（${sv.price}）`);
+      });
+
+      userPins.forEach(u => {
+        upsert(u.id, {
+          srcId: u.id, name: u.name, jp: '我的自訂標記', area: '自訂坐標', elev: 20, cat: 'spot',
+          kindLabel: '自訂', lat: u.lat, lng: u.lng, stayMin: 45, stay: '45 分鐘',
+          mapcode: '坐標導航', parkBadge: '自訂據點', parkDetail: '請以 Google 導航或街景確認周邊車位。',
+          summary: '您於地圖右鍵釘選的私人行程據點。', tips: '', tag: 'drive'
+        });
+      });
+
+      const list = Array.from(byKey.values());
+      list.forEach(item => {
+        if (item.buyList && item.buyList.length) {
+          item.summary = `🛍 必買採購：${item.buyList.join('、')}。` + (item.summary ? ' ' + item.summary : '');
+        }
+      });
+      return list;
+    }
+
+    function optimizeLoopOrder(stops) {
+      if (stops.length <= 2) return [...stops];
+      const remaining = [...stops];
+      const route = [];
+      let cur = KMI_START;
+      while (remaining.length) {
+        let bestIdx = 0, bestDist = Infinity;
+        for (let i = 0; i < remaining.length; i++) {
+          const d = haversineKm(cur.lat, cur.lng, remaining[i].lat, remaining[i].lng);
+          if (d < bestDist) { bestDist = d; bestIdx = i; }
+        }
+        cur = remaining.splice(bestIdx, 1)[0];
+        route.push(cur);
+      }
+      const fullDist = arr => {
+        let s = haversineKm(KMI_START.lat, KMI_START.lng, arr[0].lat, arr[0].lng);
+        for (let i = 1; i < arr.length; i++) s += haversineKm(arr[i - 1].lat, arr[i - 1].lng, arr[i].lat, arr[i].lng);
+        s += haversineKm(arr[arr.length - 1].lat, arr[arr.length - 1].lng, KMI_END.lat, KMI_END.lng);
+        return s;
+      };
+      let improved = true, guard = 0;
+      while (improved && guard++ < 80) {
+        improved = false;
+        const base = fullDist(route);
+        for (let i = 0; i < route.length - 1; i++) {
+          for (let j = i + 1; j < route.length; j++) {
+            const cand = [...route.slice(0, i), ...route.slice(i, j + 1).reverse(), ...route.slice(j + 1)];
+            if (fullDist(cand) + 0.05 < base) {
+              route.splice(0, route.length, ...cand);
+              improved = true;
+              break;
+            }
+          }
+          if (improved) break;
+        }
+      }
+      return route;
+    }
+
+    function partitionIntoDays(ordered, numDays) {
+      const n = ordered.length;
+      if (numDays <= 1 || n <= 1) return [ordered];
+      const roadMin = (a, b) => Math.max(5, Math.round((haversineKm(a.lat, a.lng, b.lat, b.lng) * 1.32) / 48 * 60));
+
+      function segCost(startIdx, endIdx, dayNum) {
+        let mins = 0;
+        if (dayNum === 1) mins += KMI_START.stayMin + roadMin(KMI_START, ordered[startIdx]);
+        else mins += roadMin(ordered[startIdx - 1], ordered[startIdx]);
+        for (let i = startIdx; i <= endIdx; i++) {
+          mins += ordered[i].stayMin || 55;
+          if (i > startIdx) mins += roadMin(ordered[i - 1], ordered[i]);
+        }
+        if (dayNum === numDays) mins += roadMin(ordered[endIdx], KMI_END) + KMI_END.stayMin;
+        return mins;
+      }
+
+      const INF = 1e9;
+      const dp = Array.from({ length: numDays + 1 }, () => new Array(n + 1).fill(INF));
+      const split = Array.from({ length: numDays + 1 }, () => new Array(n + 1).fill(0));
+      dp[0][0] = 0;
+      for (let d = 1; d <= numDays; d++) {
+        for (let i = d; i <= n - (numDays - d); i++) {
+          for (let j = d - 1; j < i; j++) {
+            const c = Math.max(dp[d - 1][j], segCost(j, i - 1, d));
+            if (c < dp[d][i]) { dp[d][i] = c; split[d][i] = j; }
+          }
+        }
+      }
+      const chunks = [];
+      let cur = n;
+      for (let d = numDays; d >= 1; d--) {
+        const prev = split[d][cur];
+        chunks.unshift(ordered.slice(prev, cur));
+        cur = prev;
+      }
+      return chunks;
+    }
+
+    async function enrichCustomPlanWithOSRM(plan) {
+      let updatedAny = false;
+      const days = Object.keys(plan.routes).map(Number).sort((a, b) => a - b);
+      await Promise.all(days.map(async d => {
+        const r = plan.routes[d];
+        const dayStops = plan.pois.filter(p => p.day === d);
+        if (!r || !dayStops.length) return;
+        const wps = [];
+        if (d > 1) {
+          const prevDay = plan.pois.filter(p => p.day === d - 1);
+          if (prevDay.length) wps.push(prevDay[prevDay.length - 1]);
+        }
+        dayStops.forEach(s => wps.push(s));
+        if (wps.length < 2) return;
+        const coordStr = wps.map(w => `${w.lng},${w.lat}`).join(';');
+        try {
+          const res = await fetch(`https://router.project-osrm.org/route/v1/driving/${coordStr}?overview=simplified&geometries=geojson`);
+          if (!res.ok) return;
+          const data = await res.json();
+          if (data.code !== 'Ok' || !data.routes || !data.routes.length) return;
+          const rt = data.routes[0];
+          r.coords = rt.geometry.coordinates.map(c => [Number(c[1].toFixed(5)), Number(c[0].toFixed(5))]);
+          r.distKm = Math.max(1, Math.round(rt.distance / 1000));
+          r.driveMin = Math.max(5, Math.round(rt.duration / 60));
+          r.isRealRoad = true;
+          const offset = d > 1 ? 0 : 1;
+          rt.legs.forEach((leg, i) => {
+            const targetStop = dayStops[i + offset];
+            if (targetStop) {
+              targetStop.legKm = Number((leg.distance / 1000).toFixed(1));
+              targetStop.legMin = Math.max(3, Math.round(leg.duration / 60));
+            }
+          });
+          let clock = d === 1 ? 9 * 60 + 30 : 9 * 60;
+          dayStops.forEach(s => {
+            if (s.legMin > 0) clock += s.legMin;
+            const startStr = fmtClock(clock);
+            clock += (s.stayMin || 55);
+            s.time = `${startStr} - ${fmtClock(clock)}`;
+          });
+          updatedAny = true;
+        } catch (e) {}
+      }));
+      if (updatedAny && customPlan === plan) {
+        plan.osrmReady = true;
+        try { localStorage.setItem(CUSTOM_PLAN_KEY, JSON.stringify(plan)); } catch (e) {}
+        renderMapItinerary();
+        const activeDay = (document.querySelector('.day-pill.active') || {}).dataset?.day || 'all';
+        renderItinerary(activeDay);
+        showToast('已套用 OSRM 實際公路路網與精確車程！');
+      }
+    }
+
+    window.replanFromChecklist = function() {
+      const selected = collectSelectedStops();
+      if (!selected.length) {
+        showToast('請先於行程、美食、購物或伴手禮卡片右上角勾選 ✓ 想去的項目！');
+        return;
+      }
+      const ordered = optimizeLoopOrder(selected);
+      const numDays = Math.min(4, Math.max(1, ordered.length));
+      const chunks = partitionIntoDays(ordered, numDays);
+
+      const newPois = [];
+      const newRoutes = {};
+      let prevLastStop = null;
+
+      chunks.forEach((chunk, idx) => {
+        const d = idx + 1;
+        const dayStops = [];
+        if (d === 1) dayStops.push({ ...KMI_START });
+        chunk.forEach(st => dayStops.push({ ...st }));
+        if (d === numDays) dayStops.push({ ...KMI_END });
+
+        let clock = d === 1 ? 9 * 60 + 30 : 9 * 60;
+        let dayDist = 0, dayDrive = 0;
+        const routeCoords = [];
+        if (prevLastStop) routeCoords.push([prevLastStop.lat, prevLastStop.lng]);
+
+        dayStops.forEach((st, sIdx) => {
+          const fromPt = sIdx === 0 ? prevLastStop : dayStops[sIdx - 1];
+          let legKm = 0, legMin = 0;
+          if (fromPt) {
+            legKm = Number((haversineKm(fromPt.lat, fromPt.lng, st.lat, st.lng) * 1.32).toFixed(1));
+            legMin = Math.max(4, Math.round((legKm / 48) * 60));
+            dayDist += legKm;
+            dayDrive += legMin;
+            clock += legMin;
+          }
+          const startStr = fmtClock(clock);
+          clock += (st.stayMin || 55);
+          routeCoords.push([st.lat, st.lng]);
+          newPois.push({
+            ...st,
+            id: `cp-d${d}-${sIdx + 1}`,
+            day: d,
+            seq: sIdx + 1,
+            legKm,
+            legMin,
+            time: `${startStr} - ${fmtClock(clock)}`
+          });
+        });
+
+        const uniqAreas = Array.from(new Set(chunk.map(x => x.area).filter(Boolean))).slice(0, 3);
+        const lastReal = chunk[chunk.length - 1] || dayStops[dayStops.length - 1];
+        newRoutes[d] = {
+          name: `Day 0${d}｜${uniqAreas.length ? uniqAreas.join('・') : '宮崎精選自駕'}${d === numDays ? ' ➔ 機場還車' : ''}`,
+          color: DAY_COLORS[d],
+          distKm: Math.max(1, Math.round(dayDist)),
+          driveMin: Math.max(5, Math.round(dayDrive)),
+          isRealRoad: false,
+          stayHint: d < numDays ? inferStayCity(lastReal) : '',
+          coords: routeCoords
+        };
+        prevLastStop = dayStops[dayStops.length - 1];
+      });
+
+      customPlan = { pois: newPois, routes: newRoutes, osrmReady: false, createdAt: Date.now() };
+      try { localStorage.setItem(CUSTOM_PLAN_KEY, JSON.stringify(customPlan)); } catch (e) {}
+
+      switchTab('itinerary');
+      if (isMobileViewport()) setMobileSheetState('half');
+      renderMapItinerary();
+      selectDayFilter('all');
+      showToast(`已依您勾選的 ${selected.length} 處據點重排 ${numDays} 天最順路行程，正在對齊實際公路...`);
+      enrichCustomPlanWithOSRM(customPlan);
+    };
+
+    window.resetToDefaultPlan = function(silent = false) {
+      customPlan = null;
+      try { localStorage.removeItem(CUSTOM_PLAN_KEY); } catch (e) {}
+      renderMapItinerary();
+      selectDayFilter('all');
+      if (!silent) showToast('已還原為全宮崎縣預設 4 天 3 夜環縣行程');
+    };
+
+    document.getElementById('btnReplan').addEventListener('click', replanFromChecklist);
 
     // =========================================================================
     // SENIOR WEBGIS MODULE 1: SPLIT-SCREEN BASEMAP SWIPE COMPARE
